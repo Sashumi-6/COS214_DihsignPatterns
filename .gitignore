@@ -40,5 +40,6 @@
 # debug information files
 *.dwo
 
-#ignore the backup files for visual paradigm
+#ignore files for visual paradigm which are not the diagrams
 *.vpp.bak_*
+*.vpp.lck
