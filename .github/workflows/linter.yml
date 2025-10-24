@@ -1,0 +1,28 @@
+name: C/C++ Linter
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run C/C++ Linter
+        uses: cpp-linter/cpp-linter-action@v2.16.5
+        with:
+          style: file               
+          tidy-checks: boost-*,bugprone-*,performance-*,readability-*  
+          repo-root: .
+          version: 18
+          verbosity: info
+          files-changed-only: false   
+          ignore: .github
+          extra-args: '-std=c++11 -Wall'
+
