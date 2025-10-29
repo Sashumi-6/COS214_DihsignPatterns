@@ -1,6 +1,8 @@
 #ifndef FRONTDESK_H
 #define FRONTDESK_H
 
+#include <vector>
+
 #include "employee.h"
 #include "observer.h"
 #include "command.h"
@@ -8,21 +10,22 @@
 
 class FrontDesk {
     public:
-        void placeOrder(Plant* plants);
         void query();
-        void pay();
         void plant();
-        void maintain();
+        void maintain();    // bool or void?
+        bool addCommand(Command* cmd);
+        void addEmployee();
+        bool addPlant(Plant* plant, std::string section);
         void checkSpecials(Customer* customer);
-        Employee* checkAvailableEmployee();
-        void executeAll();
-        void addToQueue(Command* cmd);
+        bool executeAllCommands();
+        Employee* getFirstAvailableEmployee();
+        bool pay(float amountPaid);
+        bool placeOrder(Plant* plants);
 
     private:
-        Employee* employees;
+        Employee *activeEmployee, *allEmployees;
+        std::vector<Command*> commands;
         Order* order;
-        Subject* specials;
-        Command* commands;
 };
 
 #endif
