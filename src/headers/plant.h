@@ -14,7 +14,7 @@ class Plant : public GardenComponent {
         void setState(PlantState* state);
 
     private:
-        int price;
+        double price;
         std::string name;
 };
 
