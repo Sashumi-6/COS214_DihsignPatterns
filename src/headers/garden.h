@@ -1,6 +1,7 @@
 #ifndef GARDEN_H
 #define GARDEN_H
 
+template <typename T>
 class Iterator;
 class PlantState;
 
@@ -56,7 +57,9 @@ class GardenComponent {
         virtual void add(GardenComponent* param) = 0;
         virtual GardenComponent* getChild(int param) = 0;
         virtual void remove(GardenComponent* param) = 0;
-        Iterator* createIterator();
+
+        template <typename T>
+        Iterator<T>* createIterator();
 
     protected:
         PlantState* state;
@@ -76,7 +79,9 @@ class GardenSection : public GardenComponent {
         void add(GardenComponent* param);
         GardenComponent* getChild(int param);
         void remove(GardenComponent* param);
-        Iterator* createIterator();
+
+        template <typename T>
+        Iterator<GardenComponent>* createIterator();
 };
 
 #endif
