@@ -3,10 +3,11 @@
 
 #include <string>
 #include <map>
+#include <stdexcept>
 
 class GardenComponent;
 
-enum InventoryCategory{
+enum class InventoryCategory{
     PLANT,
     CARD,
     CONTAINER,
@@ -16,13 +17,18 @@ enum InventoryCategory{
 
 class Inventory {
     public:
-        void addStock(InventoryCategory category, std::string item, int quantity);
-        void useItem(InventoryCategory category, std::string item, int quantity);
+        bool addStock(InventoryCategory category, const std::string& item, int quantity);
+        bool useItem(InventoryCategory category, const std::string& item, int quantity);
+        bool itemExists(InventoryCategory category, const std::string& item) const;
+        int getQuantity(InventoryCategory category, const std::string& item) const;
+        explicit Inventory(GardenComponent* plants) ;
 
     private:
-        std::map<std::string, int> containers, soil, wrappers, card;
-        std::map<std::string, std::map<std::string, int>> map;
-        GardenComponent* plants ; //"Head" of the composite , ie. Our whole greenhouse , will be able to call createIterator later
+        std::map<std::string, int>& mapForCategory(InventoryCategory category);
+        const std::map<std::string, int>& mapForCategory(InventoryCategory category) const;
+        std::map<std::string, int> containers, soil, wrappers, cards;
+        GardenComponent* plants ; //"Head" of the composite , i.e. Our whole greenhouse , will be able to call createIterator later
+
 };
 
 #endif
