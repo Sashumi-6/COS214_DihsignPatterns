@@ -47,7 +47,9 @@ class HighSunlightStrategy : public SunlightStategy {
 
 class GardenComponent {
     public:
-        virtual void waterPlant() = 0;
+    virtual ~GardenComponent() = default;
+
+    virtual void waterPlant() = 0;
         virtual void exposeToSunlight() = 0;
         virtual void loseWater() = 0;
         bool canSell();
