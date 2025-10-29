@@ -43,3 +43,6 @@
 #ignore files for visual paradigm which are not the diagrams
 *.vpp.bak_*
 *.vpp.lck
+
+#dumbass mac files
+*.DS_Store
