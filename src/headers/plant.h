@@ -4,6 +4,12 @@
 #include <string>
 #include "garden.h"
 
+enum class PlantLocation {
+    OUTSIDE,
+    GREENHOUSE,
+    INSIDE
+};
+
 class Plant : public GardenComponent {
     public:
         void waterPlant();
