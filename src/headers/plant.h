@@ -66,7 +66,7 @@ class Plant : public GardenComponent {
         void add(GardenComponent* param) override;
         GardenComponent* getChild(int param) override;
         void remove(GardenComponent* param) override;
-        Iterator* createIterator() override;
+        GardenIterator* createIterator() override;
         void applyWaterLoss();
         void applyExposeToSunlight();
         void setState(PlantState* newState);

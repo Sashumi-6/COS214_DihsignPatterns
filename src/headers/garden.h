@@ -1,7 +1,7 @@
 #ifndef GARDEN_H
 #define GARDEN_H
 
-class Iterator;
+#include "iterator.h"
 
 class GardenComponent {
     public:
@@ -14,7 +14,7 @@ class GardenComponent {
     virtual void add(GardenComponent* param) = 0;
     virtual GardenComponent* getChild(int param) = 0;
     virtual void remove(GardenComponent* param) = 0;
-    virtual Iterator* createIterator() = 0;
+    virtual GardenIterator * createIterator() = 0;
 };
 
 class GardenSection : public GardenComponent {
