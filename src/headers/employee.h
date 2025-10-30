@@ -41,7 +41,6 @@ class Cashier : public Employee {
         Product* constructBouquet();
         void addItem(std::string type, std::string name);
         void removeItem(std::string type, std::string name);
-        void execute(Command* cmd);
         void fufill();
 
     private:
@@ -66,7 +65,6 @@ class Caretaker : public Employee {
         bool canHandle(Command* c);
         void waterPlants();
         void movePlants();
-        void execute(Command* c);
         void fulfil();
     private:
         GardenSection* assignedSection;
