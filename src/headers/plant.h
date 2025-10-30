@@ -4,50 +4,8 @@
 #include <string>
 #include "garden.h"
 
+
 class PlantState;
-
-class WaterLossStrategy {
-public:
-    WaterLossStrategy(float waterLevel);
-    virtual float loseWater() = 0;
-};
-
-class LowWaterLoss : public WaterLossStrategy {
-public:
-    float loseWater();
-};
-
-class MedWaterLoss : public WaterLossStrategy {
-public:
-    float loseWater();
-};
-
-class HighWaterLoss : public WaterLossStrategy {
-public:
-    float loseWater();
-};
-
-class SunlightStategy {
-public:
-    virtual void exposeToSun() = 0;
-};
-
-class LowSunlightStrategy : public SunlightStategy {
-public:
-    void exposeToSun();
-};
-
-class MedSunlightStrategy : public SunlightStategy {
-public:
-    void exposeToSun();
-};
-
-class HighSunlightStrategy : public SunlightStategy {
-public:
-    void exposeToSun();
-};
-
-
 
 enum class PlantLocation {
     OUTSIDE,
@@ -55,9 +13,51 @@ enum class PlantLocation {
     INSIDE
 };
 
+class WaterLossStrategy {
+public:
+    virtual ~WaterLossStrategy() = default;
+    virtual double loseWater() = 0;
+};
+
+class LowWaterLoss : public WaterLossStrategy {
+public:
+    double loseWater() override;
+};
+
+class MedWaterLoss : public WaterLossStrategy {
+public:
+    double loseWater() override;
+};
+
+class HighWaterLoss : public WaterLossStrategy {
+public:
+    double loseWater() override;
+};
+
+class SunlightStrategy {
+public:
+    virtual ~SunlightStrategy() = default;
+    virtual PlantLocation exposeToSun() = 0;
+};
+
+class LowSunlightStrategy : public SunlightStrategy {
+public:
+    PlantLocation exposeToSun() override;
+};
+
+class MedSunlightStrategy : public SunlightStrategy {
+public:
+    PlantLocation exposeToSun() override;
+};
+
+class HighSunlightStrategy : public SunlightStrategy {
+public:
+    PlantLocation exposeToSun() override;
+};
+
 class Plant : public GardenComponent {
     public:
-        Plant(std::string name , double price , WaterLossStrategy* strategy , SunlightStategy* sunlightStrategy , PlantState* state) ;
+        Plant(std::string name , double price , WaterLossStrategy* waterLossStrategy , SunlightStrategy* sunlightStrategy , PlantState* state) ;
         void waterPlant() override;
         void exposeToSunlight() override;
         void loseWater() override;
@@ -67,29 +67,32 @@ class Plant : public GardenComponent {
         GardenComponent* getChild(int param) override;
         void remove(GardenComponent* param) override;
         Iterator* createIterator() override;
-        void movePlant(PlantLocation location);
+        void applyWaterLoss();
+        void applyExposeToSunlight();
+        void setState(PlantState* newState);
+        void addWater(double amount);
 
     private:
         WaterLossStrategy* waterLossStrategy;
-        SunlightStategy* sunlightStrategy;
+        SunlightStrategy* sunlightStrategy;
         PlantLocation location;
         std::string name;
         PlantState* state;
         double price;
-        float waterLevel;
-
-
-
+        double waterLevel;
 };
 
 class PlantState {
     public:
     virtual ~PlantState() = default;
-
+    PlantState() ;
+    explicit PlantState(Plant* plant) ;
+    void setPlant(Plant* newPlant) ;
     virtual void handleWaterPlant() = 0;
-        virtual void handleExposeToSunlight() = 0;
-        virtual bool canSell() = 0;
-        virtual void handleGrow() = 0;
+    virtual void handleExposeToSunlight() = 0;
+    virtual bool canSell() = 0;
+    virtual void handleGrow() = 0;
+    virtual void handleLoseWater() = 0;
 
     protected:
         Plant* plant;
@@ -97,26 +100,32 @@ class PlantState {
 
 class SeedlingState : public PlantState {
     public:
-        void handleWaterPlant();
-        void handleExposeToSunlight();
-        bool canSell();
-        void handleGrow();
+        explicit SeedlingState(Plant* plant) ;
+        void handleWaterPlant() override ;
+        void handleExposeToSunlight()override;
+        bool canSell()override;
+        void handleGrow()override;
+        void handleLoseWater()override;
 };
 
 class MatureState : public PlantState {
     public:
-        void handleWaterPlant();
-        void handleExposeToSunlight();
-        bool canSell();
-        void handleGrow();
+        explicit MatureState(Plant* plant) ;
+        void handleWaterPlant() override;
+        void handleExposeToSunlight()override;
+        bool canSell()override;
+        void handleGrow()override;
+        void handleLoseWater()override;
 };
 
 class DeadState : PlantState {
     public:
-        void handleWaterPlant();
-        void handleExposeToSunlight();
-        bool canSell();
-        void handleGrow();
+        explicit DeadState(Plant* plant) ;
+        void handleWaterPlant() override;
+        void handleExposeToSunlight()override;
+        bool canSell() override;
+        void handleGrow() override ;
+        void handleLoseWater() override ;
 };
 
 #endif
