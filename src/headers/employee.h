@@ -3,40 +3,73 @@
 
 #include "productBuilder.h"
 #include "command.h"
+#include <string>
+#include "order.h"
 
 // Employee & Chain of Command
+//The way the system is set up an employee can only handle one command at a time
 class Employee {
     public:
-        Product* construct();
-        virtual void handleQuery();
-        void executeCommands();
-        void addCommand(Command* command);
-        void execute(Command* cmd);
-        void fufill();
-
+        virtual void handleRequest();
+        virtual bool canHandle(Command* c);
+        void setNext(Employee* next);
+        bool isAvailable();
+        
+        
     protected:
-        Bob* builder;
+        std::string role;
 
     private:
-        bool isWorking();
-        Employee* successor;
-        Command* commands;
+        Employee* nextHandler;
+        int id;
+        std::string name;
+        EmployeeState state;
 
+};
+
+enum EmployeeState{
+    AVAILABLE,
+    BUSY,
+    ON_BREAK
 };
 
 class Cashier : public Employee {
     public:
-        void handleQuery();
+        void handleRequest();
+        bool canHandle(Command* c);
+        Product* constructBasic();
+        Product* constructBouquet();
+        void addItem(std::string type, std::string name);
+        void removeItem(std::string type, std::string name);
+        void execute(Command* cmd);
+        void fufill();
+
+    private:
+        Bob* builder;
+        Order* currentOrder;
 };
 
 class Manager : public Employee {
     public:
-        void handleQuery();
+        void handleRequest();
+        void handleEscalation();
+        bool canHandle(Command* c);
+
+    private:
+        int numComplaints;
+
 };
 
 class Caretaker : public Employee {
     public:
-        void handleQuery();
+        void handleRequest();
+        bool canHandle(Command* c);
+        void waterPlants();
+        void movePlants();
+        void execute(Command* c);
+        void fulfil();
+    private:
+        GardenSection* assignedSection;
 };
 
 // ==============================
@@ -45,14 +78,8 @@ class Caretaker : public Employee {
 
 // Factory
 class EmployeeFactory {
-    public:
-        void anOperation();
-
     protected:
         virtual Employee* createEmployee() = 0;
-
-    private:
-        Employee* employee;
 };
 
 class CashierFactory : public EmployeeFactory {

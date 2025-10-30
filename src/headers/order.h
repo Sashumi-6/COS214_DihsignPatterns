@@ -2,31 +2,38 @@
 #define ORDER_H
 
 #include "plant.h"
+#include <vector>
 class OrderState;
 class Product;
 
 class Order {
     public:
-        void completeOrder();
-        void addProduct(Product* product);
+        Order(std::string customerName, std::string productSpecs);
+        void addProduct(Product* p);
+        void removeProduct(Product* p);
+        double calculateTotal();
+        void updateStatus(OrderStatus s);
+        void finaliseOrder();
+        bool isPaid();
+        void togglePaymentStatus();
+        std::string orderDetails();
+        int getProductCount();
+        Product* getProduct();
 
     private:
-        Plant* plants;
-        float totalCost;
-        OrderState* state;
-
+        double totalPrice;
+        std::vector<Product*> orderedProducts;
+        int orderId;
+        std::string customerName;
+        OrderStatus status;
+        bool paymentReveived;
 };
 
-class OrderState {
-
-};
-
-class ProcessingState : public OrderState {
-
-};
-
-class CompletedState : public OrderState {
-
+enum OrderStatus{
+    PENDING,
+    PROCESSING,
+    COMPLETED,
+    CANCELLED
 };
 
 #endif
