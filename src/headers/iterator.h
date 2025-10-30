@@ -3,15 +3,16 @@
 
 #include "garden.h"
 
+template <typename T>
 class Iterator {
     public:
-        virtual GardenComponent* first() = 0;
-        virtual GardenComponent* next() = 0;
+        virtual T* first() = 0;
+        virtual T* next() = 0;
         virtual bool isDone() = 0;
-        virtual GardenComponent* currentItem() = 0;
+        virtual T* currentItem() = 0;
 };
 
-class FullCatalogueIterator : public Iterator {
+class GardenIterator : public Iterator<GardenComponent> {
     public:
         GardenComponent* first();
         GardenComponent* next();

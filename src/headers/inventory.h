@@ -3,15 +3,32 @@
 
 #include <string>
 #include <map>
+#include <stdexcept>
+
+class GardenComponent;
+
+enum class InventoryCategory{
+    PLANT,
+    CARD,
+    CONTAINER,
+    SOIL,
+    WRAPPER,
+};
 
 class Inventory {
     public:
-        void addStock(std::string category, std::string item, int quantity);
-        void useItem(std::string category, std::string item, int quantity);
+        bool addStock(InventoryCategory category, const std::string& item, int quantity);
+        bool useItem(InventoryCategory category, const std::string& item, int quantity);
+        bool itemExists(InventoryCategory category, const std::string& item) const;
+        int getQuantity(InventoryCategory category, const std::string& item) const;
+        explicit Inventory(GardenComponent* plants) ;
 
     private:
-        std::map<std::string, int> plants, containers, soil, wrappers, card;
-        std::map<std::string, std::map<std::string, int>> map;
+        std::map<std::string, int>& mapForCategory(InventoryCategory category);
+        const std::map<std::string, int>& mapForCategory(InventoryCategory category) const;
+        std::map<std::string, int> containers, soil, wrappers, cards;
+        GardenComponent* plants ; //"Head" of the composite , i.e. Our whole greenhouse , will be able to call createIterator later
+
 };
 
 #endif
