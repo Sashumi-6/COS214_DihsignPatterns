@@ -2,9 +2,6 @@
 #define GARDEN_H
 
 class Iterator;
-class PlantState;
-
-
 
 class GardenComponent {
     public:
@@ -14,25 +11,23 @@ class GardenComponent {
     virtual ~GardenComponent() = default;
     virtual bool canSell() = 0;
     virtual void grow() = 0;
-    virtual void setState(PlantState* state) = 0;
     virtual void add(GardenComponent* param) = 0;
     virtual GardenComponent* getChild(int param) = 0;
     virtual void remove(GardenComponent* param) = 0;
-    Iterator* createIterator();
+    virtual Iterator* createIterator() = 0;
 };
 
 class GardenSection : public GardenComponent {
     public:
-        void waterPlant();
-        void exposeToSunlight();
-        void loseWater();
-        bool canSell();
-        virtual void grow() = 0;
-        void setState(PlantState* state);
-        void add(GardenComponent* param);
-        GardenComponent* getChild(int param);
-        void remove(GardenComponent* param);
-        Iterator* createIterator();
+        void waterPlant() override;
+        void exposeToSunlight() override;
+        void loseWater() override;
+        bool canSell() override;
+        void grow() override;
+        void add(GardenComponent* param) override;
+        GardenComponent* getChild(int param) override;
+        void remove(GardenComponent* param) override;
+        Iterator* createIterator() override;
 };
 
 #endif

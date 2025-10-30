@@ -4,6 +4,8 @@
 #include <string>
 #include "garden.h"
 
+class PlantState;
+
 class WaterLossStrategy {
 public:
     WaterLossStrategy(float waterLevel);
@@ -55,16 +57,21 @@ enum class PlantLocation {
 
 class Plant : public GardenComponent {
     public:
-        void exposeToSunlight();
-        void grow();
-        void loseWater();
-        void setState(PlantState* state);
-        void waterPlant();
-        bool canSell();
+        Plant(std::string name , double price , WaterLossStrategy* strategy , SunlightStategy* sunlightStrategy , PlantState* state) ;
+        void waterPlant() override;
+        void exposeToSunlight() override;
+        void loseWater() override;
+        bool canSell() override;
+        void grow() override;
+        void add(GardenComponent* param) override;
+        GardenComponent* getChild(int param) override;
+        void remove(GardenComponent* param) override;
+        Iterator* createIterator() override;
+        void movePlant(PlantLocation location);
 
     private:
         WaterLossStrategy* waterLossStrategy;
-        SunlightStategy* sunlightStategy;
+        SunlightStategy* sunlightStrategy;
         PlantLocation location;
         std::string name;
         PlantState* state;
@@ -77,13 +84,15 @@ class Plant : public GardenComponent {
 
 class PlantState {
     public:
-        virtual void handleWaterPlant() = 0;
+    virtual ~PlantState() = default;
+
+    virtual void handleWaterPlant() = 0;
         virtual void handleExposeToSunlight() = 0;
         virtual bool canSell() = 0;
         virtual void handleGrow() = 0;
 
     protected:
-        GardenComponent* plant;
+        Plant* plant;
 };
 
 class SeedlingState : public PlantState {
