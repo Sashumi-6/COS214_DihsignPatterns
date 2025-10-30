@@ -4,6 +4,49 @@
 #include <string>
 #include "garden.h"
 
+class WaterLossStrategy {
+public:
+    WaterLossStrategy(float waterLevel);
+    virtual float loseWater() = 0;
+};
+
+class LowWaterLoss : public WaterLossStrategy {
+public:
+    float loseWater();
+};
+
+class MedWaterLoss : public WaterLossStrategy {
+public:
+    float loseWater();
+};
+
+class HighWaterLoss : public WaterLossStrategy {
+public:
+    float loseWater();
+};
+
+class SunlightStategy {
+public:
+    virtual void exposeToSun() = 0;
+};
+
+class LowSunlightStrategy : public SunlightStategy {
+public:
+    void exposeToSun();
+};
+
+class MedSunlightStrategy : public SunlightStategy {
+public:
+    void exposeToSun();
+};
+
+class HighSunlightStrategy : public SunlightStategy {
+public:
+    void exposeToSun();
+};
+
+
+
 enum class PlantLocation {
     OUTSIDE,
     GREENHOUSE,
@@ -17,6 +60,7 @@ class Plant : public GardenComponent {
         void loseWater();
         void setState(PlantState* state);
         void waterPlant();
+        bool canSell();
 
     private:
         WaterLossStrategy* waterLossStrategy;
