@@ -57,7 +57,11 @@ public:
 
 class Plant : public GardenComponent {
     public:
+        
         Plant(std::string name , double price , WaterLossStrategy* waterLossStrategy , SunlightStrategy* sunlightStrategy , PlantState* state) ;
+        Plant(const Plant& other);//TODO add to UML
+        
+        ~Plant() override;
         void waterPlant() override;
         void exposeToSunlight() override;
         void loseWater() override;
@@ -71,7 +75,7 @@ class Plant : public GardenComponent {
         void applyExposeToSunlight();
         void setState(PlantState* newState);
         void addWater(double amount);
-
+        
     private:
         WaterLossStrategy* waterLossStrategy;
         SunlightStrategy* sunlightStrategy;
@@ -86,8 +90,9 @@ class PlantState {
     public:
     virtual ~PlantState() = default;
     PlantState() ;
+    PlantState* operator=(const PlantState& other);//TODO add to UML
     explicit PlantState(Plant* plant) ;
-    void setPlant(Plant* newPlant) ;
+    void setPlant(Plant* newPlant) ; 
     virtual void handleWaterPlant() = 0;
     virtual void handleExposeToSunlight() = 0;
     virtual bool canSell() = 0;
