@@ -12,16 +12,23 @@ enum class PlantLocation {
 
 class Plant : public GardenComponent {
     public:
-        void waterPlant();
         void exposeToSunlight();
-        void loseWater();
-        bool canSell();
         void grow();
+        void loseWater();
         void setState(PlantState* state);
+        void waterPlant();
 
     private:
-        double price;
+        WaterLossStrategy* waterLossStrategy;
+        SunlightStategy* sunlightStategy;
+        PlantLocation location;
         std::string name;
+        PlantState* state;
+        double price;
+        float waterLevel;
+
+
+
 };
 
 class PlantState {

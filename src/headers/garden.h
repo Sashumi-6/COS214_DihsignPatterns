@@ -59,12 +59,6 @@ class GardenComponent {
         virtual GardenComponent* getChild(int param) = 0;
         virtual void remove(GardenComponent* param) = 0;
         Iterator* createIterator();
-
-    protected:
-        PlantState* state;
-        WaterLossStrategy* waterLossStrategy;
-        SunlightStategy* sunlightStategy;
-        float waterLevel;
 };
 
 class GardenSection : public GardenComponent {
