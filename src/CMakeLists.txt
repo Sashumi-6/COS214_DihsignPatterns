@@ -11,6 +11,7 @@ FetchContent_MakeAvailable(googletest)
 ##### CPPS GO HERE!!!!
 add_library(project_lib
         cpp/inventory.cpp
+        cpp/plant.cpp
         # ADD CPPS HERE !!!!!!!
         ##############
         ##############
