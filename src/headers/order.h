@@ -8,7 +8,7 @@ class Product;
 
 class Order {
     public:
-        Order(std::string customerName, std::string productSpecs);
+        Order(Cashier* cashier, std::string customerName, std::string productSpecs);
         void addProduct(Product* p);
         void removeProduct(Product* p);
         double calculateTotal();
@@ -27,6 +27,7 @@ class Order {
         std::string customerName;
         OrderStatus status;
         bool paymentReveived;
+        Cashier* cashier;//here because of Builder. Has to have specific builder parsed in
 };
 
 enum OrderStatus{

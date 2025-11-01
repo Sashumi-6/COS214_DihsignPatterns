@@ -1,98 +1,103 @@
-#ifndef EMPLOYEE_H
-#define EMPLOYEE_H
-
-#include "productBuilder.h"
-#include "command.h"
+#pragma once
 #include <string>
+#include <vector>
+#include <iostream>
+#include "command.h"
+#include "productBuilder.h"
 #include "order.h"
 
-// Employee & Chain of Command
-//The way the system is set up an employee can only handle one command at a time
+enum EmployeeState { AVAILABLE, BUSY, ON_BREAK };
+
 class Employee {
-    public:
-        virtual void handleRequest();
-        virtual bool canHandle(Command* c);
-        void setNext(Employee* next);
-        bool isAvailable();
-        
-        
-    protected:
-        std::string role;
+public:
+    virtual ~Employee() {}
 
-    private:
-        Employee* nextHandler;
-        int id;
-        std::string name;
-        EmployeeState state;
+    // Unified handler for all commands
+    void handleRequest(Command* cmd) {
+        if (canHandle(cmd)) {
+            process(cmd);
+        } else if (nextHandler) {
+            nextHandler->handleRequest(cmd);
+        } else {
+            // std::cout << "No employee could handle this command.\n";
+            //error handling
+        }
+    }
 
+    virtual bool canHandle(Command* cmd) = 0;
+    virtual void process(Command* cmd) = 0;
+
+    void setNext(Employee* next) { nextHandler = next; }
+    Employee* getNextHandler() const { return nextHandler; }
+    bool isAvailable() const { return state == AVAILABLE; }
+
+protected:
+    std::string role;
+    EmployeeState state = AVAILABLE;
+
+private:
+    Employee* nextHandler = nullptr;
 };
 
-enum EmployeeState{
-    AVAILABLE,
-    BUSY,
-    ON_BREAK
-};
+// ================== Derived Employees ==================
 
 class Cashier : public Employee {
-    public:
-        void handleRequest();
-        bool canHandle(Command* c);
-        Product* constructBasic();
-        Product* constructBouquet();
-        void addItem(std::string type, std::string name);
-        void removeItem(std::string type, std::string name);
-        void fufill();
+public:
+    bool canHandle(Command* cmd) override;
+    void process(Command* cmd) override;
 
-    private:
-        Bob* builder;
-        Order* currentOrder;
-};
+    Product* construct(Bob* builder, std::vector<Plant*> plants);
+    void addItem(Product* product);
+    void removeItem(Product* product);
 
-class Manager : public Employee {
-    public:
-        void handleRequest();
-        void handleEscalation();
-        bool canHandle(Command* c);
-
-    private:
-        int numComplaints;
-
+private:
+    Bob* builder;
+    Order* order;
 };
 
 class Caretaker : public Employee {
-    public:
-        void handleRequest();
-        bool canHandle(Command* c);
-        void waterPlants();
-        void movePlants();
-        void fulfil();
-    private:
-        GardenSection* assignedSection;
+public:
+    bool canHandle(Command* cmd) override;
+    void process(Command* cmd) override;
+
+    void waterPlants();
+    void movePlants();
+    void performMaintenance(GardenComponent* target, MaintenanceType type);
+    void plantNewPlant(Plant* plant);
+
+private:
+    GardenSection* assignedSection;
 };
 
-// ==============================
-//         EMPLOYEE END
-// ==============================
+class Manager : public Employee {
+public:
+    bool canHandle(Command* cmd) override;
+    void process(Command* cmd) override;
 
-// Factory
+    void handleEscalation();
+
+private:
+    int numComplaints = 0;
+};
+
+// ================== Employee Factories ==================
+
 class EmployeeFactory {
-    protected:
-        virtual Employee* createEmployee() = 0;
+protected:
+    virtual Employee* createEmployee() = 0;
 };
 
 class CashierFactory : public EmployeeFactory {
-    public:
-        Employee* createEmployee();
+public:
+    Employee* createEmployee() override;
 };
 
 class ManagerFactory : public EmployeeFactory {
-    public:
-        Employee* createEmployee();
+public:
+    Employee* createEmployee() override;
 };
 
 class CaretakerFactory : public EmployeeFactory {
-    public:
-        Employee* createEmployee();
+public:
+    Employee* createEmployee() override;
 };
-
-#endif

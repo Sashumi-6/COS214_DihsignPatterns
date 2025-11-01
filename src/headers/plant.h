@@ -3,7 +3,7 @@
 
 #include <string>
 #include "garden.h"
-
+#include "command.h"
 
 class PlantState;
 
@@ -71,6 +71,9 @@ class Plant : public GardenComponent {
         void applyExposeToSunlight();
         void setState(PlantState* newState);
         void addWater(double amount);
+        SunlightPreference getSunlightPreference() const;
+        WaterPreference getWaterPreference() const;
+        double getPrice();
 
     private:
         WaterLossStrategy* waterLossStrategy;
