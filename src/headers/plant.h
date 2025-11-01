@@ -91,15 +91,16 @@ class Plant : public GardenComponent {
     bool isLeaf() const override;
     void tryGrow();
 
-  private:
-    WaterLossStrategy* waterLossStrategy;
-    SunlightStrategy* sunlightStrategy;
-    PlantLocation location;
-    std::string name;
-    PlantState* state;
-    double price;
-    double waterLevel;
-    int age;
+    private:
+        WaterLossStrategy* waterLossStrategy;
+        SunlightStrategy* sunlightStrategy;
+        PlantLocation location;
+        std::string name;
+        PlantState* state;
+        double price;
+        double waterLevel;
+        int age;
+        
 };
 
 class PlantState {

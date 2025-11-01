@@ -2,30 +2,46 @@
 
 #include "../headers/plant.h"
 #include <stdexcept>
+Plant::Plant(std::string  name , const double price , WaterLossStrategy* waterLossStrategy , SunlightStrategy* sunlightStrategy , PlantState* state) : waterLossStrategy(waterLossStrategy) , sunlightStrategy(sunlightStrategy) , location(PlantLocation::INSIDE) , name(std::move(name)) , state(state) , price(price) , waterLevel(1), age(0)  {
 
-constexpr double LowWaterLoss::kLossAmount;
-constexpr double MedWaterLoss::kLossAmount;
-constexpr double HighWaterLoss::kLossAmount;
-constexpr double Plant::kInitialWaterLevel;
-constexpr double Plant::kWaterDose;
-
-Plant::Plant(std::string name, const double price, WaterLossStrategy* waterLossStrategy,
-             SunlightStrategy* sunlightStrategy, PlantState* state)
-    : waterLossStrategy(waterLossStrategy), sunlightStrategy(sunlightStrategy), location(PlantLocation::INSIDE),
-      name(std::move(name)), state(state), price(price), waterLevel(kInitialWaterLevel) {}
-void Plant::waterPlant() { state->handleWaterPlant(); }
-void Plant::exposeToSunlight() { state->handleExposeToSunlight(); }
-void Plant::loseWater() { state->handleLoseWater(); };
+}
+void Plant::waterPlant(){
+    state->handleWaterPlant() ;
+    if (waterLevel > 1.0) {
+        this->setState(new DeadState(this)) ;
+    }
+}
+void Plant::exposeToSunlight() {
+    state->handleExposeToSunlight() ;
+}
+void Plant::loseWater() {
+    state->handleLoseWater();
+    if (waterLevel < 0.0) {
+        this->setState(new DeadState(this)) ;
+    }
+};
 
 bool Plant::canSell() { return state->canSell(); }
 
 void Plant::addWater(const double amount) { waterLevel += amount; }
 
-void Plant::grow() { state->handleGrow(); }
-void Plant::add(GardenComponent* param) { throw std::logic_error("Cannot Add A Child To A Plant"); };
-GardenComponent* Plant::getChild(int param) { throw std::logic_error("Plant Has No Children"); }
-void Plant::remove(GardenComponent* param) { throw std::logic_error("Plant has No Children To Remove"); };
-Iterator<GardenComponent>* Plant::createIterator() { throw std::logic_error("Cannot create Iterator for Plant"); }
+void Plant::grow() {
+    this->age += 1;
+    state->handleGrow();
+}
+void Plant::add(GardenComponent* param) {
+    throw std::logic_error("Cannot Add A Child To A Plant");
+};
+GardenComponent* Plant::getChild(int param) {
+    throw std::logic_error("Plant Has No Children");
+}
+void Plant::remove(GardenComponent* param) {
+    throw std::logic_error("Plant has No Children To Remove");
+};
+Iterator* Plant::createIterator() {
+    throw std::logic_error("Cannot create Iterator for Plant");
+}
+
 
 void Plant::applyExposeToSunlight() {
     const PlantLocation newLocation = sunlightStrategy->exposeToSun();
@@ -54,6 +70,15 @@ WaterPreference Plant::getWaterPreference() const {
     if (dynamic_cast<MedWaterLoss*>(waterLossStrategy)) return WaterPreference::MEDIUM;
     if (dynamic_cast<HighWaterLoss*>(waterLossStrategy)) return WaterPreference::HIGH;
     return WaterPreference::UNKNOWN;
+
+void Plant::tryGrow() {
+    
+    if (this->waterLevel >= 0.5 && this->age >= 5) {
+        this->grow();
+    }
+}
+double LowWaterLoss::loseWater() {
+    return 0.15 ;
 }
 
 double Plant:: getPrice(){return price;}
@@ -97,7 +122,9 @@ void MatureState::handleExposeToSunlight() {
     plant->applyExposeToSunlight();
 }
 
-void DeadState::handleExposeToSunlight() {}
+void DeadState::handleExposeToSunlight() {
+    // std::cout << "Dead plants cannot be exposed to sunlight." << std::endl;
+    }
 
 void SeedlingState::handleLoseWater() {
     if (plant == nullptr) {
@@ -119,10 +146,16 @@ void SeedlingState::handleGrow() {
     if (plant == nullptr) {
         return;
     }
-    plant->setState(new MatureState(plant));
+    // this->plant->age += 0.3;
+    plant->setState(new MatureState(plant)) ;
 }
 
-void MatureState::handleGrow() {}
+void MatureState::handleGrow() {
+    if (plant == nullptr) {
+        return ;
+    }
+    plant->setState(new DeadState(plant)) ;
+}
 
 void DeadState::handleGrow() {}
 
