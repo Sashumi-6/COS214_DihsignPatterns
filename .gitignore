@@ -87,12 +87,9 @@
 *.code-workspace
 /.clangd/
 
-# -------------------------
-# clang / analysis / formatting
-# -------------------------
-# keep project-wide configs (do NOT ignore these)
-# !.clang-format
-# !.clang-tidy
+
+.clang-format
+.clang-tidy
 
 # -------------------------
 # OS-generated / Misc
