@@ -36,7 +36,7 @@ GardenComponent* Plant::getChild(int param) {
 void Plant::remove(GardenComponent* param) {
     throw std::logic_error("Plant has No Children To Remove");
 };
-Iterator* Plant::createIterator() {
+Iterator<GardenComponent>* Plant::createIterator() {
     throw std::logic_error("Cannot create Iterator for Plant");
 }
 
@@ -179,5 +179,4 @@ bool MatureState::canSell() {
 bool DeadState::canSell() {
     return false ;
 }
-
 
