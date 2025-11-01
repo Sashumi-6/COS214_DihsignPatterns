@@ -1,6 +1,8 @@
 #ifndef GARDEN_H
 #define GARDEN_H
 
+#include <vector>
+
 template <typename T> class Iterator;
 class GardenIterator;
 
@@ -34,6 +36,8 @@ class GardenSection : public GardenComponent {
     GardenComponent* getChild(int param) override;
     void remove(GardenComponent* param) override;
     Iterator<GardenComponent>* createIterator() override;
+  private:
+    std::vector<GardenComponent*> children;
 };
 
 #endif
