@@ -22,16 +22,22 @@ public:
 class LowWaterLoss : public WaterLossStrategy {
 public:
     double loseWater() override;
+private:
+    static constexpr double kLossAmount = 0.1;
 };
 
 class MedWaterLoss : public WaterLossStrategy {
 public:
     double loseWater() override;
+private:
+    static constexpr double kLossAmount = 0.25;
 };
 
 class HighWaterLoss : public WaterLossStrategy {
 public:
     double loseWater() override;
+private:
+    static constexpr double kLossAmount = 0.35;
 };
 
 class SunlightStrategy {
@@ -57,6 +63,8 @@ public:
 
 class Plant : public GardenComponent {
     public:
+        static constexpr double kInitialWaterLevel = 1.0;
+        static constexpr double kWaterDose = 0.35;
         Plant(std::string name , double price , WaterLossStrategy* waterLossStrategy , SunlightStrategy* sunlightStrategy , PlantState* state) ;
         void waterPlant() override;
         void exposeToSunlight() override;

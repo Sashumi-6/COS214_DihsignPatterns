@@ -2,10 +2,17 @@
 
 #include "../headers/plant.h"
 #include <stdexcept>
+
+constexpr double LowWaterLoss::kLossAmount;
+constexpr double MedWaterLoss::kLossAmount;
+constexpr double HighWaterLoss::kLossAmount;
+constexpr double Plant::kInitialWaterLevel;
+constexpr double Plant::kWaterDose;
+
 Plant::Plant(std::string name, const double price, WaterLossStrategy* waterLossStrategy,
              SunlightStrategy* sunlightStrategy, PlantState* state)
     : waterLossStrategy(waterLossStrategy), sunlightStrategy(sunlightStrategy), location(PlantLocation::INSIDE),
-      name(std::move(name)), state(state), price(price), waterLevel(1) {}
+      name(std::move(name)), state(state), price(price), waterLevel(kInitialWaterLevel) {}
 void Plant::waterPlant() { state->handleWaterPlant(); }
 void Plant::exposeToSunlight() { state->handleExposeToSunlight(); }
 void Plant::loseWater() { state->handleLoseWater(); };
@@ -34,11 +41,11 @@ void Plant::setState(PlantState* newState) {
     delete this->state;
     this->state = newState;
 }
-double LowWaterLoss::loseWater() { return 0.1; }
+double LowWaterLoss::loseWater() { return kLossAmount; }
 
-double MedWaterLoss::loseWater() { return 0.25; }
+double MedWaterLoss::loseWater() { return kLossAmount; }
 
-double HighWaterLoss::loseWater() { return 0.35; }
+double HighWaterLoss::loseWater() { return kLossAmount; }
 
 PlantLocation LowSunlightStrategy::exposeToSun() { return PlantLocation::INSIDE; }
 
@@ -101,9 +108,9 @@ void MatureState::handleGrow() {}
 
 void DeadState::handleGrow() {}
 
-void SeedlingState::handleWaterPlant() { plant->addWater(0.35); }
+void SeedlingState::handleWaterPlant() { plant->addWater(Plant::kWaterDose); }
 
-void MatureState::handleWaterPlant() { plant->addWater(0.35); }
+void MatureState::handleWaterPlant() { plant->addWater(Plant::kWaterDose); }
 
 void DeadState::handleWaterPlant() {}
 
