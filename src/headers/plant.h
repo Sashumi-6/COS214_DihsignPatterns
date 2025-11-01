@@ -71,6 +71,7 @@ class Plant : public GardenComponent {
         void applyExposeToSunlight();
         void setState(PlantState* newState);
         void addWater(double amount);
+        void tryGrow();
 
     private:
         WaterLossStrategy* waterLossStrategy;
@@ -80,19 +81,21 @@ class Plant : public GardenComponent {
         PlantState* state;
         double price;
         double waterLevel;
+        int age;
+        
 };
 
 class PlantState {
     public:
-    virtual ~PlantState() = default;
-    PlantState() ;
-    explicit PlantState(Plant* plant) ;
-    void setPlant(Plant* newPlant) ;
-    virtual void handleWaterPlant() = 0;
-    virtual void handleExposeToSunlight() = 0;
-    virtual bool canSell() = 0;
-    virtual void handleGrow() = 0;
-    virtual void handleLoseWater() = 0;
+        virtual ~PlantState() = default;
+        PlantState();
+        explicit PlantState(Plant* plant);
+        void setPlant(Plant* newPlant);
+        virtual void handleWaterPlant() = 0;
+        virtual void handleExposeToSunlight() = 0;
+        virtual bool canSell() = 0;
+        virtual void handleGrow() = 0;
+        virtual void handleLoseWater() = 0;
 
     protected:
         Plant* plant;
@@ -118,7 +121,7 @@ class MatureState : public PlantState {
         void handleLoseWater()override;
 };
 
-class DeadState : PlantState {
+class DeadState : public PlantState {
     public:
         explicit DeadState(Plant* plant) ;
         void handleWaterPlant() override;
