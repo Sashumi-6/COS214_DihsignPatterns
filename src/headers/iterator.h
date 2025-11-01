@@ -13,10 +13,10 @@ template <typename T> class Iterator {
 
 class GardenIterator : public Iterator<GardenComponent> {
   public:
-    GardenComponent* first();
-    GardenComponent* next();
-    bool isDone();
-    GardenComponent* currentItem();
+    GardenComponent* first() override;
+    GardenComponent* next() override;
+    bool isDone() override;
+    GardenComponent* currentItem() override;
 };
 
 #endif
