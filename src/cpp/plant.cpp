@@ -41,6 +41,26 @@ void Plant::setState(PlantState* newState) {
     delete this->state;
     this->state = newState;
 }
+
+SunlightPreference Plant::getSunlightPreference() const {
+    if (dynamic_cast<LowSunlightStrategy*>(sunlightStrategy)) return SunlightPreference::LOW;
+    if (dynamic_cast<MedSunlightStrategy*>(sunlightStrategy)) return SunlightPreference::MEDIUM;
+    if (dynamic_cast<HighSunlightStrategy*>(sunlightStrategy)) return SunlightPreference::HIGH;
+    return SunlightPreference::UNKNOWN;
+}
+
+WaterPreference Plant::getWaterPreference() const {
+    if (dynamic_cast<LowWaterLoss*>(waterLossStrategy)) return WaterPreference::LOW;
+    if (dynamic_cast<MedWaterLoss*>(waterLossStrategy)) return WaterPreference::MEDIUM;
+    if (dynamic_cast<HighWaterLoss*>(waterLossStrategy)) return WaterPreference::HIGH;
+    return WaterPreference::UNKNOWN;
+}
+
+double Plant:: getPrice(){return price;}
+
+double LowWaterLoss::loseWater() {
+    return 0.1 ;
+}
 double LowWaterLoss::loseWater() { return kLossAmount; }
 
 double MedWaterLoss::loseWater() { return kLossAmount; }
