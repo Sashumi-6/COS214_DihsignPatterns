@@ -59,7 +59,6 @@ BasicBuilder::BasicBuilder(std::vector<Plant*> plants, GardenComponent* greenhou
 
 }
 
-//TODO error handling for plants that are not in the greenhouse
 Product* BasicBuilder::addPlant(){
     Product* product = new Product(plants[0],greenhouse);
     greenhouse->remove(plants[0]);
