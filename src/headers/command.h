@@ -6,6 +6,10 @@ class Employee;
 class Plant;
 
 // Advice request preferences
+enum class MaintenanceType {
+    WATER,
+    MOVE
+};
 enum class SunlightPreference { UNKNOWN, LOW, MEDIUM, HIGH };
 enum class WaterPreference { UNKNOWN, LOW, MEDIUM, HIGH };
 enum class CareLevel { UNKNOWN, LOW, MEDIUM, HIGH };
@@ -52,10 +56,6 @@ public:
 
     CommandType getType() const override { return MAINTENANCE_COMMAND; }
     MaintenanceType getMaintenanceType() const { return type; }
-};
-enum class MaintenanceType {
-    WATER,
-    MOVE
 };
 
 //Sender -> FrontDesk, Receiver -> Chain of Employees

@@ -3,7 +3,7 @@
 
 void Maintenance::execute(Employee* emp) {
         Caretaker* c = dynamic_cast<Caretaker*>(emp);
-        if(c) c->performMaintenance(target);
+        if(c) c->performMaintenance(target, type);
     }
 
 CommandType PlantCommand::getType() const {
