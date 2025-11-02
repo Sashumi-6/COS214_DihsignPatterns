@@ -3,7 +3,7 @@
 
 #include <string>
 #include "garden.h"
-
+#include "command.h"
 
 class PlantState;
 
@@ -22,16 +22,22 @@ public:
 class LowWaterLoss : public WaterLossStrategy {
 public:
     double loseWater() override;
+private:
+    static constexpr double kLossAmount = 0.1;
 };
 
 class MedWaterLoss : public WaterLossStrategy {
 public:
     double loseWater() override;
+private:
+    static constexpr double kLossAmount = 0.25;
 };
 
 class HighWaterLoss : public WaterLossStrategy {
 public:
     double loseWater() override;
+private:
+    static constexpr double kLossAmount = 0.35;
 };
 
 class SunlightStrategy {
@@ -57,7 +63,13 @@ public:
 
 class Plant : public GardenComponent {
     public:
+        
+        static constexpr double kInitialWaterLevel = 1.0;
+        static constexpr double kWaterDose = 0.35;
         Plant(std::string name , double price , WaterLossStrategy* waterLossStrategy , SunlightStrategy* sunlightStrategy , PlantState* state) ;
+        Plant(const Plant& other);//TODO add to UML
+        
+        ~Plant() override;
         void waterPlant() override;
         void exposeToSunlight() override;
         void loseWater() override;
@@ -66,11 +78,15 @@ class Plant : public GardenComponent {
         void add(GardenComponent* param) override;
         GardenComponent* getChild(int param) override;
         void remove(GardenComponent* param) override;
-        GardenIterator* createIterator() override;
+        Iterator<GardenComponent>* createIterator() override;
         void applyWaterLoss();
         void applyExposeToSunlight();
         void setState(PlantState* newState);
         void addWater(double amount);
+        
+        SunlightPreference getSunlightPreference() const;
+        WaterPreference getWaterPreference() const;
+        double getPrice();
 
     private:
         WaterLossStrategy* waterLossStrategy;
@@ -86,8 +102,9 @@ class PlantState {
     public:
     virtual ~PlantState() = default;
     PlantState() ;
+    PlantState* operator=(const PlantState& other);//TODO add to UML
     explicit PlantState(Plant* plant) ;
-    void setPlant(Plant* newPlant) ;
+    void setPlant(Plant* newPlant) ; 
     virtual void handleWaterPlant() = 0;
     virtual void handleExposeToSunlight() = 0;
     virtual bool canSell() = 0;
