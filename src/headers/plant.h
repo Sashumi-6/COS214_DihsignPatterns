@@ -79,6 +79,7 @@ class Plant : public GardenComponent {
     void setState(PlantState* newState);
     void addWater(double amount);
     bool isLeaf() const override;
+    void tryGrow();
 
   private:
     WaterLossStrategy* waterLossStrategy;
@@ -88,6 +89,7 @@ class Plant : public GardenComponent {
     PlantState* state;
     double price;
     double waterLevel;
+    int age;
 };
 
 class PlantState {
@@ -126,7 +128,7 @@ class MatureState : public PlantState {
     void handleLoseWater() override;
 };
 
-class DeadState : PlantState {
+class DeadState : public PlantState {
   public:
     explicit DeadState(Plant* plant);
     void handleWaterPlant() override;
