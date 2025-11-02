@@ -4,7 +4,6 @@
 #include <vector>
 
 #include "employee.h"
-#include "observer.h"
 #include "command.h"
 #include "order.h"
 
@@ -16,14 +15,14 @@ class FrontDesk {
         bool addCommand(Command* cmd);
         void addEmployee();
         bool addPlant(Plant* plant, std::string section);
-        void checkSpecials(Customer* customer);
+        // void checkSpecials(Customer* customer);
         bool executeAllCommands();
         Employee* getFirstAvailableEmployee();
         bool pay(float amountPaid);
         bool placeOrder(Plant* plants);
 
     private:
-        Employee *activeEmployee, *allEmployees;
+        std::vector<Employee*> allEmployees;
         std::vector<Command*> commands;
         Order* order;
 };
