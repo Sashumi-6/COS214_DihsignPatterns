@@ -15,6 +15,8 @@ add_library(project_lib
         cpp/employee.cpp
         cpp/command.cpp
         cpp/order.cpp
+        cpp/product.cpp
+        
         # ADD CPPS HERE !!!!!!!
         ##############
         ##############
