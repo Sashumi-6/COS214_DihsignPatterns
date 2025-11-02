@@ -24,7 +24,7 @@ class FrontDesk {
         bool addCommand(Command* cmd);
         void addEmployee();
         bool addPlant(Plant* plant, std::string section);
-        //void checkSpecials(Customer* customer);
+        // void checkSpecials(Customer* customer);
         bool executeAllCommands();
         template <typename T>
         T* getAvailableEmployee();
@@ -33,7 +33,8 @@ class FrontDesk {
         bool placeOrder(std::vector<ProductRequest>& reqs, Customer* c);
 
     private:
-        std::vector<Employee*> employees;
+        std::vector<Employee*> allEmployees;
+        Employee* activeEmployee; 
         std::vector<Command*> commands;
         Order* currentOrder;
         //pointer to Greenhouse object of the system
