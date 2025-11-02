@@ -40,6 +40,11 @@ class PlantCommand : public Command {
 };
 
 //Sender -> Front Desk, Receiver -> Caretaker
+
+enum class MaintenanceType {
+    WATER,
+    MOVE
+};
 class Maintenance : public Command {
     private:
     GardenComponent* target;
@@ -53,10 +58,7 @@ public:
     CommandType getType() const override { return MAINTENANCE_COMMAND; }
     MaintenanceType getMaintenanceType() const { return type; }
 };
-enum class MaintenanceType {
-    WATER,
-    MOVE
-};
+
 
 //Sender -> FrontDesk, Receiver -> Chain of Employees
 enum RequestType { COMPLAINT, ESCALATION, ADVICE };
