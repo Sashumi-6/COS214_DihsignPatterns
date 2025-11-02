@@ -112,3 +112,5 @@ class WrappingPaperDecorator : public Decorator{
             setWrapping(wrappingString);
         }
 };
+
+#endif

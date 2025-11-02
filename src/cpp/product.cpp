@@ -56,7 +56,7 @@ BasicBuilder::BasicBuilder(std::vector<Plant*> plants, GardenComponent* greenhou
 
 }
 
-Product* BouquetBuilder::addPlant(){
+Product* BasicBuilder::addPlant(){
     Product* product = new Product(plants[0],greenhouse);
     greenhouse->remove(plants[0]);
     return product;
