@@ -1,5 +1,5 @@
 #include "../headers/garden.h"
-
+#include "../headers/iterator.h"
 #include <algorithm>
 #include <stdexcept>
 
@@ -63,6 +63,8 @@ GardenComponent* GardenSection::getChild(int param) {
     return children[static_cast<std::size_t>(param)];
 }
 
+std::vector<GardenComponent*> GardenSection::getChildren() const { return children; }
+
 void GardenSection::remove(GardenComponent* param) {
     if (param == nullptr) {
         return;
@@ -73,6 +75,6 @@ void GardenSection::remove(GardenComponent* param) {
     }
 }
 
-Iterator<GardenComponent>* GardenSection::createIterator() {
-    throw std::logic_error("GardenSection iterator not implemented");
-}
+bool GardenSection::isLeaf() const { return false; };
+
+Iterator<GardenComponent>* GardenSection::createIterator() { return new GardenIterator(this); }
