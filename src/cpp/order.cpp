@@ -3,11 +3,9 @@
 #include <iostream>
 
 
-Order::Order(Cashier* c, std::string name, std::string productSpecs)
+Order::Order(Cashier* c, std::string name)
     : cashier(c), customerName(name), totalPrice(0.0), status(PENDING), paymentReveived(false) 
-{
-    //TODO decide format of productSpecs
-}
+{}
 
 
 void Order::addProduct(Product* p) {
@@ -40,16 +38,35 @@ void Order::updateStatus(OrderStatus s) {
     status = s;
 }
 
-void Order::finaliseOrder() {
-    if(!orderedProducts.empty()) {
-        status = PROCESSING;
-        // Builder is triggered here
-        //go through ProductSpecs and make each product
-    } else {
-        std::cout << "Cannot finalise empty order.\n";
+void Order::finaliseOrder(GardenComponent* greenhouse) {
+    status = PROCESSING;
+    for (auto& r : requests) {
+            Bob* builder = nullptr;
+
+        if (r.plants.size() == 1) {
+            builder = new BasicBuilder(r.plants, greenhouse);
+        } else {
+            builder = new BouquetBuilder(r.plants, greenhouse);
+        }
+
+        Product* p = builder->getProduct();
+
+        // ==== Decorations (Decorator Pattern) ====
+        //TODO must double check how the pattern is structured
+        if (r.wantsWrapping)
+            p = new WrappingPaperDecorator(p);     // uses Inventory
+        if (r.wantsCard)
+            p = new CardDecorator(p, r.cardMessage);
+
+        addProduct(p);
+
+        delete builder;
     }
 }
 
+void Order::addRequest(const ProductRequest& r) {
+    requests.push_back(r);
+}
 // ================= Payment Status =================
 bool Order::isPaid() {
     return paymentReveived;

@@ -1,5 +1,6 @@
 #ifndef PRODUCTBUILDER_H
 #define PRODUCTBUILDER_H
+
 #include <vector>
 #include "plant.h"
 
@@ -13,6 +14,7 @@ class Bob {
         virtual Product* addPlant() = 0;
         virtual Product* addSoil(Product* product) = 0;
         virtual Product* setContainer(Product* product) = 0;
+        virtual Product* getProduct() =0;
 
     protected:
         //TODO Moved to product
@@ -25,6 +27,7 @@ class BouquetBuilder : public Bob {
     public:
         BouquetBuilder(std::vector<Plant*> plant, GardenComponent* greenhouse); // TODO change in UML
         Product* addPlant() override;
+        Product* addSoil(Product* product);//stub
         Product* setContainer(Product* product);
         Product* getProduct();
 };
@@ -112,3 +115,5 @@ class WrappingPaperDecorator : public Decorator{
             setWrapping(wrappingString);
         }
 };
+
+#endif

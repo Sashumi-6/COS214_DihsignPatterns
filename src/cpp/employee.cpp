@@ -16,11 +16,10 @@ void Cashier::process(Command* cmd) {
     }
 }
 
-Product* Cashier::construct(Bob* builder, std::vector<Plant*> plants) {
-    // builder->addPlant(plants);
-    // builder->addSoil();
-    // builder->setContainer();
-    return builder->getProduct();
+Product* Cashier::construct(Bob* builder) {//plants are added upon Builder construction
+    if(!builder) return nullptr;
+    Product* product = builder->getProduct();
+    return product;
 }
 
 void Cashier::addItem(Product* product) { order->addProduct(product); }
@@ -84,7 +83,7 @@ void Manager::process(Command* cmd) {
     }
 }
 
-void Manager::handleEscalation() { numComplaints++; /* do anything else? output what happened? */ }
+void Manager::handleEscalation() { numComplaints++; /* TODO do anything else? output what happened? */ }
 
 // -------------------- Employee Factories --------------------
 Employee* CashierFactory::createEmployee() { return new Cashier(); }

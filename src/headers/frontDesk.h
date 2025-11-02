@@ -8,6 +8,14 @@
 #include "command.h"
 #include "order.h"
 
+//This defines what exactly the customer wants in their specific product within an order
+struct ProductRequest{
+    std::vector<Plant*> plants;
+    bool wantsWrapping = false;
+    bool wantsCard = false;
+    std::string cardMessage = "";
+};
+
 class FrontDesk {
     public:
         void query();
@@ -20,12 +28,16 @@ class FrontDesk {
         bool executeAllCommands();
         Employee* getFirstAvailableEmployee();
         bool pay(float amountPaid);
-        bool placeOrder(Plant* plants);
+        //TODO return type??
+        bool placeOrder(std::vector<ProductRequest>& reqs, std::string customerName);
 
     private:
-        Employee *activeEmployee, *allEmployees;
+        Employee  *allEmployees;
+        Cashier* activeCashier; //only cashier can "man" and perform most operations on the FrontDesk
         std::vector<Command*> commands;
         Order* order;
+        //pointer to Greenhouse object
+        GardenComponent* greenhouse;
 };
 
 #endif

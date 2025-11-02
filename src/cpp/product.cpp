@@ -15,8 +15,10 @@ BouquetBuilder::BouquetBuilder(std::vector<Plant*> plants,GardenComponent* green
 }
 
 Product* BouquetBuilder::addPlant(){
+    //null return either means: no/not enough of that plant
+    if(plants.empty()) return nullptr;
     Bouquet* bouquet = new Bouquet(plants[0], greenhouse);
-    //TODO remove plant from greenhouse
+    //TODO remove plant from greenhouse  && check the error handling
     greenhouse->remove(plants[0]);
     Bouquet* node = bouquet;
     int i = 1;
@@ -43,7 +45,8 @@ Product* BouquetBuilder::setContainer(Product* product){
 Product* BouquetBuilder::getProduct(){
     return setContainer(addPlant());
 }
-
+Product* BouquetBuilder::addSoil(Product* product){ //stub
+}
 
 //BasicBuilder
 BasicBuilder::BasicBuilder(std::vector<Plant*> plants, GardenComponent* greenhouse) : Bob(plants, greenhouse) {
@@ -56,7 +59,8 @@ BasicBuilder::BasicBuilder(std::vector<Plant*> plants, GardenComponent* greenhou
 
 }
 
-Product* BouquetBuilder::addPlant(){
+//TODO error handling for plants that are not in the greenhouse
+Product* BasicBuilder::addPlant(){
     Product* product = new Product(plants[0],greenhouse);
     greenhouse->remove(plants[0]);
     return product;
@@ -73,7 +77,7 @@ Product* BasicBuilder::setContainer(Product* product){
     return product;
 }
 
-Product* BouquetBuilder::getProduct(){
+Product* BasicBuilder::getProduct(){
     return setContainer(addSoil(addPlant()));
 }
 
