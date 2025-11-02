@@ -39,29 +39,15 @@ void Order::updateStatus(OrderStatus s) {
 }
 
 void Order::finaliseOrder(GardenComponent* greenhouse) {
-    status = PROCESSING;
-    for (auto& r : requests) {
-            Bob* builder = nullptr;
-
-        if (r.plants.size() == 1) {
-            builder = new BasicBuilder(r.plants, greenhouse);
-        } else {
-            builder = new BouquetBuilder(r.plants, greenhouse);
+    for(const auto& req : requests) {
+        Product* product = cashier->construct(req, greenhouse);
+        if(product) {
+            addProduct(product);
+        }else{
+           // TODO error handling for product that couldn't be made
         }
-
-        Product* p = builder->getProduct();
-
-        // ==== Decorations (Decorator Pattern) ====
-        //TODO must double check how the pattern is structured
-        if (r.wantsWrapping)
-            p = new WrappingPaperDecorator(p);     // uses Inventory
-        if (r.wantsCard)
-            p = new CardDecorator(p, r.cardMessage);
-
-        addProduct(p);
-
-        delete builder;
     }
+    updateStatus(PROCESSING);
 }
 
 void Order::addRequest(const ProductRequest& r) {

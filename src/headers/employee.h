@@ -46,7 +46,7 @@ public:
     bool canHandle(Command* cmd) override;
     void process(Command* cmd) override;
 
-    Product* construct(Bob* builder);//called from Order
+    Product* construct(const ProductRequest& req, GardenComponent* greenhouse);//called from Order
     void addItem(Product* product);
     void removeItem(Product* product);
 

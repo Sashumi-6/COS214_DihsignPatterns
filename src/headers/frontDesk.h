@@ -26,17 +26,17 @@ class FrontDesk {
         bool addPlant(Plant* plant, std::string section);
         void checkSpecials(Customer* customer);
         bool executeAllCommands();
-        Employee* getFirstAvailableEmployee();
+        template <typename T>
+        T* getAvailableEmployee();
         bool pay(float amountPaid);
         //TODO return type??
         bool placeOrder(std::vector<ProductRequest>& reqs, std::string customerName);
 
     private:
         Employee  *allEmployees;
-        Cashier* activeCashier; //only cashier can "man" and perform most operations on the FrontDesk
+        Employee* activeEmployee; 
         std::vector<Command*> commands;
-        Order* order;
-        //pointer to Greenhouse object
+        //pointer to Greenhouse object of the system
         GardenComponent* greenhouse;
 };
 

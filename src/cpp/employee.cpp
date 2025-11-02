@@ -15,10 +15,35 @@ void Cashier::process(Command* cmd) {
         std::cout << "Cashier handling request: " << rCmd->getMessage() << "\n";
     }
 }
+//TODO DISCUSS THIS PROPERLY
+Product* Cashier::construct(const ProductRequest& req, GardenComponent* greenhouse) {//plants are added upon Builder construction
+    Bob* builder = nullptr;
+    if (req.plants.size() > 1) {
+        builder = new BouquetBuilder(req.plants, greenhouse);
+    } else {
+        builder = new BasicBuilder(req.plants, greenhouse);
+    }
+    builder->reset();
 
-Product* Cashier::construct(Bob* builder) {//plants are added upon Builder construction
-    if(!builder) return nullptr;
+    //error handling if not enough plants for bouquet
+    builder->addPlant();
+
+    if (req.plants.size() == 1) {
+        builder->addSoil();
+        builder->setContainer();
+    } else {
+        builder->setContainer();
+    }
+
+    if (req.wantsCard) {
+        //TODO decorator logic for adding card
+    }
+    
+    if (req.wantsWrapping) {
+        //TODO decorator logic for wrapping
+    }
     Product* product = builder->getProduct();
+    delete builder;
     return product;
 }
 
