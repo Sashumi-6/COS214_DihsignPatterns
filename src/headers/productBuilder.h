@@ -6,7 +6,7 @@
 
 #include "inventory.h"
 
-class Product;
+
 
 class Bob {
     public:
@@ -49,14 +49,19 @@ class Product{
         std::string card;
         std::string wrapping;
         Inventory Inventory; // TODO add to UML
+        float price;
+        bool isMain;
 
     public:
-        Product(Plant* plant, GardenComponent* greenhouse) : plant(plant), Inventory(greenhouse) { // greenhouse
+        Product(Plant* plant, GardenComponent* greenhouse, bool isMain) : plant(plant), Inventory(greenhouse), isMain(isMain) { // greenhouse
             soil = "";
             container = "";
             card = "";
             wrapping = "";
+            price = 0;
         }
+
+         bool getisMain() const { return isMain; }
 
         void setPlant(Plant* p);// TODO add to UML
 
@@ -68,7 +73,14 @@ class Product{
         void setContainer(const std::string& c);
 
         void setCard(const std::string& c);
-    
+
+        float getPrice() const {
+            return price;
+        }
+
+        void  incPrice(float amount){
+            price += amount;
+        }
 
         void setWrapping(const std::string& w);
 
@@ -78,17 +90,19 @@ class Product{
 
 class BouquetProduct : public Product {
     public:
-        BouquetProduct(Plant* plant, GardenComponent* greenhouse) : Product(plant, greenhouse) {}
+        BouquetProduct(Plant* plant, GardenComponent* greenhouse,bool isMain) : Product(plant, greenhouse,isMain) {}
 };
 
 class Bouquet : public BouquetProduct {
     public:
-        Bouquet(Plant* plant, GardenComponent* greenhouse) : BouquetProduct(plant, greenhouse) {}
+        Bouquet(Plant* plant, GardenComponent* greenhouse, bool isMain) : BouquetProduct(plant, greenhouse,isMain) {}
         Bouquet* getNext(){return bouquet;}
         void setNext(Bouquet* bouquet){this->bouquet = bouquet;}
-
+        float getPrice();
+        
     private:
         Bouquet* bouquet; // change name in UML
+        
 };
 
 //I AINT USING POTTED PRODUCT< ITS GENUINELY USELESS
