@@ -44,6 +44,11 @@ class PlantCommand : public Command {
 };
 
 //Sender -> Front Desk, Receiver -> Caretaker
+
+enum class MaintenanceType {
+    WATER,
+    MOVE
+};
 class Maintenance : public Command {
     private:
     GardenComponent* target;

@@ -1,4 +1,5 @@
 
+
 include(FetchContent)
 FetchContent_Declare(
         googletest
@@ -12,10 +13,11 @@ FetchContent_MakeAvailable(googletest)
 add_library(project_lib
         cpp/inventory.cpp
         cpp/plant.cpp
-        cpp/command.cpp
         cpp/employee.cpp
-        cpp/order.cpp
         cpp/product.cpp
+        cpp/command.cpp
+        cpp/order.cpp
+
         # ADD CPPS HERE !!!!!!!
         ##############
         ##############
