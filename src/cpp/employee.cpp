@@ -15,12 +15,36 @@ void Cashier::process(Command* cmd) {
         std::cout << "Cashier handling request: " << rCmd->getMessage() << "\n";
     }
 }
+//TODO DISCUSS THIS PROPERLY
+Product* Cashier::construct(const ProductRequest& req, GardenComponent* greenhouse) {//plants are added upon Builder construction
+    Bob* builder = nullptr;
+    if (req.plants.size() > 1) {
+        builder = new BouquetBuilder(req.plants, greenhouse);
+    } else {
+        builder = new BasicBuilder(req.plants, greenhouse);
+    }
+    builder->reset();
 
-Product* Cashier::construct(Bob* builder, std::vector<Plant*> plants) {
-    // builder->addPlant(plants);
-    // builder->addSoil();
-    // builder->setContainer();
-    return builder->getProduct();
+    //error handling if not enough plants for bouquet
+    builder->addPlant();
+
+    if (req.plants.size() == 1) {
+        builder->addSoil();
+        builder->setContainer();
+    } else {
+        builder->setContainer();
+    }
+
+    if (req.wantsCard) {
+        //TODO decorator logic for adding card
+    }
+    
+    if (req.wantsWrapping) {
+        //TODO decorator logic for wrapping
+    }
+    Product* product = builder->getProduct();
+    delete builder;
+    return product;
 }
 
 void Cashier::addItem(Product* product) { order->addProduct(product); }
@@ -84,7 +108,7 @@ void Manager::process(Command* cmd) {
     }
 }
 
-void Manager::handleEscalation() { numComplaints++; /* do anything else? output what happened? */ }
+void Manager::handleEscalation() { numComplaints++; /* TODO do anything else? output what happened? */ }
 
 // -------------------- Employee Factories --------------------
 Employee* CashierFactory::createEmployee() { return new Cashier(); }

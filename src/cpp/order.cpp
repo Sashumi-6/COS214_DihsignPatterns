@@ -3,11 +3,9 @@
 #include <iostream>
 
 
-Order::Order(Cashier* c, std::string name, std::string productSpecs)
+Order::Order(Cashier* c, std::string name)
     : cashier(c), customerName(name), totalPrice(0.0), status(PENDING), paymentReveived(false) 
-{
-    //TODO decide format of productSpecs
-}
+{}
 
 
 void Order::addProduct(Product* p) {
@@ -40,16 +38,21 @@ void Order::updateStatus(OrderStatus s) {
     status = s;
 }
 
-void Order::finaliseOrder() {
-    if(!orderedProducts.empty()) {
-        status = PROCESSING;
-        // Builder is triggered here
-        //go through ProductSpecs and make each product
-    } else {
-        std::cout << "Cannot finalise empty order.\n";
+void Order::finaliseOrder(GardenComponent* greenhouse) {
+    for(const auto& req : requests) {
+        Product* product = cashier->construct(req, greenhouse);
+        if(product) {
+            addProduct(product);
+        }else{
+           // TODO error handling for product that couldn't be made
+        }
     }
+    updateStatus(PROCESSING);
 }
 
+void Order::addRequest(const ProductRequest& r) {
+    requests.push_back(r);
+}
 // ================= Payment Status =================
 bool Order::isPaid() {
     return paymentReveived;

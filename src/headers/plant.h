@@ -1,63 +1,61 @@
 #ifndef PLANT_H
 #define PLANT_H
 
-#include <string>
 #include "garden.h"
 #include "command.h"
 
 class PlantState;
 
-enum class PlantLocation {
-    OUTSIDE,
-    GREENHOUSE,
-    INSIDE
-};
+enum class PlantLocation { OUTSIDE, GREENHOUSE, INSIDE };
 
 class WaterLossStrategy {
-public:
+  public:
     virtual ~WaterLossStrategy() = default;
     virtual double loseWater() = 0;
 };
 
 class LowWaterLoss : public WaterLossStrategy {
-public:
+  public:
     double loseWater() override;
-private:
+
+  private:
     static constexpr double kLossAmount = 0.1;
 };
 
 class MedWaterLoss : public WaterLossStrategy {
-public:
+  public:
     double loseWater() override;
-private:
+
+  private:
     static constexpr double kLossAmount = 0.25;
 };
 
 class HighWaterLoss : public WaterLossStrategy {
-public:
+  public:
     double loseWater() override;
-private:
+
+  private:
     static constexpr double kLossAmount = 0.35;
 };
 
 class SunlightStrategy {
-public:
+  public:
     virtual ~SunlightStrategy() = default;
     virtual PlantLocation exposeToSun() = 0;
 };
 
 class LowSunlightStrategy : public SunlightStrategy {
-public:
+  public:
     PlantLocation exposeToSun() override;
 };
 
 class MedSunlightStrategy : public SunlightStrategy {
-public:
+  public:
     PlantLocation exposeToSun() override;
 };
 
 class HighSunlightStrategy : public SunlightStrategy {
-public:
+  public:
     PlantLocation exposeToSun() override;
 };
 
@@ -99,7 +97,7 @@ class Plant : public GardenComponent {
 };
 
 class PlantState {
-    public:
+  public:
     virtual ~PlantState() = default;
     PlantState() ;
     PlantState* operator=(const PlantState& other);//TODO add to UML
@@ -111,38 +109,38 @@ class PlantState {
     virtual void handleGrow() = 0;
     virtual void handleLoseWater() = 0;
 
-    protected:
-        Plant* plant;
+  protected:
+    Plant* plant;
 };
 
 class SeedlingState : public PlantState {
-    public:
-        explicit SeedlingState(Plant* plant) ;
-        void handleWaterPlant() override ;
-        void handleExposeToSunlight()override;
-        bool canSell()override;
-        void handleGrow()override;
-        void handleLoseWater()override;
+  public:
+    explicit SeedlingState(Plant* plant);
+    void handleWaterPlant() override;
+    void handleExposeToSunlight() override;
+    bool canSell() override;
+    void handleGrow() override;
+    void handleLoseWater() override;
 };
 
 class MatureState : public PlantState {
-    public:
-        explicit MatureState(Plant* plant) ;
-        void handleWaterPlant() override;
-        void handleExposeToSunlight()override;
-        bool canSell()override;
-        void handleGrow()override;
-        void handleLoseWater()override;
+  public:
+    explicit MatureState(Plant* plant);
+    void handleWaterPlant() override;
+    void handleExposeToSunlight() override;
+    bool canSell() override;
+    void handleGrow() override;
+    void handleLoseWater() override;
 };
 
-class DeadState : PlantState {
-    public:
-        explicit DeadState(Plant* plant) ;
-        void handleWaterPlant() override;
-        void handleExposeToSunlight()override;
-        bool canSell() override;
-        void handleGrow() override ;
-        void handleLoseWater() override ;
+class DeadState : public PlantState {
+  public:
+    explicit DeadState(Plant* plant);
+    void handleWaterPlant() override;
+    void handleExposeToSunlight() override;
+    bool canSell() override;
+    void handleGrow() override;
+    void handleLoseWater() override;
 };
 
 #endif
