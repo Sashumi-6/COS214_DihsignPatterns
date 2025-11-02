@@ -1,6 +1,8 @@
 #ifndef GARDEN_H
 #define GARDEN_H
 
+#include <vector>
+
 template <typename T> class Iterator;
 class GardenIterator;
 
@@ -19,8 +21,10 @@ class GardenComponent {
     virtual void grow() = 0;
     virtual void add(GardenComponent* param) = 0;
     virtual GardenComponent* getChild(int param) = 0;
+    virtual std::vector<GardenComponent*> getChildren() const { return {}; }
     virtual void remove(GardenComponent* param) = 0;
     virtual Iterator<GardenComponent>* createIterator() = 0;
+    virtual bool isLeaf() const = 0;
 };
 
 class GardenSection : public GardenComponent {
@@ -32,8 +36,13 @@ class GardenSection : public GardenComponent {
     void grow() override;
     void add(GardenComponent* param) override;
     GardenComponent* getChild(int param) override;
+    std::vector<GardenComponent*> getChildren() const override;
     void remove(GardenComponent* param) override;
     Iterator<GardenComponent>* createIterator() override;
+    bool isLeaf() const override;
+
+  private:
+    std::vector<GardenComponent*> children;
 };
 
 #endif
