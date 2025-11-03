@@ -27,7 +27,12 @@ class Product{
         return plant ? plant->getName() : "Unknown Product"; 
    
 }
-        virtual ~Product() = default; // TODO change
+        virtual ~Product(){
+            if (plant) {
+                delete plant;
+                plant = nullptr;
+            }
+        }
         Product(Plant* plant, GardenComponent* greenhouse, bool isMain) : plant(plant), Inventory(greenhouse), isMain(isMain) { // greenhouse
             soil = "";
             container = "";
@@ -85,6 +90,7 @@ class Bob {
          Product* addSoil(Product* product);
         virtual Product* setContainer(Product* product) = 0;
         virtual Product* getProduct() = 0;
+        virtual ~Bob();
     protected:
         //TODO Moved to product
         std::vector<Plant*> plants; //TODO add to UML
