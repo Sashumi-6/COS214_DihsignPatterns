@@ -26,8 +26,8 @@ Product* Cashier::construct(const ProductRequest& req, GardenComponent* greenhou
 
     //error handling if not enough plants for bouquet
     // builder->addPlant();
-
-    // builder->getProduct();
+    //builder->getProduct();
+    
     Product* product = builder->getProduct();
     
     if (req.wantsCard) {

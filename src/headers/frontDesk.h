@@ -23,13 +23,13 @@ class FrontDesk {
         bool addCommand(Command* cmd);
         void addEmployee();
         bool addPlant(Plant* plant, std::string section);
-        void checkSpecials(Customer* customer);
+        //void checkSpecials(Customer* customer);
         bool executeAllCommands();
         template <typename T>
         T* getAvailableEmployee();
         bool pay(float amountPaid);
         //TODO return type??
-        bool placeOrder(std::vector<ProductRequest>& reqs, std::string customerName);
+        bool placeOrder(std::vector<ProductRequest>& reqs, Customer* c);
 
     private:
         Employee  *allEmployees;

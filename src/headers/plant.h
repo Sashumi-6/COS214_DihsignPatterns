@@ -83,7 +83,7 @@ class Plant : public GardenComponent {
     void applyExposeToSunlight();
     void setState(PlantState* newState);
     void addWater(double amount);
-        
+        //TODO explain this
         SunlightPreference getSunlightPreference() const;
         WaterPreference getWaterPreference() const;
         std::string getName() const { return name; }

@@ -38,7 +38,7 @@ GardenComponent* Plant::getChild(int param) {
 void Plant::remove(GardenComponent* param) {
     throw std::logic_error("Plant has No Children To Remove");
 };
-Iterator* Plant::createIterator() {
+Iterator<GardenComponent>* Plant::createIterator() {
     throw std::logic_error("Cannot create Iterator for Plant");
 }
 
@@ -70,6 +70,7 @@ WaterPreference Plant::getWaterPreference() const {
     if (dynamic_cast<MedWaterLoss*>(waterLossStrategy)) return WaterPreference::MEDIUM;
     if (dynamic_cast<HighWaterLoss*>(waterLossStrategy)) return WaterPreference::HIGH;
     return WaterPreference::UNKNOWN;
+}
 
 void Plant::tryGrow() {
     
