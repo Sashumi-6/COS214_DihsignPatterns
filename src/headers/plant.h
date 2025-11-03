@@ -68,27 +68,27 @@ class Plant : public GardenComponent {
         Plant(std::string name , double price , WaterLossStrategy* waterLossStrategy , SunlightStrategy* sunlightStrategy , PlantState* state) ;
         Plant(const Plant& other) = default;//TODO add to UML. changeeeeeee
         
-    virtual ~Plant() override = default; // TODO change
-    void waterPlant() override;
-    void exposeToSunlight() override;
-    void loseWater() override;
-    bool canSell() override;
-    void grow() override;
-    void add(GardenComponent* param) override;
-    GardenComponent* getChild(int param) override;
-    void remove(GardenComponent* param) override;
-    Iterator<GardenComponent>* createIterator() override;
-    void applyWaterLoss();
-    void applyExposeToSunlight();
-    void setState(PlantState* newState);
-    void addWater(double amount);
+        virtual ~Plant() override; // TODO change
+        void waterPlant() override;
+        void exposeToSunlight() override;
+        void loseWater() override;
+        bool canSell() override;
+        void grow() override;
+        void add(GardenComponent* param) override;
+        GardenComponent* getChild(int param) override;
+        void remove(GardenComponent* param) override;
+        Iterator<GardenComponent>* createIterator() override;
+        void applyWaterLoss();
+        void applyExposeToSunlight();
+        void setState(PlantState* newState);
+        void addWater(double amount);
         // //TODO explain this
         // SunlightPreference getSunlightPreference() const;
         // WaterPreference getWaterPreference() const;
         std::string getName() const { return name; }
         double getPrice();
-    bool isLeaf() const override;
-    void tryGrow();
+        bool isLeaf() const override;
+        void tryGrow();
 
     private:
         WaterLossStrategy* waterLossStrategy;
