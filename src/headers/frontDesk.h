@@ -2,7 +2,7 @@
 #define FRONTDESK_H
 
 #include <vector>
-
+#include "Customer.h"
 #include "employee.h"
 #include "command.h"
 #include "order.h"
@@ -15,6 +15,7 @@ struct ProductRequest{
     std::string cardMessage = "";
 };
 
+class Customer;
 class FrontDesk {
     public:
         void query();
@@ -32,8 +33,7 @@ class FrontDesk {
         bool placeOrder(std::vector<ProductRequest>& reqs, Customer* c);
 
     private:
-        Employee  *allEmployees;
-        Employee* activeEmployee; 
+        std::vector<Employee*> employees;
         std::vector<Command*> commands;
         Order* currentOrder;
         //pointer to Greenhouse object of the system
