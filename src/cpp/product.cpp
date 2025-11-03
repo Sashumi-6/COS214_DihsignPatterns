@@ -150,3 +150,13 @@ Decorator::Decorator(Product* component)
         this->plant = nullptr;
     }
 }
+
+Bob::~Bob() {
+    // No dynamic memory to clean up in Bob itself
+    for (auto plant : plants) {
+        if(plant){
+            delete plant;
+            plant = nullptr;
+        }
+    }
+}
