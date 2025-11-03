@@ -1,5 +1,6 @@
 #ifndef COMMAND_H
 #define COMMAND_H
+#include <string>
 
 class GardenComponent;
 class Employee;
@@ -55,7 +56,7 @@ public:
 
     void execute(Employee* emp) override;
 
-    CommandType getType() const override { return MAINTENANCE_COMMAND; }
+    CommandType getType() const override;
     MaintenanceType getMaintenanceType() const { return type; }
 };
 

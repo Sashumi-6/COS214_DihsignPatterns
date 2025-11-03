@@ -7,7 +7,14 @@
 #include <vector>
 class OrderState;
 class Product;
+class Cashier;
 
+enum OrderStatus{
+    PENDING,
+    PROCESSING,
+    COMPLETED,
+    CANCELLED
+};
 class Order {
     public:
         Order(Cashier* cashier, std::string customerName, std::string productSpecs);
@@ -32,11 +39,6 @@ class Order {
         Cashier* cashier;//here because of Builder. Has to have specific builder parsed in
 };
 
-enum OrderStatus{
-    PENDING,
-    PROCESSING,
-    COMPLETED,
-    CANCELLED
-};
+
 
 #endif
