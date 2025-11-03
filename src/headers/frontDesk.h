@@ -21,11 +21,11 @@ class FrontDesk {
         void query();
         void plant();
         void maintain();    // bool or void?
-        bool addCommand(Command* cmd);
-        void addEmployee();
+        void addCommand(Command* cmd);
+        void addEmployee(Employee* emp);
         bool addPlant(Plant* plant, std::string section);
         // void checkSpecials(Customer* customer);
-        bool executeAllCommands();
+        void  executeAllCommands();
         template <typename T>
         T* getAvailableEmployee();
         bool pay(float amountPaid);
@@ -33,7 +33,7 @@ class FrontDesk {
         bool placeOrder(std::vector<ProductRequest>& reqs, Customer* c);
 
     private:
-        std::vector<Employee*> allEmployees;
+        std::vector<Employee*> employees;
         Employee* activeEmployee; 
         std::vector<Command*> commands;
         Order* currentOrder;
