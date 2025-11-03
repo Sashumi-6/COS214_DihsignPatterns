@@ -1,11 +1,31 @@
 #include "frontDesk.h"
 
-void FrontDesk::addCommand(Command* cmd) {
-    commands.push_back(cmd);
+
+
+void FrontDesk::maintain() {
+    for (Employee* e : employees) {
+        if (Caretaker* caretaker = dynamic_cast<Caretaker*>(e)) {
+            if (caretaker->isAvailable()) {
+                for (Command* cmd : commands) {
+                    if (cmd->getType() == MAINTENANCE_COMMAND) {
+                        cmd->execute(caretaker);
+                    }
+                }
+            }
+        }
+    }
 }
 
 void FrontDesk::addEmployee(Employee* emp) {
     employees.push_back(emp);
+}
+
+void FrontDesk::addCommand(Command* cmd) {
+    commands.push_back(cmd);
+}
+
+void FrontDesk::addPlant(Plant* plant, GardenSection* section) {
+    section->add(plant);
 }
 
 void FrontDesk::executeAllCommands() {
