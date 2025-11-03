@@ -1,10 +1,12 @@
 #include "command.h"
 #include "employee.h"
 
+
 void Maintenance::execute(Employee* emp) {
         Caretaker* c = dynamic_cast<Caretaker*>(emp);
-        if(c) c->performMaintenance(target, type);
+       // if(c) c->performMaintenance(target,   );   TODO please fix this lines, idk what to do here
     }
+
 
 CommandType PlantCommand::getType() const {
         return PLANT_COMMAND;

@@ -55,7 +55,7 @@ TEST(BouquetBuilderTest, ReturnsBouquetProduct) {
 TEST(BouquetBuilderTest, SetContainerAssignsCorrectName) {
     Plant* p = makePlant("Lily");
     GardenSection greenhouse;
-    Product prod(p, &greenhouse);
+    Product prod(p, &greenhouse,true);
 
     BouquetBuilder builder(std::vector<Plant*>{p}, &greenhouse);
     builder.setContainer(&prod);

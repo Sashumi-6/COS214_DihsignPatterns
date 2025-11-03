@@ -98,9 +98,7 @@ WaterPreference Plant::getWaterPreference() const {
 
 double Plant:: getPrice(){return price;}
 
-double LowWaterLoss::loseWater() {
-    return 0.1 ;
-}
+
 double LowWaterLoss::loseWater() { return kLossAmount; }
 
 double MedWaterLoss::loseWater() { return kLossAmount; }

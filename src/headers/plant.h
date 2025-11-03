@@ -65,9 +65,9 @@ class Plant : public GardenComponent {
         static constexpr double kInitialWaterLevel = 1.0;
         static constexpr double kWaterDose = 0.35;
         Plant(std::string name , double price , WaterLossStrategy* waterLossStrategy , SunlightStrategy* sunlightStrategy , PlantState* state) ;
-        Plant(const Plant& other);//TODO add to UML
+        Plant(const Plant& other) = default;//TODO add to UML. changeeeeeee
         
-        ~Plant() override;
+        virtual ~Plant() override = default; // TODO change
         void waterPlant() override;
         void exposeToSunlight() override;
         void loseWater() override;
@@ -81,9 +81,10 @@ class Plant : public GardenComponent {
         void applyExposeToSunlight();
         void setState(PlantState* newState);
         void addWater(double amount);
-        
+        bool isLeaf() const override;
         SunlightPreference getSunlightPreference() const;
         WaterPreference getWaterPreference() const;
+        std::string getName() const { return name; }
         double getPrice();
 
     private:
