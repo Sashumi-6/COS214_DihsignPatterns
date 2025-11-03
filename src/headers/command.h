@@ -64,6 +64,7 @@ public:
     MaintenanceType getMaintenanceType() const { return type; }
 };
 
+
 //Sender -> FrontDesk, Receiver -> Chain of Employees
 enum RequestType { COMPLAINT, ESCALATION, ADVICE };
 
