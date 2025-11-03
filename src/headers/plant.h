@@ -87,8 +87,8 @@ class Plant : public GardenComponent {
         // WaterPreference getWaterPreference() const;
         std::string getName() const { return name; }
         double getPrice();
-    bool isLeaf() const override;
-    void tryGrow();
+        bool isLeaf() const override;
+        void tryGrow();
 
     private:
         WaterLossStrategy* waterLossStrategy;

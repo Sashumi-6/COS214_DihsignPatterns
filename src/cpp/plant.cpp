@@ -5,6 +5,13 @@
 Plant::Plant(std::string  name , const double price , WaterLossStrategy* waterLossStrategy , SunlightStrategy* sunlightStrategy , PlantState* state) : waterLossStrategy(waterLossStrategy) , sunlightStrategy(sunlightStrategy) , location(PlantLocation::INSIDE) , name(std::move(name)) , state(state) , price(price) , waterLevel(1), age(0)  {
 
 }
+
+Plant::~Plant() {
+    delete waterLossStrategy;
+    delete sunlightStrategy;
+    delete state;
+}
+
 void Plant::waterPlant(){
     state->handleWaterPlant() ;
     if (waterLevel > 1.0) {
@@ -87,6 +94,10 @@ double LowWaterLoss::loseWater() {
 }
 
 double Plant:: getPrice(){return price;}
+
+bool Plant::isLeaf() const {
+    return true;
+}
 
 
 double LowWaterLoss::loseWater() { return kLossAmount; }
