@@ -88,7 +88,7 @@ private:
 // ================== Employee Factories ==================
 
 class EmployeeFactory {
-protected:
+public:
     virtual Employee* createEmployee() = 0;
 };
 
