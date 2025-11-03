@@ -68,11 +68,11 @@ class Plant : public GardenComponent {
         Plant(std::string name , double price , WaterLossStrategy* waterLossStrategy , SunlightStrategy* sunlightStrategy , PlantState* state) ;
         Plant(const Plant& other) = default;//TODO add to UML. changeeeeeee
         
-    virtual ~Plant() override = default; // TODO change
+    virtual ~Plant() override; // TODO change
     void waterPlant() override;
     void exposeToSunlight() override;
     void loseWater() override;
-    bool canSell() override;
+    bool canSell() o  verride;
     void grow() override;
     void add(GardenComponent* param) override;
     GardenComponent* getChild(int param) override;
