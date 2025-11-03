@@ -15,16 +15,17 @@ struct ProductRequest{
     std::string cardMessage = "";
 };
 
+class Customer;
 class FrontDesk {
     public:
-        void query();
-        void plant();
-        void maintain();    // bool or void?
-        bool addCommand(Command* cmd);
-        void addEmployee();
-        bool addPlant(Plant* plant, std::string section);
-        // void checkSpecials(Customer* customer);
-        bool executeAllCommands();
+        void query(); // what is this doing?
+        void plant(); // im so confused on the naming scheme on this
+        void maintain(); // gets to all caretakers in employees, calls their respective maintainence functions/commands that will maintain their respective garden sections/plants
+        void addCommand(Command* cmd);
+        void addEmployee(Employee* emp);
+        void addPlant(Plant* plant, GardenSection* section);
+        // void checkSpecials(Customer* customer); 
+        void executeAllCommands();
         template <typename T>
         T* getAvailableEmployee();
         bool pay(float amountPaid);
@@ -32,8 +33,7 @@ class FrontDesk {
         bool placeOrder(std::vector<ProductRequest>& reqs, std::string customerName);
 
     private:
-        Employee  *allEmployees;
-        Employee* activeEmployee; 
+        std::vector<Employee*> employees;
         std::vector<Command*> commands;
         //pointer to Greenhouse object of the system
         GardenComponent* greenhouse;
