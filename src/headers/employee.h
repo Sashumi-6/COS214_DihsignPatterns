@@ -6,6 +6,7 @@
 #include "productBuilder.h"
 #include "order.h"
 
+class Order;
 enum EmployeeState { AVAILABLE, BUSY, ON_BREAK };
 
 class Employee {

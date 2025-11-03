@@ -7,14 +7,15 @@
 #include <vector>
 #include "frontDesk.h"
 class OrderState;
-//class Product;
+class Product;
+class Cashier;
+
 enum OrderStatus{
     PENDING,
     PROCESSING,
     COMPLETED,
     CANCELLED
 };
-
 class Order {
     public:
         Order(Cashier* cashier, std::string customerName);

@@ -2,44 +2,14 @@
 #define PRODUCTBUILDER_H
 
 #include <vector>
+#include <string>
 #include "plant.h"
 
 #include "inventory.h"
+#include "garden.h"
+class GardenComponent; // forward declaration for pointer usage in Product
+class Product;  // forward declaration for pointer usage in Bob
 
-
-
-class Bob {
-    public:
-        Bob(std::vector<Plant*> plant, GardenComponent* greenhouse) : plants(plant), greenhouse(greenhouse) {};
-        virtual Product* addPlant() = 0;
-        virtual Product* addSoil(Product* product) = 0;
-        virtual Product* setContainer(Product* product) = 0;
-        virtual Product* getProduct() =0;
-
-    protected:
-        //TODO Moved to product
-        std::vector<Plant*> plants; //TODO add to UML
-        GardenComponent* greenhouse;
-
-};
-
-class BouquetBuilder : public Bob {
-    public:
-        BouquetBuilder(std::vector<Plant*> plant, GardenComponent* greenhouse); // TODO change in UML
-        Product* addPlant() override;
-        Product* addSoil(Product* product);//stub
-        Product* setContainer(Product* product);
-        Product* getProduct();
-};
-
-class BasicBuilder : public Bob {
-    public:
-        BasicBuilder(std::vector<Plant*> plants, GardenComponent* greenhouse) ; // TODO change in UML
-        Product* addPlant();
-        Product* addSoil(Product* product);
-        Product* setContainer(Product* product);
-        Product* getProduct();
-};
 
 class Product{
     protected:
@@ -53,6 +23,11 @@ class Product{
         bool isMain;
 
     public:
+        std::string getName() const { 
+        return plant ? plant->getName() : "Unknown Product"; 
+   
+}
+        virtual ~Product() = default; // TODO change
         Product(Plant* plant, GardenComponent* greenhouse, bool isMain) : plant(plant), Inventory(greenhouse), isMain(isMain) { // greenhouse
             soil = "";
             container = "";
@@ -74,6 +49,24 @@ class Product{
 
         void setCard(const std::string& c);
 
+        std::string getSoil() const {
+            return soil;
+        }
+
+        std::string getContainer() const {
+            return container;
+        }
+
+        std::string getCard() const {
+            return card;
+        }
+
+        std::string getWrapping() const {
+            return wrapping;
+        }
+
+
+
         float getPrice() const {
             return price;
         }
@@ -85,6 +78,38 @@ class Product{
         void setWrapping(const std::string& w);
 
 };
+class Bob {
+    public:
+        Bob(std::vector<Plant*> plant, GardenComponent* greenhouse) : plants(plant), greenhouse(greenhouse) {};
+        virtual Product* addPlant() = 0;
+         Product* addSoil(Product* product);
+        virtual Product* setContainer(Product* product) = 0;
+        virtual Product* getProduct() = 0;
+    protected:
+        //TODO Moved to product
+        std::vector<Plant*> plants; //TODO add to UML
+        GardenComponent* greenhouse;
+
+};
+
+class BouquetBuilder : public Bob {
+    public:
+        BouquetBuilder(std::vector<Plant*> plant, GardenComponent* greenhouse); // TODO change in UML
+        Product* addPlant() override;
+        Product* setContainer(Product* product) override;
+        Product* getProduct();
+};
+
+class BasicBuilder : public Bob {
+    public:
+        BasicBuilder(std::vector<Plant*> plants, GardenComponent* greenhouse) ; // TODO change in UML
+        Product* addPlant();
+    
+        Product* setContainer(Product* product) override;
+        Product* getProduct();
+};
+
+
 
 
 
