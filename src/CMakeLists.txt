@@ -12,10 +12,9 @@ FetchContent_MakeAvailable(googletest)
 add_library(project_lib
         cpp/inventory.cpp
         cpp/plant.cpp
-        cpp/command.cpp
         cpp/employee.cpp
+        cpp/command.cpp
         cpp/order.cpp
-        cpp/product.cpp
         # ADD CPPS HERE !!!!!!!
         ##############
         ##############
