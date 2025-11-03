@@ -95,6 +95,10 @@ bool FrontDesk::placeOrder(std::vector<ProductRequest>& requests, Customer* c){
     return true;
 }
 
+void FrontDesk::pay(Order* order, Customer* c) {
+
+}
+
 template <typename T>
 T* FrontDesk::getAvailableEmployee() {
     for (Employee* e : employees) {

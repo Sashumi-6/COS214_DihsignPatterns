@@ -21,15 +21,14 @@ class FrontDesk {
     public:
         void query();
         void plant();
-        void maintain();    // bool or void?
+        void maintain(); 
         void addCommand(Command* cmd);
         void addEmployee(Employee* emp);
         void addPlant(Plant* plant, GardenSection* section);
-        // void checkSpecials(Customer* customer);
         void  executeAllCommands();
         template <typename T>
         T* getAvailableEmployee();
-        bool pay(float amountPaid);
+        void pay(Order* currentOrder, Customer* c);
         //TODO return type??
         bool placeOrder(std::vector<ProductRequest>& reqs, Customer* c);
 
