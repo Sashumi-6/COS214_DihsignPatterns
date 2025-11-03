@@ -7,7 +7,7 @@ class Customer;
 
 class Simulation {
     public:
-        Simulation(int numDays);
+        Simulation(int numDays = 1);
         void startSimulation();
         bool addCustomer(Customer* customer);
         bool addEmployee(std::string employeeType);
