@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.31.6)
+cmake_minimum_required(VERSION 3.16)
 
 
 project(COS214_DihsignPatterns LANGUAGES CXX)

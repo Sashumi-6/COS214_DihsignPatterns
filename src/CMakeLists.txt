@@ -1,4 +1,5 @@
 
+
 include(FetchContent)
 FetchContent_Declare(
         googletest
@@ -10,8 +11,14 @@ FetchContent_MakeAvailable(googletest)
 
 ##### CPPS GO HERE!!!!
 add_library(project_lib
-        cpp/inventory.cpp
-        cpp/plant.cpp
+        
+       cpp/command.cpp
+       cpp/product.cpp
+       cpp/employee.cpp
+       cpp/inventory.cpp
+       cpp/order.cpp
+       cpp/plant.cpp
+
         # ADD CPPS HERE !!!!!!!
         ##############
         ##############
@@ -26,6 +33,7 @@ target_include_directories(project_lib
 ## KEEP THIS COMMENTED UNTIL WE ADD AN ACTUAL MAIN.CPP !!!
 # add_executable(COS214_DihsignPatterns cpp/main.cpp)
 # target_link_libraries(COS214_DihsignPatterns PRIVATE project_lib)
+
 
 
 file(GLOB TEST_SOURCES CONFIGURE_DEPENDS tests/*.cpp)
@@ -45,3 +53,4 @@ target_link_libraries(project_tests
 
 include(GoogleTest)
 gtest_discover_tests(project_tests)
+
