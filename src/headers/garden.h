@@ -33,8 +33,8 @@ class GardenSection : public GardenComponent { ///TODO THIS IS JUST HERE FOR TES
     void exposeToSunlight() override;
     void loseWater() override;
     bool canSell() override;
-    void grow();
-    void add(GardenComponent* param);
+    void grow() override;
+    void add(GardenComponent* param) override;
     GardenComponent* getChild(int param) override;
     std::vector<GardenComponent*> getChildren() const override;
     void remove(GardenComponent* param) override;
