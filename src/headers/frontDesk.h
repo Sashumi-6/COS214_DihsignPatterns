@@ -4,28 +4,39 @@
 #include <vector>
 
 #include "employee.h"
-#include "observer.h"
 #include "command.h"
 #include "order.h"
 
+//This defines what exactly the customer wants in their specific product within an order
+struct ProductRequest{
+    std::vector<Plant*> plants;
+    bool wantsWrapping = false;
+    bool wantsCard = false;
+    std::string cardMessage = "";
+};
+
+class Customer;
 class FrontDesk {
     public:
-        void query();
-        void plant();
-        void maintain();    // bool or void?
-        bool addCommand(Command* cmd);
-        void addEmployee();
-        bool addPlant(Plant* plant, std::string section);
-        void checkSpecials(Customer* customer);
-        bool executeAllCommands();
-        Employee* getFirstAvailableEmployee();
+        void query(); // what is this doing?
+        void plant(); // im so confused on the naming scheme on this
+        void maintain(); // gets to all caretakers in employees, calls their respective maintainence functions/commands that will maintain their respective garden sections/plants
+        void addCommand(Command* cmd);
+        void addEmployee(Employee* emp);
+        void addPlant(Plant* plant, GardenSection* section);
+        // void checkSpecials(Customer* customer); 
+        void executeAllCommands();
+        template <typename T>
+        T* getAvailableEmployee();
         bool pay(float amountPaid);
-        bool placeOrder(Plant* plants);
+        //TODO return type??
+        bool placeOrder(std::vector<ProductRequest>& reqs, std::string customerName);
 
     private:
-        Employee *activeEmployee, *allEmployees;
+        std::vector<Employee*> employees;
         std::vector<Command*> commands;
-        Order* order;
+        //pointer to Greenhouse object of the system
+        GardenComponent* greenhouse;
 };
 
 #endif

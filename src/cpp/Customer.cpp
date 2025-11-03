@@ -1,4 +1,4 @@
-#include "Customer.h"
+#include "../headers/Customer.h"
 #include <iostream>
 
 Customer::Customer()
@@ -243,4 +243,11 @@ void Customer::createCustomerQuery()
         exitLoop = false;
     }
     while (exitLoop);
+}
+
+
+Customer* Customer::createCustomerOrder(){
+
+
+    
 }

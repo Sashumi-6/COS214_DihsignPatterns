@@ -1,0 +1,79 @@
+#include "frontDesk.h"
+
+
+
+void FrontDesk::maintain() {
+    for (Employee* e : employees) {
+        if (Caretaker* caretaker = dynamic_cast<Caretaker*>(e)) {
+            if (caretaker->isAvailable()) {
+                for (Command* cmd : commands) {
+                    if (cmd->getType() == MAINTENANCE_COMMAND) {
+                        cmd->execute(caretaker);
+                    }
+                }
+            }
+        }
+    }
+}
+
+void FrontDesk::addEmployee(Employee* emp) {
+    employees.push_back(emp);
+}
+
+void FrontDesk::addCommand(Command* cmd) {
+    commands.push_back(cmd);
+}
+
+void FrontDesk::addPlant(Plant* plant, GardenSection* section) {
+    section->add(plant);
+}
+
+void FrontDesk::executeAllCommands() {
+    for (Command* cmd : commands) {
+        // Employee* emp = getAvailableEmployee<Employee>();
+        if (cmd->getType() == MAINTENANCE_COMMAND || cmd->getType() == PLANT_COMMAND) {
+            Cashier* cashier = getAvailableEmployee<Cashier>();
+            if (cashier) {
+                cmd->execute(cashier);
+            } else {
+                Caretaker* caretaker = getAvailableEmployee<Caretaker>();
+                if (caretaker) {
+                    cmd->execute(caretaker);
+                }
+            }
+        } else if (cmd->getType() == REQUEST_COMMAND) {
+            Employee* emp = getAvailableEmployee<Employee>();
+            if (emp) {
+                cmd->execute(emp);
+            }
+        }
+    }
+    commands.clear();
+}
+
+bool FrontDesk::placeOrder(std::vector<ProductRequest>& requests, std::string customerName){
+    if(requests.empty()) return false;
+
+    Cashier* cashier = getAvailableEmployee<Cashier>();
+    Order* order = new Order(cashier, customerName);
+    for(const auto& reqs: requests){
+        order->addRequest(reqs);
+    }
+
+    order->finaliseOrder(greenhouse); //requests get handled here
+    return true;
+}
+
+template <typename T>
+T* FrontDesk::getAvailableEmployee() {
+    for (Employee* e : employees) {
+        if (e->isAvailable()) {
+            if (T* casted = dynamic_cast<T*>(e)) {
+                return casted;
+            }
+        }
+    }
+    return nullptr;
+}
+
+

@@ -2,6 +2,24 @@
 
 #include "../headers/plant.h"
 #include <stdexcept>
+Plant::Plant(std::string  name , const double price , WaterLossStrategy* waterLossStrategy , SunlightStrategy* sunlightStrategy , PlantState* state) : waterLossStrategy(waterLossStrategy) , sunlightStrategy(sunlightStrategy) , location(PlantLocation::INSIDE) , name(std::move(name)) , state(state) , price(price) , waterLevel(1), age(0)  {
+
+}
+void Plant::waterPlant(){
+    state->handleWaterPlant() ;
+    if (waterLevel > 1.0) {
+        this->setState(new DeadState(this)) ;
+    }
+}
+void Plant::exposeToSunlight() {
+    state->handleExposeToSunlight() ;
+}
+void Plant::loseWater() {
+    state->handleLoseWater();
+    if (waterLevel < 0.0) {
+        this->setState(new DeadState(this)) ;
+    }
+};
 
 constexpr double LowWaterLoss::kLossAmount;
 constexpr double MedWaterLoss::kLossAmount;
@@ -12,16 +30,35 @@ constexpr double Plant::kWaterDose;
 Plant::Plant(std::string name, const double price, WaterLossStrategy* waterLossStrategy,
              SunlightStrategy* sunlightStrategy, PlantState* state)
     : waterLossStrategy(waterLossStrategy), sunlightStrategy(sunlightStrategy), location(PlantLocation::INSIDE),
-      name(std::move(name)), state(state), price(price), waterLevel(kInitialWaterLevel) {}
-void Plant::waterPlant() { state->handleWaterPlant(); }
+      name(std::move(name)), state(state), price(price), waterLevel(kInitialWaterLevel), age(0) {}
+
+void Plant::waterPlant() { 
+    state->handleWaterPlant(); 
+    if (waterLevel > 1.0) {
+        this->setState(new DeadState(this));
+    }
+}
 void Plant::exposeToSunlight() { state->handleExposeToSunlight(); }
 void Plant::loseWater() { state->handleLoseWater(); };
 
 bool Plant::canSell() { return state->canSell(); }
 
-void Plant::addWater(const double amount) { waterLevel += amount; }
+void Plant::addWater(const double amount) { 
+    
+    waterLevel += amount; 
+    if (waterLevel > 1.0) {
+        this->setState(new DeadState(this));
+    }
+}
 
-void Plant::grow() { state->handleGrow(); }
+void Plant::grow() { 
+    this->age += 2;
+    state->handleGrow(); 
+    if (age > 60) {
+        this->setState(new DeadState(this));
+    }
+}
+
 void Plant::add(GardenComponent* param) { throw std::logic_error("Cannot Add A Child To A Plant"); };
 GardenComponent* Plant::getChild(int param) { throw std::logic_error("Plant Has No Children"); }
 void Plant::remove(GardenComponent* param) { throw std::logic_error("Plant has No Children To Remove"); };
@@ -35,12 +72,33 @@ void Plant::applyExposeToSunlight() {
 void Plant::applyWaterLoss() {
     const double amount = waterLossStrategy->loseWater();
     this->waterLevel -= amount;
+    if (waterLevel < 0.0) {
+        this->setState(new DeadState(this));
+    }
 }
 
 void Plant::setState(PlantState* newState) {
     delete this->state;
     this->state = newState;
 }
+
+SunlightPreference Plant::getSunlightPreference() const {
+    if (dynamic_cast<LowSunlightStrategy*>(sunlightStrategy)) return SunlightPreference::LOW;
+    if (dynamic_cast<MedSunlightStrategy*>(sunlightStrategy)) return SunlightPreference::MEDIUM;
+    if (dynamic_cast<HighSunlightStrategy*>(sunlightStrategy)) return SunlightPreference::HIGH;
+    return SunlightPreference::UNKNOWN;
+}
+
+WaterPreference Plant::getWaterPreference() const {
+    if (dynamic_cast<LowWaterLoss*>(waterLossStrategy)) return WaterPreference::LOW;
+    if (dynamic_cast<MedWaterLoss*>(waterLossStrategy)) return WaterPreference::MEDIUM;
+    if (dynamic_cast<HighWaterLoss*>(waterLossStrategy)) return WaterPreference::HIGH;
+    return WaterPreference::UNKNOWN;
+}
+
+double Plant:: getPrice(){return price;}
+
+
 double LowWaterLoss::loseWater() { return kLossAmount; }
 
 double MedWaterLoss::loseWater() { return kLossAmount; }
@@ -101,12 +159,16 @@ void SeedlingState::handleGrow() {
     if (plant == nullptr) {
         return;
     }
-    plant->setState(new MatureState(plant));
+    // this->plant->age += 0.3;
+    plant->setState(new MatureState(plant)) ;
 }
 
-void MatureState::handleGrow() {}
-
-void DeadState::handleGrow() {}
+void MatureState::handleGrow() {
+    if (plant == nullptr) {
+        return ;
+    }
+    plant->setState(new DeadState(plant)) ;
+}
 
 void SeedlingState::handleWaterPlant() { plant->addWater(Plant::kWaterDose); }
 
