@@ -21,26 +21,6 @@ void Plant::loseWater() {
     }
 };
 
-constexpr double LowWaterLoss::kLossAmount;
-constexpr double MedWaterLoss::kLossAmount;
-constexpr double HighWaterLoss::kLossAmount;
-constexpr double Plant::kInitialWaterLevel;
-constexpr double Plant::kWaterDose;
-
-Plant::Plant(std::string name, const double price, WaterLossStrategy* waterLossStrategy,
-             SunlightStrategy* sunlightStrategy, PlantState* state)
-    : waterLossStrategy(waterLossStrategy), sunlightStrategy(sunlightStrategy), location(PlantLocation::INSIDE),
-      name(std::move(name)), state(state), price(price), waterLevel(kInitialWaterLevel), age(0) {}
-
-void Plant::waterPlant() { 
-    state->handleWaterPlant(); 
-    if (waterLevel > 1.0) {
-        this->setState(new DeadState(this));
-    }
-}
-void Plant::exposeToSunlight() { state->handleExposeToSunlight(); }
-void Plant::loseWater() { state->handleLoseWater(); };
-
 bool Plant::canSell() { return state->canSell(); }
 
 void Plant::addWater(const double amount) { 
@@ -96,6 +76,16 @@ WaterPreference Plant::getWaterPreference() const {
     return WaterPreference::UNKNOWN;
 }
 
+void Plant::tryGrow() {
+    
+    if (this->waterLevel >= 0.5 && this->age >= 5) {
+        this->grow();
+    }
+}
+double LowWaterLoss::loseWater() {
+    return 0.15 ;
+}
+
 double Plant:: getPrice(){return price;}
 
 
@@ -137,7 +127,9 @@ void MatureState::handleExposeToSunlight() {
     plant->applyExposeToSunlight();
 }
 
-void DeadState::handleExposeToSunlight() {}
+void DeadState::handleExposeToSunlight() {
+    // std::cout << "Dead plants cannot be exposed to sunlight." << std::endl;
+    }
 
 void SeedlingState::handleLoseWater() {
     if (plant == nullptr) {

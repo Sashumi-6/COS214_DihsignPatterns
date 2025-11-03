@@ -2,6 +2,7 @@
 #define PLANT_H
 
 #include "garden.h"
+#include <string>
 #include "command.h"
 
 class PlantState;
@@ -60,7 +61,7 @@ class HighSunlightStrategy : public SunlightStrategy {
 };
 
 class Plant : public GardenComponent {
-    public:
+  public:
         
         static constexpr double kInitialWaterLevel = 1.0;
         static constexpr double kWaterDose = 0.35;
@@ -86,6 +87,8 @@ class Plant : public GardenComponent {
         WaterPreference getWaterPreference() const;
         std::string getName() const { return name; }
         double getPrice();
+    bool isLeaf() const override;
+    void tryGrow();
 
     private:
         WaterLossStrategy* waterLossStrategy;
@@ -95,6 +98,8 @@ class Plant : public GardenComponent {
         PlantState* state;
         double price;
         double waterLevel;
+        int age;
+        
 };
 
 class PlantState {

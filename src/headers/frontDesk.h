@@ -2,9 +2,8 @@
 #define FRONTDESK_H
 
 #include <vector>
-
+#include "Customer.h"
 #include "employee.h"
-#include "observer.h"
 #include "command.h"
 #include "order.h"
 
@@ -16,6 +15,7 @@ struct ProductRequest{
     std::string cardMessage = "";
 };
 
+class Customer;
 class FrontDesk {
     public:
         void query();
@@ -24,18 +24,18 @@ class FrontDesk {
         bool addCommand(Command* cmd);
         void addEmployee();
         bool addPlant(Plant* plant, std::string section);
-        void checkSpecials(Customer* customer);
+        //void checkSpecials(Customer* customer);
         bool executeAllCommands();
         template <typename T>
         T* getAvailableEmployee();
         bool pay(float amountPaid);
         //TODO return type??
-        bool placeOrder(std::vector<ProductRequest>& reqs, std::string customerName);
+        bool placeOrder(std::vector<ProductRequest>& reqs, Customer* c);
 
     private:
-        Employee  *allEmployees;
-        Employee* activeEmployee; 
+        std::vector<Employee*> employees;
         std::vector<Command*> commands;
+        Order* currentOrder;
         //pointer to Greenhouse object of the system
         GardenComponent* greenhouse;
 };

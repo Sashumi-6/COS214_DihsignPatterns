@@ -1,15 +1,15 @@
 #include "frontDesk.h"
 
-bool FrontDesk::placeOrder(std::vector<ProductRequest>& requests, std::string customerName){
+bool FrontDesk::placeOrder(std::vector<ProductRequest>& requests, Customer* c){
     if(requests.empty()) return false;
 
     Cashier* cashier = getAvailableEmployee<Cashier>();
-    Order* order = new Order(cashier, customerName);
+    currentOrder = new Order(cashier, c->getName());
     for(const auto& reqs: requests){
-        order->addRequest(reqs);
+        currentOrder->addRequest(reqs);
     }
 
-    order->finaliseOrder(greenhouse); //requests get handled here
+    currentOrder->finaliseOrder(greenhouse); //requests get handled here
     return true;
 }
 
@@ -24,3 +24,5 @@ T* FrontDesk::getAvailableEmployee() {
     }
     return nullptr;
 }
+
+
