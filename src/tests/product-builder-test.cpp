@@ -13,7 +13,7 @@ static Plant* makePlant(const std::string& name = "Rose", double price = 1.0) {
                      new SeedlingState(nullptr));
 }
 
-TEST(BasicBuilderTest, AddsPlantAndKeepsPlantPointer) {
+TEST(ProductBuilder_Basic, AddsPlantAndKeepsPlantPointer) {
     Plant* p = makePlant("Orchid");
     std::vector<Plant*> plants = { p };
 

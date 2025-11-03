@@ -2,7 +2,7 @@
 #define FRONTDESK_H
 
 #include <vector>
-
+#include "Customer.h"
 #include "employee.h"
 #include "command.h"
 #include "order.h"
@@ -18,23 +18,24 @@ struct ProductRequest{
 class Customer;
 class FrontDesk {
     public:
-        void query(); // what is this doing?
-        void plant(); // im so confused on the naming scheme on this
-        void maintain(); // gets to all caretakers in employees, calls their respective maintainence functions/commands that will maintain their respective garden sections/plants
-        void addCommand(Command* cmd);
-        void addEmployee(Employee* emp);
-        void addPlant(Plant* plant, GardenSection* section);
-        // void checkSpecials(Customer* customer); 
-        void executeAllCommands();
+        void query();
+        void plant();
+        void maintain();    // bool or void?
+        bool addCommand(Command* cmd);
+        void addEmployee();
+        bool addPlant(Plant* plant, std::string section);
+        //void checkSpecials(Customer* customer);
+        bool executeAllCommands();
         template <typename T>
         T* getAvailableEmployee();
         bool pay(float amountPaid);
         //TODO return type??
-        bool placeOrder(std::vector<ProductRequest>& reqs, std::string customerName);
+        bool placeOrder(std::vector<ProductRequest>& reqs, Customer* c);
 
     private:
         std::vector<Employee*> employees;
         std::vector<Command*> commands;
+        Order* currentOrder;
         //pointer to Greenhouse object of the system
         GardenComponent* greenhouse;
 };
