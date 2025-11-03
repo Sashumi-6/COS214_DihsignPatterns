@@ -23,7 +23,6 @@ Product* Cashier::construct(const ProductRequest& req, GardenComponent* greenhou
     } else {
         builder = new BasicBuilder(req.plants, greenhouse);
     }
-    builder->reset();
 
     //error handling if not enough plants for bouquet
     builder->addPlant();
