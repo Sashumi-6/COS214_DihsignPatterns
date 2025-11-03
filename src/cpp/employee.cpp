@@ -23,18 +23,13 @@ Product* Cashier::construct(const ProductRequest& req, GardenComponent* greenhou
     } else {
         builder = new BasicBuilder(req.plants, greenhouse);
     }
-    builder->reset();
 
     //error handling if not enough plants for bouquet
-    builder->addPlant();
+    // builder->addPlant();
 
-    if (req.plants.size() == 1) {
-        builder->addSoil();
-        builder->setContainer();
-    } else {
-        builder->setContainer();
-    }
-
+    // builder->getProduct();
+    Product* product = builder->getProduct();
+    
     if (req.wantsCard) {
         //TODO decorator logic for adding card
     }
@@ -42,7 +37,7 @@ Product* Cashier::construct(const ProductRequest& req, GardenComponent* greenhou
     if (req.wantsWrapping) {
         //TODO decorator logic for wrapping
     }
-    Product* product = builder->getProduct();
+
     delete builder;
     return product;
 }

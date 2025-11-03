@@ -4,12 +4,12 @@ bool FrontDesk::placeOrder(std::vector<ProductRequest>& requests, std::string cu
     if(requests.empty()) return false;
 
     Cashier* cashier = getAvailableEmployee<Cashier>();
-    Order* order = new Order(cashier, customerName);
+    currentOrder = new Order(cashier, customerName);
     for(const auto& reqs: requests){
-        order->addRequest(reqs);
+        currentOrder->addRequest(reqs);
     }
 
-    order->finaliseOrder(greenhouse); //requests get handled here
+    currentOrder->finaliseOrder(greenhouse); //requests get handled here
     return true;
 }
 

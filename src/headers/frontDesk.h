@@ -4,7 +4,6 @@
 #include <vector>
 
 #include "employee.h"
-#include "observer.h"
 #include "command.h"
 #include "order.h"
 
@@ -36,6 +35,7 @@ class FrontDesk {
         Employee  *allEmployees;
         Employee* activeEmployee; 
         std::vector<Command*> commands;
+        Order* currentOrder;
         //pointer to Greenhouse object of the system
         GardenComponent* greenhouse;
 };
