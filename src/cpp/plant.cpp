@@ -23,25 +23,26 @@ void Plant::loseWater() {
 
 bool Plant::canSell() { return state->canSell(); }
 
-void Plant::addWater(const double amount) { waterLevel += amount; }
-
-void Plant::grow() {
-    this->age += 1;
-    state->handleGrow();
-}
-void Plant::add(GardenComponent* param) {
-    throw std::logic_error("Cannot Add A Child To A Plant");
-};
-GardenComponent* Plant::getChild(int param) {
-    throw std::logic_error("Plant Has No Children");
-}
-void Plant::remove(GardenComponent* param) {
-    throw std::logic_error("Plant has No Children To Remove");
-};
-Iterator<GardenComponent>* Plant::createIterator() {
-    throw std::logic_error("Cannot create Iterator for Plant");
+void Plant::addWater(const double amount) { 
+    
+    waterLevel += amount; 
+    if (waterLevel > 1.0) {
+        this->setState(new DeadState(this));
+    }
 }
 
+void Plant::grow() { 
+    this->age += 2;
+    state->handleGrow(); 
+    if (age > 60) {
+        this->setState(new DeadState(this));
+    }
+}
+
+void Plant::add(GardenComponent* param) { throw std::logic_error("Cannot Add A Child To A Plant"); };
+GardenComponent* Plant::getChild(int param) { throw std::logic_error("Plant Has No Children"); }
+void Plant::remove(GardenComponent* param) { throw std::logic_error("Plant has No Children To Remove"); };
+Iterator<GardenComponent>* Plant::createIterator() { throw std::logic_error("Cannot create Iterator for Plant"); }
 
 void Plant::applyExposeToSunlight() {
     const PlantLocation newLocation = sunlightStrategy->exposeToSun();
@@ -51,6 +52,9 @@ void Plant::applyExposeToSunlight() {
 void Plant::applyWaterLoss() {
     const double amount = waterLossStrategy->loseWater();
     this->waterLevel -= amount;
+    if (waterLevel < 0.0) {
+        this->setState(new DeadState(this));
+    }
 }
 
 void Plant::setState(PlantState* newState) {
@@ -157,8 +161,6 @@ void MatureState::handleGrow() {
     }
     plant->setState(new DeadState(plant)) ;
 }
-
-void DeadState::handleGrow() {}
 
 void SeedlingState::handleWaterPlant() { plant->addWater(Plant::kWaterDose); }
 
