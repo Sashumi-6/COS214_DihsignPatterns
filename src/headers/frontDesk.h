@@ -15,6 +15,8 @@ struct ProductRequest{
     std::string cardMessage = "";
 };
 
+class Customer;
+
 class FrontDesk {
     public:
         void query();
@@ -22,7 +24,7 @@ class FrontDesk {
         void maintain();    // bool or void?
         void addCommand(Command* cmd);
         void addEmployee(Employee* emp);
-        bool addPlant(Plant* plant, std::string section);
+        void addPlant(Plant* plant, GardenSection* section);
         // void checkSpecials(Customer* customer);
         void  executeAllCommands();
         template <typename T>

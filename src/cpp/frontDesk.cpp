@@ -86,7 +86,7 @@ bool FrontDesk::placeOrder(std::vector<ProductRequest>& requests, Customer* c){
     if(requests.empty()) return false;
 
     Cashier* cashier = getAvailableEmployee<Cashier>();
-    currentOrder = new Order(cashier, c.getName());
+    currentOrder = new Order(cashier, c->getName());
     for(const auto& reqs: requests){
         currentOrder->addRequest(reqs);
     }
