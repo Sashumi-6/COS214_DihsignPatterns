@@ -20,7 +20,7 @@ public:
         } else if (nextHandler) {
             nextHandler->handleRequest(cmd);
         } else {
-            // std::cout << "No employee could handle this command.\n";
+            std::cout << "No employee could handle this command.\n";
             //error handling
         }
     }

@@ -1,7 +1,7 @@
 #ifndef COMMAND_H
 #define COMMAND_H
 #include <string>
-
+#include "plantDatabase.h"
 class GardenComponent;
 class Employee;
 class Plant;
@@ -13,7 +13,7 @@ enum class MaintenanceType {
 };
 enum class SunlightPreference { UNKNOWN, LOW, MEDIUM, HIGH };
 enum class WaterPreference { UNKNOWN, LOW, MEDIUM, HIGH };
-enum class CareLevel { UNKNOWN, LOW, MEDIUM, HIGH };
+
 enum CommandType {
     PLANT_COMMAND,
     MAINTENANCE_COMMAND,
@@ -23,7 +23,6 @@ enum CommandType {
 struct AdviceCriteria {
     SunlightPreference sunlight = SunlightPreference::UNKNOWN;
     WaterPreference water = WaterPreference::UNKNOWN;
-    CareLevel care = CareLevel::UNKNOWN;
 };
 
 class Command {
@@ -72,13 +71,14 @@ class RequestCommand : public Command {
 private:
     std::string message;
     RequestType type;
+    AdviceCriteria advice;
 public:
     RequestCommand(RequestType t, const std::string& msg) : type(t), message(msg) {}
-
+    RequestCommand(const AdviceCriteria& a): type(ADVICE), advice(a) {}
     void execute(Employee* emp) override;
 
     CommandType getType() const override;
-
+    AdviceCriteria getCriteria() const { return advice; }
     RequestType getRequestType() const;
     std::string getMessage() const;
 };
