@@ -12,13 +12,6 @@
 #include <vector>
 #include <memory>
 
-TEST_CASE("Product: setters, getters, and price operations") {
-    WaterLossStrategy* water = new LowWaterLoss();
-    SunlightStrategy* sunlight = new LowSunlightStrategy();
-    PlantState* state = new SeedlingState(nullptr);
-    GardenSection greenhouse;
-    Plant plant("Rose", 10.0f, water, sunlight, state);
-    Product product(&plant, &greenhouse, true);
 
 TEST_CASE("WaterLoss strategies return correct values") {
     LowWaterLoss low;

@@ -10,7 +10,6 @@ struct PlantInfo {
     std::string section;
     SunlightPreference sunlight;
     WaterPreference water;
-    // ... other members
 };
 
 class PlantDatabase {
