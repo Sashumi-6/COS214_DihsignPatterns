@@ -141,11 +141,13 @@ float Bouquet::getPrice() {
 
 Decorator::Decorator(Product* component)
     : Product(component ? component->getPlant() : nullptr, nullptr,
-              component ? component->getisMain() : false) {
+              component ? component->getisMain() : false), component(component) {
 
     if (component && component->getPlant()) {
-        this->plant = new Plant(*component->getPlant());
-        this->isMain = component->getisMain();
+        this->soil = component->getSoil();
+        this->container = component->getContainer();
+        this->card = component->getCard();
+        this->wrapping = component->getWrapping();
     } else {
         this->plant = nullptr;
     }
