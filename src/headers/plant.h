@@ -3,6 +3,8 @@
 
 #include "garden.h"
 #include <string>
+#include "command.h"
+#include <string>
 
 class PlantState;
 
@@ -61,43 +63,55 @@ class HighSunlightStrategy : public SunlightStrategy {
 
 class Plant : public GardenComponent {
   public:
-    static constexpr double kInitialWaterLevel = 1.0;
-    static constexpr double kWaterDose = 0.35;
-    Plant(std::string name, double price, WaterLossStrategy* waterLossStrategy, SunlightStrategy* sunlightStrategy,
-          PlantState* state);
-    void waterPlant() override;
-    void exposeToSunlight() override;
-    void loseWater() override;
-    bool canSell() override;
-    void grow() override;
-    void add(GardenComponent* param) override;
-    GardenComponent* getChild(int param) override;
-    void remove(GardenComponent* param) override;
-    Iterator<GardenComponent>* createIterator() override;
-    void applyWaterLoss();
-    void applyExposeToSunlight();
-    void setState(PlantState* newState);
-    void addWater(double amount);
-    bool isLeaf() const override;
-    void tryGrow();
+        
+        static constexpr double kInitialWaterLevel = 1.0;
+        static constexpr double kWaterDose = 0.35;
+        Plant(std::string name , double price , WaterLossStrategy* waterLossStrategy , SunlightStrategy* sunlightStrategy , PlantState* state) ;
+        Plant(const Plant& other) = default;//TODO add to UML. changeeeeeee
+        
+        virtual ~Plant() override; // TODO change
+        void waterPlant() override;
+        void exposeToSunlight() override;
+        void loseWater() override;
+        bool canSell() override;
+        void grow() override;
+        void add(GardenComponent* param) override;
+        GardenComponent* getChild(int param) override;
+        void remove(GardenComponent* param) override;
+        Iterator<GardenComponent>* createIterator() override;
+        void applyWaterLoss();
+        void applyExposeToSunlight();
+        void setState(PlantState* newState);
+        void addWater(double amount);
+        // //TODO explain this
+         SunlightPreference getSunlightPreference() const;
+         WaterPreference getWaterPreference() const;
+        double getPrice();
+        const std::string& getName() const;
+        bool isMature() const;
+        bool isDead() const;
+        bool isLeaf() const override;
+        void tryGrow();
 
-  private:
-    WaterLossStrategy* waterLossStrategy;
-    SunlightStrategy* sunlightStrategy;
-    PlantLocation location;
-    std::string name;
-    PlantState* state;
-    double price;
-    double waterLevel;
-    int age;
+    private:
+        WaterLossStrategy* waterLossStrategy;
+        SunlightStrategy* sunlightStrategy;
+        PlantLocation location;
+        std::string name;
+        PlantState* state;
+        double price;
+        double waterLevel;
+        int age;
+        
 };
 
 class PlantState {
   public:
     virtual ~PlantState() = default;
-    PlantState();
-    explicit PlantState(Plant* plant);
-    void setPlant(Plant* newPlant);
+    PlantState() ;
+    PlantState* operator=(const PlantState& other);//TODO add to UML
+    explicit PlantState(Plant* plant) ;
+    void setPlant(Plant* newPlant) ; 
     virtual void handleWaterPlant() = 0;
     virtual void handleExposeToSunlight() = 0;
     virtual bool canSell() = 0;

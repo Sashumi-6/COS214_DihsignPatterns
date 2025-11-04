@@ -141,5 +141,9 @@ CTestTestfile.cmake
 # -------------------------
 # Optional caches (enable only if you use them)
 # -------------------------
-# /.cache/
+ /.cache/
 # /.clangd/
+
+.cache 
+
+*.idx

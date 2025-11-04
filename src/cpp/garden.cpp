@@ -77,4 +77,4 @@ void GardenSection::remove(GardenComponent* param) {
 
 bool GardenSection::isLeaf() const { return false; };
 
-Iterator<GardenComponent>* GardenSection::createIterator() { return new GardenIterator(this); }
+Iterator<GardenComponent>* GardenSection::createIterator() { return new PlantOnlyIterator(this); }

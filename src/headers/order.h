@@ -1,32 +1,44 @@
 #ifndef ORDER_H
 #define ORDER_H
 
-#include "plant.h"
-class OrderState;
-class Product;
+#include <string>
+#include <vector>
+#include "productRequest.h"
 
+class GardenComponent;
+class Product;
+class Cashier;
+
+enum OrderStatus{
+    PENDING,
+    PROCESSING,
+    COMPLETED,
+    CANCELLED
+};
 class Order {
     public:
-        void completeOrder();
-        void addProduct(Product* product);
+        Order(Cashier* cashier, std::string customerName);
+        void addProduct(Product* p);
+        void removeProduct(Product* p);
+        double calculateTotal();
+        void updateStatus(OrderStatus s);
+        void finaliseOrder(GardenComponent* greenhouse);
+        bool isPaid();
+        void togglePaymentStatus();
+        std::string orderDetails();
+        int getProductCount();
+        Product* getProduct();
+        void addRequest(const ProductRequest& r);
 
     private:
-        Plant* plants;
-        float totalCost;
-        OrderState* state;
-
-};
-
-class OrderState {
-
-};
-
-class ProcessingState : public OrderState {
-
-};
-
-class CompletedState : public OrderState {
-
+        double totalPrice;
+        std::vector<Product*> orderedProducts;
+        int orderId;
+        std::string customerName;
+        OrderStatus status;
+        bool paymentReveived;
+        Cashier* cashier;//here because of Builder. Has to have specific builder parsed in
+        std::vector<ProductRequest> requests;
 };
 
 #endif

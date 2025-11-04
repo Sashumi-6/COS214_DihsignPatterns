@@ -1,40 +1,139 @@
 #ifndef PRODUCTBUILDER_H
 #define PRODUCTBUILDER_H
 
+#include <vector>
+#include <string>
+#include "plant.h"
 #include "inventory.h"
-class Plant;
-class Product;
+#include "garden.h"
+
+class GardenComponent; // forward declaration for pointer usage in Product
+class Product;  // forward declaration for pointer usage in Bob
+
+class Product{
+protected:
+    Plant* plant;
+    std::string soil;
+    std::string container;
+    std::string card;
+    std::string wrapping;
+    Inventory inventory; // CHANGED: lowercase 'i' to avoid naming conflict
+    float price;
+    bool isMain;
+
+public:
+    std::string getName() const { 
+        return plant ? plant->getName() : "Unknown Product"; 
+    }
+    
+    virtual ~Product(){
+        if (plant) {
+            delete plant;
+            plant = nullptr;
+        }
+    }
+    
+    Product(Plant* plant, GardenComponent* greenhouse, bool isMain) 
+        : plant(plant), inventory(greenhouse), isMain(isMain) {
+        soil = "";
+        container = "";
+        card = "";
+        wrapping = "";
+        price = 0;
+    }
+
+    bool getisMain() const { return isMain; }
+
+    void setPlant(Plant* p);
+
+    // accessor to allow safe access to the plant from other objects
+    Plant* getPlant() const { return plant; }
+    
+    void setSoil(const std::string& s);
+    void setContainer(const std::string& c);
+    void setCard(const std::string& c);
+    void setWrapping(const std::string& w);
+
+    std::string getSoil() const { return soil; }
+    std::string getContainer() const { return container; }
+    std::string getCard() const { return card; }
+    std::string getWrapping() const { return wrapping; }
+
+    float getPrice() const { return price; }
+    void incPrice(float amount) { price += amount; }
+};
 
 class Bob {
-    public:
-        Bob(Plant* plant);
-        virtual void addPlant() = 0;
-        virtual void addSoil() = 0;
-        virtual void setContainer() = 0;
-
-    protected:
-        Inventory Inventory;
+public:
+    Bob(std::vector<Plant*> plant, GardenComponent* greenhouse) 
+        : plants(plant), greenhouse(greenhouse) {};
+    virtual Product* addPlant() = 0;
+    Product* addSoil(Product* product);
+    virtual Product* setContainer(Product* product) = 0;
+    virtual Product* getProduct() = 0;
+    virtual ~Bob();
+    
+protected:
+    std::vector<Plant*> plants;
+    GardenComponent* greenhouse;
 };
 
 class BouquetBuilder : public Bob {
-    public:
-        BouquetBuilder(Plant* plant);
-        void addPlant();
-        void addSoil(); // stubbed
-        void setContainer();
-        Product* getProduct();
-
-    protected:
-        int numberOfPlants;
+public:
+    BouquetBuilder(std::vector<Plant*> plant, GardenComponent* greenhouse);
+    Product* addPlant() override;
+    Product* setContainer(Product* product) override;
+    Product* getProduct();
 };
 
 class BasicBuilder : public Bob {
-    public:
-        BasicBuilder(Plant* plant);
-        void addPlant();
-        void addSoil();
-        void setContainer();
-        Product* getProduct();
+public:
+    BasicBuilder(std::vector<Plant*> plants, GardenComponent* greenhouse);
+    Product* addPlant();
+    Product* setContainer(Product* product) override;
+    Product* getProduct();
+};
+
+class BouquetProduct : public Product {
+public:
+    BouquetProduct(Plant* plant, GardenComponent* greenhouse, bool isMain) 
+        : Product(plant, greenhouse, isMain) {}
+};
+
+class Bouquet : public BouquetProduct {
+public:
+    Bouquet(Plant* plant, GardenComponent* greenhouse, bool isMain) 
+        : BouquetProduct(plant, greenhouse, isMain), bouquet(nullptr) {}
+        
+    Bouquet* getNext() { return bouquet; }
+    void setNext(Bouquet* bouquet) { this->bouquet = bouquet; }
+    float getPrice();
+        
+private:
+    Bouquet* bouquet;
+};
+
+class Decorator : public Product {
+private:
+    Product* component;
+public:
+    Decorator(Product* component);
+};
+
+class CardDecorator : public Decorator {
+public:
+    CardDecorator(Product* component, std::string cardString) 
+        : Decorator(component) {
+        setCard(cardString);
+    }
+};
+
+class WrappingPaperDecorator : public Decorator {
+public:
+    WrappingPaperDecorator(Product* component, std::string wrappingString) 
+        : Decorator(component) {
+        setWrapping(wrappingString);
+    }
 };
 
 #endif
