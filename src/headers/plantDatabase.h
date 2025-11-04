@@ -1,17 +1,19 @@
 #pragma once
 #include <vector>
 #include <string>
+#include <map>
 #include "command.h"
 
 enum class SunlightPreference;
 enum class WaterPreference;
 struct PlantInfo {
-    std::string name;
+    std::string section;
     SunlightPreference sunlight;
     WaterPreference water;
 };
 
 class PlantDatabase {
 public:
-    static const std::vector<PlantInfo>& getAllPlants();
+    static const std::map<std::string , PlantInfo>& getAllPlants();
 };
+

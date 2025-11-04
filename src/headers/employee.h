@@ -36,9 +36,11 @@ public:
 protected:
     std::string role;
     EmployeeState state = AVAILABLE;
+    GardenComponent* greenhouse;
 
 private:
     Employee* nextHandler = nullptr;
+    
 };
 
 // ================== Derived Employees ==================
@@ -52,9 +54,11 @@ public:
     void addItem(Product* product);
     void removeItem(Product* product);
 
+
 private:
     Bob* builder;
     Order* order;
+    std::vector<Plant*> buildPlantVector(const std::vector<std::string>& names);
 };
 
 class Caretaker : public Employee {

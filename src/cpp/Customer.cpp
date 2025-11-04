@@ -6,6 +6,8 @@ Customer::Customer()
 
     int option;
     bool stay = true;
+    std::cout << "Good day! Please enter your name:\n";
+    std::cin >> name;
 
     while (stay)
     {
@@ -26,7 +28,7 @@ Customer::Customer()
 
             if (stay == 0)
             {
-                
+
                 std::cout << "Thank you for visiting, have a good day!\n";
             }
             else if (stay == 1)
@@ -37,7 +39,7 @@ Customer::Customer()
 
         else if (option == 2) // query assistance
         {
-            
+
             order = false;
 
             createCustomerQuery();
@@ -51,7 +53,7 @@ Customer::Customer()
 
             if (stay == 0)
             {
-                
+
                 std::cout << "Thank you for visiting, have a good day!\n";
             }
             else if (stay == 1)
@@ -82,173 +84,141 @@ Customer::Customer()
     // if (customerType.equal("order"))
 }
 
-void Customer::createCustomerQuery()
+RequestCommand Customer::createCustomerQuery()
 {
-
-    std::cout << "check!\n";
 
     int waterStrategy;
     int sunStrategy;
-    bool exitLoop = false;
-    bool exitInWater = false;
 
+    AdviceCriteria a = AdviceCriteria();
 
-    
-    do
+    std::cout << "Please Describe the Plant You are Looking For:\n";
+
+    std::cout << "How much water does this plant need?\n";
+    std::cout << "Low water: Enter 0\n";
+    std::cout << "Medium water: Enter 1\n";
+    std::cout << "High water: Enter 2\n";
+
+    std::cin >> waterStrategy;
+
+    std::cout << "How much sun does this plant need?\n";
+    std::cout << "Low sun: Enter 0\n";
+    std::cout << "Medium sun: Enter 1\n";
+    std::cout << "High sun: Enter 2\n";
+
+    std::cin >> sunStrategy;
+
+    // water = 1 and low light is fern
+
+    if (waterStrategy == 0)
     {
-
-        std::cout << "Please Describe the Plant You are Looking For:\n";
-
-        std::cout << "How much water does this plant need?\n";
-        std::cout << "Low water: Enter 0\n";
-        std::cout << "Medium water: Enter 1\n";
-        std::cout << "High water: Enter 2\n";
-
-        std::cin >> waterStrategy;
-
-        std::cout << "How much sun does this plant need?\n";
-        std::cout << "Low sun: Enter 0\n";
-        std::cout << "Medium sun: Enter 1\n";
-        std::cout << "High sun: Enter 2\n";
-
-        std::cin >> sunStrategy;
-
-        // water = 1 and low light is fern
-
-        if (waterStrategy == 0)
+        if (sunStrategy == 0)
         {
-            if (sunStrategy == 0)
-            {
-                std::cout << "Your recommended plant is a hosta!\n";
-            }
-            else if (sunStrategy == 1)
-            {
-                std::cout << "Your recommended plant is a poppy!\n";
-            }
-            else if (sunStrategy == 2)
-            {
-                std::cout << "Your recommended plant is a cactus!\n";
-            }
-            else
-            {
-
-                std::cout << "Not one of the number options, please choose again or cancel your request for assistance \n";
-                std::cout << "If you want to choose again, enter 1\n";
-                std::cout << "If you want to cancel your request, enter 0\n";
-
-                std::cin >> exitInWater;
-
-                if (exitInWater == 1)
-                {
-                    exitLoop = true;
-                }
-
-                else
-                {
-                    return;
-                }
-            }
-            exitLoop = false;
+            std::cout << "Your recommended plant is a hosta!\n";
+            a.sunlight = SunlightPreference::LOW;
+            a.water = WaterPreference::LOW;
         }
-        else if (waterStrategy == 1)
+        else if (sunStrategy == 1)
         {
-            if (sunStrategy == 0)
-            {
-                std::cout << "Your recommended plant is a fern!\n";
-            }
-            else if (sunStrategy == 1)
-            {
-                std::cout << "Your recommended plant is a spider plant!\n";
-            }
-            else if (sunStrategy == 2)
-            {
-                std::cout << "Your recommended plant is a gardenia!\n";
-            }
-            else
-            {
-
-                std::cout << "Not one of the number options, please choose again or cancel your request for assistance \n";
-                std::cout << "If you want to choose again, enter 1\n";
-                std::cout << "If you want to cancel your request, enter 0\n";
-
-                std::cin >> exitInWater;
-
-                if (exitInWater == 1)
-                {
-                    exitLoop = true;
-                }
-
-                else
-                {
-                    return;
-                }
-            }
-            exitLoop = false;
+            std::cout << "Your recommended plant is a poppy!\n";
+            a.sunlight = SunlightPreference::MEDIUM;
+            a.water = WaterPreference::LOW;
         }
-
-        else if (waterStrategy == 2)
+        else if (sunStrategy == 2)
         {
-            if (sunStrategy == 0)
-            {
-                std::cout << "Your recommended plant is a lily of the valley!\n";
-            }
-            else if (sunStrategy == 1)
-            {
-                std::cout << "Your recommended plant is a pussy willow!\n";
-            }
-            else if (sunStrategy == 2)
-            {
-                std::cout << "Your recommended plant is a basil!\n";
-            }
-            else
-            {
-
-                std::cout << "Not one of the number options, please choose again or cancel your request for assistance \n";
-                std::cout << "If you want to choose again, enter 1\n";
-                std::cout << "If you want to cancel your request, enter 0\n";
-
-                std::cin >> exitInWater;
-
-                if (exitInWater == 1)
-                {
-                    exitLoop = true;
-                }
-
-                else
-                {
-                    return;
-                }
-            }
-            exitLoop = false;
+            std::cout << "Your recommended plant is a cactus!\n";
+            a.sunlight = SunlightPreference::HIGH;
+            a.water = WaterPreference::LOW;
         }
         else
-            {
+        {
 
-                std::cout << "Not one of the number options, please choose again or cancel your request for assistance \n";
-                std::cout << "If you want to choose again, enter 1\n";
-                std::cout << "If you want to cancel your request, enter 0\n";
-
-                std::cin >> exitInWater;
-
-                if (exitInWater == 1)
-                {
-                    exitLoop = true;
-                }
-
-                else
-                {
-                    return;
-                }
+            std::cout << "Not one of the number options, please choose again or cancel your request for assistance \n";
+                return;
         }
-        exitLoop = false;
     }
-    while (exitLoop);
+    else if (waterStrategy == 1)
+    {
+        if (sunStrategy == 0)
+        {
+            std::cout << "Your recommended plant is a fern!\n";
+            a.sunlight = SunlightPreference::LOW;
+            a.water = WaterPreference::MEDIUM;
+        }
+        else if (sunStrategy == 1)
+        {
+            std::cout << "Your recommended plant is a spider plant!\n";
+            a.sunlight = SunlightPreference::MEDIUM;
+            a.water = WaterPreference::MEDIUM;
+        }
+        else if (sunStrategy == 2)
+        {
+            std::cout << "Your recommended plant is a gardenia!\n";
+            a.sunlight = SunlightPreference::HIGH;
+            a.water = WaterPreference::MEDIUM;
+        }
+        else
+        {
+
+            std::cout << "Not one of the number options, please choose again or cancel your request for assistance \n";
+                return;
+        }
+    }
+
+    else if (waterStrategy == 2)
+    {
+        if (sunStrategy == 0)
+        {
+            std::cout << "Your recommended plant is a lily of the valley!\n";
+            a.sunlight = SunlightPreference::LOW;
+            a.water = WaterPreference::HIGH;
+        }
+        else if (sunStrategy == 1)
+        {
+            std::cout << "Your recommended plant is a pussy willow!\n";
+            a.sunlight = SunlightPreference::MEDIUM;
+            a.water = WaterPreference::HIGH;
+        }
+        else if (sunStrategy == 2)
+        {
+            std::cout << "Your recommended plant is a basil!\n";
+            a.sunlight = SunlightPreference::HIGH;
+            a.water = WaterPreference::HIGH;
+        }
+        else
+        {
+
+            std::cout << "Not one of the number options, please choose again or cancel your request for assistance \n";
+                return;
+        }
+    }
+    else
+    {
+
+        std::cout << "Not one of the number options, please choose again or cancel your request for assistance \n";
+        return;
+    }
+
+    return RequestCommand(a);
 }
 
+Customer *Customer::createCustomerOrder()
+{
 
-Customer* Customer::createCustomerOrder(){
+    std::cout << "Here's the plant catalogue with ach plant's water and sun needs:\n";
 
+    
 
+    // Customer *Customer::createCustomerOrder(std::string message, bool wantsC, bool wantsW)
+        // ProductRequest customerOrder = ProductRequest();
+        // customerOrder.cardMessage = message;
+        // customerOrder.wantsCard = wantsC;
+        // customerOrder.wantsWrapping= wantsW;
+
+    // std::vector<Plant*> plts = std::vector<Plant*>();
+
+    // for(int i = 0; i < records.size(); i++){
+    //     Plant toAdd = new Plant(records.element(i).name, )
     
 }
 
