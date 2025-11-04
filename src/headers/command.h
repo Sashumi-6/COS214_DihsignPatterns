@@ -1,19 +1,19 @@
 #ifndef COMMAND_H
 #define COMMAND_H
 #include <string>
-#include "plantDatabase.h"
+
 class GardenComponent;
 class Employee;
 class Plant;
 
 // Advice request preferences
+enum class SunlightPreference { UNKNOWN, LOW, MEDIUM, HIGH };
+enum class WaterPreference { UNKNOWN, LOW, MEDIUM, HIGH };
+
 enum class MaintenanceType {
     WATER,
     MOVE
 };
-
-enum class SunlightPreference { UNKNOWN, LOW, MEDIUM, HIGH };
-enum class WaterPreference { UNKNOWN, LOW, MEDIUM, HIGH };
 
 enum CommandType {
     PLANT_COMMAND,
@@ -33,29 +33,23 @@ public:
     virtual CommandType getType() const = 0;
 };
 
-
 //Sender -> A Plant/GardenSection, Receiver -> Caretaker
 class PlantCommand : public Command {
-    private:
-        Plant* plant;
-    public:
-        PlantCommand(Plant* p) : plant(p) {}
-        void execute(Employee* employee);
-        CommandType getType() const override;
+private:
+    Plant* plant;
+public:
+    PlantCommand(Plant* p) : plant(p) {}
+    void execute(Employee* employee);
+    CommandType getType() const override;
 };
 
 //Sender -> Front Desk, Receiver -> Caretaker
-
-// enum class MaintenanceType {
-//     WATER,
-//     MOVE
-// };
 class Maintenance : public Command {
-    private:
+private:
     GardenComponent* target;
     MaintenanceType type;
 public:
-     Maintenance(GardenComponent* t, MaintenanceType mt)
+    Maintenance(GardenComponent* t, MaintenanceType mt)
         : target(t), type(mt) {}
 
     void execute(Employee* emp) override;
@@ -64,18 +58,17 @@ public:
     MaintenanceType getMaintenanceType() const { return type; }
 };
 
-
 //Sender -> FrontDesk, Receiver -> Chain of Employees
 enum RequestType { COMPLAINT, ESCALATION, ADVICE };
 
 class RequestCommand : public Command {
 private:
-    std::string message;
     RequestType type;
+    std::string message;
     AdviceCriteria advice;
 public:
     RequestCommand(RequestType t, const std::string& msg) : type(t), message(msg) {}
-    RequestCommand(const AdviceCriteria& a): type(ADVICE), advice(a) {}
+    RequestCommand(const AdviceCriteria& a): type(RequestType::ADVICE), advice(a) {}
     void execute(Employee* emp) override;
 
     CommandType getType() const override;
