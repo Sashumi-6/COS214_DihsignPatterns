@@ -4,6 +4,7 @@
 #include "garden.h"
 #include <string>
 #include "command.h"
+#include <string>
 
 class PlantState;
 
@@ -87,6 +88,9 @@ class Plant : public GardenComponent {
          WaterPreference getWaterPreference() const;
         std::string getName() const { return name; }
         double getPrice();
+        const std::string& getName() const;
+        bool isMature() const;
+        bool isDead() const;
         bool isLeaf() const override;
         void tryGrow();
 

@@ -4,7 +4,7 @@
 #include <vector>
 
 template <typename T> class Iterator;
-class GardenIterator;
+class PlantOnlyIterator;
 
 class GardenComponent {
   public:

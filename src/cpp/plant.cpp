@@ -94,6 +94,14 @@ void Plant::tryGrow() {
 
 double Plant:: getPrice(){return price;}
 
+const std::string& Plant::getName() const { return name; }
+
+bool Plant::isMature() const { return dynamic_cast<MatureState*>(state) != nullptr; }
+
+bool Plant::isDead() const { return dynamic_cast<DeadState*>(state) != nullptr; }
+
+double LowWaterLoss::loseWater() {
+    return 0.1 ;
 bool Plant::isLeaf() const {
     return true;
 }
