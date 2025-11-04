@@ -4,7 +4,7 @@ Simulation::Simulation(int numDays) : numDays(numDays) {
     // grab some vector of customers or something
     // then we will for each customer
     // addCustomer()
-    initInventory();
+    // initInventory();
 
     // grab vector of plants and then init the plants
     // addPlants()
@@ -28,10 +28,10 @@ void Simulation::setWeather() {
     // what the dog doin
 }
 
-bool Simulation::initInventory() {
-    // init the inventory
-}
+// bool Simulation::initInventory() {
+//     // init the inventory
+// }
 
-void Simulation::addPlants(std::vector<Plant*> plants) {
+// void Simulation::addPlants(std::vector<Plant*> plants) {
 
-}
+// }

@@ -221,3 +221,7 @@ Customer *Customer::createCustomerOrder()
     //     Plant toAdd = new Plant(records.element(i).name, )
     
 }
+
+std::string Customer::getName(){
+    return name;
+}

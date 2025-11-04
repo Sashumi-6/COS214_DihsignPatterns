@@ -17,6 +17,7 @@ struct ProductRequest{
 
 
 class Customer;
+class Order;
 class FrontDesk {
     public:
         void query();
@@ -28,7 +29,7 @@ class FrontDesk {
         void  executeAllCommands();
         template <typename T>
         T* getAvailableEmployee();
-        void pay(Order* currentOrder, Customer* c);
+        void pay();
         //TODO return type??
         bool placeOrder(std::vector<ProductRequest>& reqs, Customer* c);
 

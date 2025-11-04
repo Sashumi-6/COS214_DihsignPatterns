@@ -4,6 +4,7 @@
 #include <iostream>
 #include "command.h"
 #include "productBuilder.h"
+#include "frontDesk.h"
 #include "order.h"
 
 class Order;

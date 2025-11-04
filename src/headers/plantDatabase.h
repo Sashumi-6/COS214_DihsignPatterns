@@ -4,6 +4,8 @@
 #include <map>
 #include "command.h"
 
+enum class SunlightPreference;
+enum class WaterPreference;
 struct PlantInfo {
     std::string section;
     SunlightPreference sunlight;

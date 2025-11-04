@@ -3,7 +3,7 @@
 #include "../headers/plant.h"
 #include <stdexcept>
 Plant::Plant(std::string  name , const double price , WaterLossStrategy* waterLossStrategy , SunlightStrategy* sunlightStrategy , PlantState* state) : waterLossStrategy(waterLossStrategy) , sunlightStrategy(sunlightStrategy) , location(PlantLocation::INSIDE) , name(std::move(name)) , state(state) , price(price) , waterLevel(1), age(0)  {
-
+    state->setPlant(this);
 }
 
 Plant::~Plant() {
@@ -85,13 +85,13 @@ void Plant::setState(PlantState* newState) {
 
 void Plant::tryGrow() {
     
-    if (this->waterLevel >= 0.5 && this->age >= 5) {
+    if (this->waterLevel >= 0.5 &&  this->age >= 0) {
         this->grow();
     }
 }
-double LowWaterLoss::loseWater() {
-    return 0.15 ;
-}
+// double LowWaterLoss::loseWater() {
+//     return 0.15 ;
+// }
 
 double Plant:: getPrice(){return price;}
 
@@ -141,6 +141,10 @@ void MatureState::handleExposeToSunlight() {
 void DeadState::handleExposeToSunlight() {
     // std::cout << "Dead plants cannot be exposed to sunlight." << std::endl;
     }
+
+void DeadState::handleGrow() {
+    // std::cout << "Dead plants cannot grow." << std::endl;
+}
 
 void SeedlingState::handleLoseWater() {
     if (plant == nullptr) {

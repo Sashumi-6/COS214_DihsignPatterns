@@ -9,6 +9,7 @@
 class OrderState;
 class Product;
 class Cashier;
+struct ProductRequest;
 
 enum OrderStatus{
     PENDING,
