@@ -20,21 +20,26 @@ void Cashier::process(Command* cmd) {
 
         std::cout << "Cashier providing plant advice:\n";
 
-            for (const auto& plant : PlantDatabase::getAllPlants()) {
-                if ((crit.sunlight == SunlightPreference::UNKNOWN || plant.sunlight == crit.sunlight) &&
-                    (crit.water == WaterPreference::UNKNOWN || plant.water == crit.water)) {
-                    std::cout << " - " << plant.name << "\n";
+        for (const auto& plantPair : PlantDatabase::getAllPlants()) {
+            const std::string& name = plantPair.first;
+            const PlantInfo& info = plantPair.second;
+
+                if ((crit.sunlight == SunlightPreference::UNKNOWN || info.sunlight == crit.sunlight) &&
+                    (crit.water == WaterPreference::UNKNOWN || info.water == crit.water)) {
+                    std::cout << " - " << name << "\n";
                 }
             }
         }
     }
 }
+
 Product* Cashier::construct(const ProductRequest& req, GardenComponent* greenhouse) {//plants are added upon Builder construction
+   std::vector<Plant*> plants = buildPlantVector(req.plantNames);
     Bob* builder = nullptr;
-    if (req.plants.size() > 1) {
-        builder = new BouquetBuilder(req.plants, greenhouse);
+    if (plants.size() > 1) {
+        builder = new BouquetBuilder(plants, greenhouse);
     } else {
-        builder = new BasicBuilder(req.plants, greenhouse);
+        builder = new BasicBuilder(plants, greenhouse);
     }
 
     //error handling if not enough plants for bouquet
@@ -44,15 +49,26 @@ Product* Cashier::construct(const ProductRequest& req, GardenComponent* greenhou
     Product* product = builder->getProduct();
     
     if (req.wantsCard) {
-        //TODO decorator logic for adding card
+        product = new CardDecorator(product, req.cardMessage);
     }
     
     if (req.wantsWrapping) {
-        //TODO decorator logic for wrapping
+        product = new WrappingPaperDecorator(product, "Wrapping");
     }
 
     delete builder;
     return product;
+}
+
+std::vector<Plant*> Cashier::buildPlantVector(const std::vector<std::string>& names) {
+    std::vector<Plant*> result;
+    for (const std::string& name : names) {
+        Plant* p = greenhouse->findMature(name); 
+        if(p)
+            result.push_back(p);
+        else std::cout << "Sorry! We couldn't fulfil your order with the " << name << " plant\n";
+    }
+    return result;
 }
 
 void Cashier::addItem(Product* product) { order->addProduct(product); }
