@@ -4,8 +4,7 @@
 
 #include <string>
 #include <vector>
-#include "command.h"
-#include "frontDesk.h"
+#include "../headers/command.h"
 
 
 class Customer{

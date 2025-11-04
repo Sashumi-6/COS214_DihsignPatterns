@@ -4,8 +4,11 @@
 #include <iostream>
 #include "command.h"
 #include "productBuilder.h"
-#include "frontDesk.h"
 #include "order.h"
+
+struct ProductRequest;
+class GardenComponent;
+class GardenSection;
 
 class Order;
 enum EmployeeState { AVAILABLE, BUSY, ON_BREAK };
