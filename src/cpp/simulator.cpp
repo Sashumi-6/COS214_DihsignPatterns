@@ -1,3 +1,7 @@
+/**
+ * @file simulator.cpp
+ * @brief Implements the greenhouse business simulation workflow.
+ */
 #include "../headers/simulator.h"
 
 #include "../headers/command.h"
@@ -12,6 +16,11 @@ namespace {
 constexpr int kMaxSimulationDays = 30;
 constexpr double kDefaultPlantPrice = 15.0;
 
+/**
+ * @brief Converts a business level into a lowercase string.
+ * @param level Business volume enumeration.
+ * @return String representation of the level.
+ */
 std::string toString(BusinessLevel level) {
     switch (level) {
         case BusinessLevel::LOW:

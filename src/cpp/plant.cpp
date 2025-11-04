@@ -1,3 +1,7 @@
+/**
+ * @file plant.cpp
+ * @brief Implements plant behaviors, strategies, and state transitions.
+ */
 #include <utility>
 
 #include "../headers/plant.h"

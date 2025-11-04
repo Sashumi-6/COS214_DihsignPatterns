@@ -1,3 +1,7 @@
+/**
+ * @file employee.cpp
+ * @brief Implements employee chain logic and role-specific behaviors.
+ */
 #include "../headers/employee.h"
 #include "../headers/command.h"
 #include "../headers/plantDatabase.h"
@@ -5,6 +9,12 @@
 #include "../headers/frontDesk.h"
 namespace {
 
+/**
+ * @brief Finds a plant by name that is currently sellable.
+ * @param greenhouse Root component to search.
+ * @param name Plant name to locate.
+ * @return Pointer to qualifying plant or nullptr.
+ */
 Plant* findAvailablePlant(GardenComponent* greenhouse, const std::string& name) {
     if (!greenhouse) {
         return nullptr;
@@ -31,6 +41,9 @@ Plant* findAvailablePlant(GardenComponent* greenhouse, const std::string& name) 
 } // namespace
 
 // -------------------- Cashier --------------------
+/**
+ * @brief Determines if the cashier can process the supplied command.
+ */
 bool Cashier::canHandle(Command* cmd) {
     if(cmd->getType() != REQUEST_COMMAND || !isAvailable()) return false;
     RequestCommand* rCmd = dynamic_cast<RequestCommand*>(cmd);
@@ -38,6 +51,9 @@ bool Cashier::canHandle(Command* cmd) {
     return rCmd->getRequestType() == COMPLAINT || rCmd->getRequestType() == ADVICE; // extend as needed
 }
 
+/**
+ * @brief Processes advice and complaint commands for the cashier role.
+ */
 void Cashier::process(Command* cmd) {
     RequestCommand* rCmd = dynamic_cast<RequestCommand*>(cmd);
     if(rCmd) {
@@ -62,6 +78,9 @@ void Cashier::process(Command* cmd) {
     }
 }
 
+/**
+ * @brief Constructs a product using either bouquet or basic builders.
+ */
 Product* Cashier::construct(const ProductRequest& req, GardenComponent* greenhouse) {//plants are added upon Builder construction
    std::vector<Plant*> plants = buildPlantVector(req.plantNames);
     Bob* builder = nullptr;
@@ -89,6 +108,9 @@ Product* Cashier::construct(const ProductRequest& req, GardenComponent* greenhou
     return product;
 }
 
+/**
+ * @brief Builds a vector of available plants that match requested names.
+ */
 std::vector<Plant*> Cashier::buildPlantVector(const std::vector<std::string>& names) {
     std::vector<Plant*> result;
     for (const std::string& name : names) {
@@ -102,16 +124,28 @@ std::vector<Plant*> Cashier::buildPlantVector(const std::vector<std::string>& na
     return result;
 }
 
+/**
+ * @brief Adds a product to the active order.
+ */
 void Cashier::addItem(Product* product) { order->addProduct(product); }
+/**
+ * @brief Removes a product from the active order.
+ */
 void Cashier::removeItem(Product* product) { order->removeProduct(product); }
 
 // -------------------- Caretaker --------------------
+/**
+ * @brief Determines if the caretaker should handle the incoming command.
+ */
 bool Caretaker::canHandle(Command* cmd) {
     //Caretaker can't really handle complaints
     CommandType t = cmd->getType();
     return isAvailable() && (t == PLANT_COMMAND || t == MAINTENANCE_COMMAND);
 }
 
+/**
+ * @brief Executes plant and maintenance commands for the caretaker.
+ */
 void Caretaker::process(Command* cmd) {
     if(cmd->getType() == PLANT_COMMAND) {
         PlantCommand* pCmd = dynamic_cast<PlantCommand*>(cmd);
@@ -122,13 +156,22 @@ void Caretaker::process(Command* cmd) {
     }
 }
 
+/**
+ * @brief Waters plants within the assigned section.
+ */
 void Caretaker::waterPlants() { 
     if(assignedSection)assignedSection->waterPlant();
 }
+/**
+ * @brief Moves plants to new sunlight positions within the section.
+ */
 void Caretaker::movePlants() { 
     
     if(assignedSection)assignedSection->exposeToSunlight();
 }
+/**
+ * @brief Performs the requested maintenance task on a target component.
+ */
 void Caretaker::performMaintenance(GardenComponent* target, MaintenanceType type) {
     // Assign the target section temporarily
     assignedSection = dynamic_cast<GardenSection*>(target);
@@ -145,21 +188,33 @@ void Caretaker::performMaintenance(GardenComponent* target, MaintenanceType type
     }
 }
 
+/**
+ * @brief Plants a new plant within the assigned section.
+ */
 void Caretaker::plantNewPlant(Plant* plant) { 
     assignedSection->add(plant);
 }
 
+/**
+ * @brief Sets the caretaker's home section.
+ */
 void Caretaker::setHomeSection(GardenSection* section) {
     assignedSection = section;
 }
 
 // -------------------- Manager --------------------
+/**
+ * @brief Determines if the manager should handle the supplied command.
+ */
 bool Manager::canHandle(Command* cmd) {
     if(cmd->getType() != REQUEST_COMMAND) return false;
     RequestCommand* rCmd = dynamic_cast<RequestCommand*>(cmd);
     return isAvailable() && (rCmd->getRequestType() == ESCALATION || rCmd->getRequestType() == COMPLAINT);
 }
 
+/**
+ * @brief Processes manager-level request commands.
+ */
 void Manager::process(Command* cmd) {
     RequestCommand* rCmd = dynamic_cast<RequestCommand*>(cmd);
     if(rCmd) {
@@ -168,14 +223,29 @@ void Manager::process(Command* cmd) {
     }
 }
 
+/**
+ * @brief Handles escalation tracking for the manager.
+ */
 void Manager::handleEscalation() { numComplaints++; 
     std::cout << "Manager responds to escalation: \"We understand you're concerns, but we lowkey don't gaf :). \"";
 }
 
 // -------------------- Employee Factories --------------------
+/**
+ * @brief Creates a cashier instance.
+ */
 Employee* CashierFactory::createEmployee() { return new Cashier(); }
+/**
+ * @brief Creates a manager instance.
+ */
 Employee* ManagerFactory::createEmployee() { return new Manager(); }
+/**
+ * @brief Creates a caretaker instance.
+ */
 Employee* CaretakerFactory::createEmployee() { return new Caretaker(); }
+/**
+ * @brief Stores the greenhouse context on the employee.
+ */
 void Employee::setGreenhouse(GardenComponent* greenhousePtr) {
     greenhouse = greenhousePtr;
 }

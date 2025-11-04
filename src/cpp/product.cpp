@@ -1,13 +1,22 @@
+/**
+ * @file product.cpp
+ * @brief Implements product builders, decorator extensions, and helpers.
+ */
 #include "../headers/productBuilder.h"
 #include <stdexcept>
 #include <cstdlib> // for rand
 #include <utility>
 
 
-
+/**
+ * @brief Constructs a bouquet builder with the plants and greenhouse context.
+ */
 BouquetBuilder::BouquetBuilder(std::vector<Plant*> plants, GardenComponent* greenhouse)
     : Bob(std::move(plants), greenhouse) {}
 
+/**
+ * @brief Builds the bouquet chain by linking supplied plants.
+ */
 Product* BouquetBuilder::addPlant() {
   
     if (plants.empty()) return nullptr;
@@ -38,6 +47,9 @@ Product* BouquetBuilder::addPlant() {
     return bouquet;
 }
 
+/**
+ * @brief Applies appropriate container pricing for bouquet products.
+ */
 Product* BouquetBuilder::setContainer(Product* product) {
     if (!product) return nullptr;
 
@@ -51,6 +63,9 @@ Product* BouquetBuilder::setContainer(Product* product) {
     return product;
 }
 
+/**
+ * @brief Retrieves the finished bouquet product.
+ */
 Product* BouquetBuilder::getProduct() {
     Product* p = addPlant();
     return setContainer(p);
@@ -59,6 +74,9 @@ Product* BouquetBuilder::getProduct() {
 
 
 
+/**
+ * @brief Constructs a basic builder enforcing single-plant usage.
+ */
 BasicBuilder::BasicBuilder(std::vector<Plant*> plants, GardenComponent* greenhouse)
     : Bob(std::move(plants), greenhouse) {
 
@@ -67,6 +85,9 @@ BasicBuilder::BasicBuilder(std::vector<Plant*> plants, GardenComponent* greenhou
     }
 }
 
+/**
+ * @brief Adds the lone plant to the basic product and updates price.
+ */
 Product* BasicBuilder::addPlant() {
     if (plants.empty()) return nullptr;
     Plant* source = plants[0];
@@ -79,6 +100,9 @@ Product* BasicBuilder::addPlant() {
     return product;
 }
 
+/**
+ * @brief Adds default soil and price adjustment to the product.
+ */
 Product* Bob::addSoil(Product* product) {
     if (!product) return nullptr;
     product->incPrice(rand() % (15 - 5 + 1) + 5);
@@ -86,6 +110,9 @@ Product* Bob::addSoil(Product* product) {
     return product;
 }
 
+/**
+ * @brief Sets a simple container for the basic product.
+ */
 Product* BasicBuilder::setContainer(Product* product) {
     if (!product) return nullptr;
     product->incPrice(rand() % (20 - 5 + 1) + 5);
@@ -93,6 +120,9 @@ Product* BasicBuilder::setContainer(Product* product) {
     return product;
 }
 
+/**
+ * @brief Returns the fully constructed basic product.
+ */
 Product* BasicBuilder::getProduct() {
     return setContainer(addSoil(addPlant()));
 }
@@ -100,6 +130,9 @@ Product* BasicBuilder::getProduct() {
 
 
 
+/**
+ * @brief Replaces the product's plant with a cloned version of the supplied plant.
+ */
 void Product::setPlant(Plant* p) { 
     if (plant) {
         delete plant;
@@ -107,23 +140,35 @@ void Product::setPlant(Plant* p) {
     plant = new Plant(*p);
 }
 
+/**
+ * @brief Applies soil selection and reduces inventory accordingly.
+ */
 void Product::setSoil(const std::string& s) {
     soil = s;
     
      inventory.useItem(InventoryCategory::SOIL, s, 1);
 }
 
+/**
+ * @brief Applies container selection and reduces inventory accordingly.
+ */
 void Product::setContainer(const std::string& c) {
     container = c;
   
      inventory.useItem(InventoryCategory::CONTAINER, c, 1);
 }
 
+/**
+ * @brief Applies card selection and reduces inventory accordingly.
+ */
 void Product::setCard(const std::string& c) {
     card = c;
      inventory.useItem(InventoryCategory::CARD, c, 1);
 }
 
+/**
+ * @brief Applies wrapping selection and reduces inventory accordingly.
+ */
 void Product::setWrapping(const std::string& w) {
     wrapping = w;
      inventory.useItem(InventoryCategory::WRAPPER, w, 1);
@@ -132,6 +177,9 @@ void Product::setWrapping(const std::string& w) {
 
 
 
+/**
+ * @brief Calculates the total price of the bouquet chain.
+ */
 float Bouquet::getPrice() {
     if (bouquet && bouquet->getNext() != nullptr) {
         return price + bouquet->getNext()->getPrice();
@@ -143,6 +191,9 @@ float Bouquet::getPrice() {
 
 
 
+/**
+ * @brief Constructs a decorator around an existing product component.
+ */
 Decorator::Decorator(Product* component)
     : Product(component ? component->getPlant() : nullptr, nullptr,
               component ? component->getisMain() : false), component(component) {
@@ -157,6 +208,9 @@ Decorator::Decorator(Product* component)
     }
 }
 
+/**
+ * @brief Clears any plants still owned by the builder on destruction.
+ */
 Bob::~Bob() {
     // Ownership of plants is transferred to constructed Products/Bouquets.
     plants.clear();

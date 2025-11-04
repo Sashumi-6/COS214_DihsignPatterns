@@ -1,7 +1,17 @@
+/**
+ * @file inventory.cpp
+ * @brief Implements stock management for greenhouse supplies.
+ */
 #include "../headers/inventory.h"
 
+/**
+ * @brief Constructs the inventory bound to a greenhouse composite.
+ */
 Inventory::Inventory(GardenComponent *plants) : plants(plants) {}
 
+/**
+ * @brief Resolves the mutable map backing a category.
+ */
 std::map<std::string, int>& Inventory::mapForCategory(const InventoryCategory category) {
     switch (category) {
         case InventoryCategory::CARD : return cards;
@@ -13,6 +23,9 @@ std::map<std::string, int>& Inventory::mapForCategory(const InventoryCategory ca
     throw std::invalid_argument("NO Supporting Inventory Map For Category");
 }
 
+/**
+ * @brief Resolves the const map backing a category.
+ */
 const std::map<std::string, int>& Inventory::mapForCategory(const InventoryCategory category) const {
     switch (category) {
         case InventoryCategory::CARD : return cards;
@@ -24,6 +37,9 @@ const std::map<std::string, int>& Inventory::mapForCategory(const InventoryCateg
     throw std::invalid_argument("NO Supporting Inventory Map For Category");
 }
 
+/**
+ * @brief Adds stock to a specific category.
+ */
 bool Inventory::addStock(const InventoryCategory category, const std::string& item, int quantity) {
     if (quantity < 0) {
         return false;
@@ -38,6 +54,9 @@ bool Inventory::addStock(const InventoryCategory category, const std::string& it
 };
 
 
+/**
+ * @brief Consumes stock from a category.
+ */
 bool Inventory::useItem(const InventoryCategory category, const std::string& item, int quantity) {
     if (quantity < 0) {
         return false;
@@ -59,6 +78,9 @@ bool Inventory::useItem(const InventoryCategory category, const std::string& ite
 };
 
 
+/**
+ * @brief Checks whether an item exists within a category.
+ */
 bool Inventory::itemExists(const InventoryCategory category, const std::string& item) const {
     if (category  == InventoryCategory::PLANT) {
         //TODO :: Use plant composite to check if plant exists
@@ -69,6 +91,9 @@ bool Inventory::itemExists(const InventoryCategory category, const std::string& 
 };
 
 
+/**
+ * @brief Retrieves the current stock quantity for an item.
+ */
 int  Inventory::getQuantity(const InventoryCategory category, const std::string& item) const {
     if (category == InventoryCategory::PLANT) {
         //Todo :: Use plant composite to check quantity of plant

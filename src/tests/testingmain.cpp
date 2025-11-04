@@ -1,3 +1,7 @@
+/**
+ * @file testingmain.cpp
+ * @brief Contains doctest-based unit tests for products and plant behavior.
+ */
 // product_tests.cpp
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "../headers/productBuilder.h"
