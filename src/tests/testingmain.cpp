@@ -4,7 +4,6 @@
 #include "../headers/garden.h"
 #include "../headers/plant.h"
 #include "../headers/doctest.h"
-#include "../headers/productBuilder.h"
 #include "../headers/frontDesk.h"
 #include <stdexcept>
 #include <cstdlib>
@@ -13,12 +12,25 @@
 #include <memory>
 
 TEST_CASE("Product: setters, getters, and price operations") {
-    WaterLossStrategy* water = new LowWaterLoss();
-    SunlightStrategy* sunlight = new LowSunlightStrategy();
-    PlantState* state = new SeedlingState(nullptr);
+    auto* water = new LowWaterLoss();
+    auto* sunlight = new LowSunlightStrategy();
+    auto* state = new SeedlingState(nullptr);
     GardenSection greenhouse;
-    Plant plant("Rose", 10.0f, water, sunlight, state);
-    Product product(&plant, &greenhouse, true);
+    Plant* plant = new Plant("Rose", 10.0, water, sunlight, state);
+    Product product(plant, &greenhouse, true);
+
+    product.setSoil("Loam");
+    product.setContainer("Ceramic Pot");
+    product.setCard("Happy Birthday");
+    product.setWrapping("Ribbon");
+    product.incPrice(15.0f);
+
+    CHECK(product.getSoil() == "Loam");
+    CHECK(product.getContainer() == "Ceramic Pot");
+    CHECK(product.getCard() == "Happy Birthday");
+    CHECK(product.getWrapping() == "Ribbon");
+    CHECK(product.getPrice() == doctest::Approx(15.0f));
+}
 
 TEST_CASE("WaterLoss strategies return correct values") {
     LowWaterLoss low;

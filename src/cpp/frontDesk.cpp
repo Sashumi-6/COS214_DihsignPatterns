@@ -1,6 +1,5 @@
 #include "frontDesk.h"
-
-
+#include "Customer.h"
 
 void FrontDesk::maintain() {
     for (Employee* e : employees) {
@@ -107,5 +106,4 @@ T* FrontDesk::getAvailableEmployee() {
     }
     return nullptr;
 }
-
 
