@@ -1,5 +1,33 @@
 #include "employee.h"
 #include "command.h"
+#include "plantDatabase.h"
+#include "iterator.h"
+#include <memory>
+
+namespace {
+
+Plant* findAvailablePlant(GardenComponent* greenhouse, const std::string& name) {
+    if (!greenhouse) {
+        return nullptr;
+    }
+
+    std::unique_ptr<Iterator<GardenComponent>> iter(greenhouse->createIterator());
+    if (!iter) {
+        return nullptr;
+    }
+
+    for (GardenComponent* node = iter->first(); node != nullptr; node = iter->next()) {
+        if (auto* plant = dynamic_cast<Plant*>(node)) {
+            if (plant->getName() == name && plant->canSell()) {
+                return plant;
+            }
+        }
+    }
+
+    return nullptr;
+}
+
+} // namespace
 
 // -------------------- Cashier --------------------
 bool Cashier::canHandle(Command* cmd) {
@@ -63,10 +91,12 @@ Product* Cashier::construct(const ProductRequest& req, GardenComponent* greenhou
 std::vector<Plant*> Cashier::buildPlantVector(const std::vector<std::string>& names) {
     std::vector<Plant*> result;
     for (const std::string& name : names) {
-        Plant* p = greenhouse->findMature(name); 
-        if(p)
-            result.push_back(p);
-        else std::cout << "Sorry! We couldn't fulfil your order with the " << name << " plant\n";
+        Plant* plant = findAvailablePlant(greenhouse, name);
+        if (plant) {
+            result.push_back(plant);
+        } else {
+            std::cout << "Sorry! We couldn't fulfil your order with the " << name << " plant\n";
+        }
     }
     return result;
 }

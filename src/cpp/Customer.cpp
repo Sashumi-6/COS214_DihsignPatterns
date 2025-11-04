@@ -110,6 +110,11 @@ RequestCommand Customer::createCustomerQuery()
 
     // water = 1 and low light is fern
 
+    auto invalidSelection = []() {
+        std::cout << "Not one of the number options, please choose again or cancel your request for assistance \n";
+        return RequestCommand(RequestType::COMPLAINT, "Invalid selection");
+    };
+
     if (waterStrategy == 0)
     {
         if (sunStrategy == 0)
@@ -132,9 +137,7 @@ RequestCommand Customer::createCustomerQuery()
         }
         else
         {
-
-            std::cout << "Not one of the number options, please choose again or cancel your request for assistance \n";
-                return;
+            return invalidSelection();
         }
     }
     else if (waterStrategy == 1)
@@ -159,9 +162,7 @@ RequestCommand Customer::createCustomerQuery()
         }
         else
         {
-
-            std::cout << "Not one of the number options, please choose again or cancel your request for assistance \n";
-                return;
+            return invalidSelection();
         }
     }
 
@@ -187,16 +188,13 @@ RequestCommand Customer::createCustomerQuery()
         }
         else
         {
-
-            std::cout << "Not one of the number options, please choose again or cancel your request for assistance \n";
-                return;
+            return invalidSelection();
         }
     }
     else
     {
 
-        std::cout << "Not one of the number options, please choose again or cancel your request for assistance \n";
-        return;
+        return invalidSelection();
     }
 
     return RequestCommand(a);
@@ -207,7 +205,7 @@ Customer *Customer::createCustomerOrder()
 
     std::cout << "Here's the plant catalogue with ach plant's water and sun needs:\n";
 
-    
+    return this;
 
     // Customer *Customer::createCustomerOrder(std::string message, bool wantsC, bool wantsW)
         // ProductRequest customerOrder = ProductRequest();

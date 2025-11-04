@@ -1,31 +1,34 @@
 #include "../headers/productBuilder.h"
 #include <stdexcept>
 #include <cstdlib> // for rand
+#include <utility>
 
 
 
 BouquetBuilder::BouquetBuilder(std::vector<Plant*> plants, GardenComponent* greenhouse)
-    : Bob(plants, greenhouse) {
-    this->plants = plants;
-}
+    : Bob(std::move(plants), greenhouse) {}
 
 Product* BouquetBuilder::addPlant() {
   
     if (plants.empty()) return nullptr;
 
-    Bouquet* bouquet = new Bouquet(plants[0], greenhouse, true);
-    bouquet->incPrice(plants[0]->getPrice());
-    greenhouse->remove(plants[0]);
+    Plant* first = plants[0];
+    Bouquet* bouquet = new Bouquet(first, greenhouse, true);
+    bouquet->incPrice(first->getPrice());
+    greenhouse->remove(first);
+    plants[0] = nullptr;
 
     Bouquet* node = bouquet;
     int i = 1;
 
     while (node != nullptr) {
         if (node->getNext() == nullptr && i < static_cast<int>(plants.size())) {
-            node->setNext(new Bouquet(plants[i], greenhouse, false));  
-            greenhouse->remove(plants[i]);
+            Plant* current = plants[i];
+            node->setNext(new Bouquet(current, greenhouse, false));  
+            greenhouse->remove(current);
             node = node->getNext();
-            node->incPrice(plants[i]->getPrice());
+            node->incPrice(current->getPrice());
+            plants[i] = nullptr;
             i++;
         } else {
             node = nullptr;
@@ -57,21 +60,22 @@ Product* BouquetBuilder::getProduct() {
 
 
 BasicBuilder::BasicBuilder(std::vector<Plant*> plants, GardenComponent* greenhouse)
-    : Bob(plants, greenhouse) {
+    : Bob(std::move(plants), greenhouse) {
 
     if (plants.size() > 1) {
         throw std::logic_error("Basic Builder can only take 1 plant");
-    }
-
-    if (!plants.empty()) {
-        this->plants.push_back(plants[0]);
     }
 }
 
 Product* BasicBuilder::addPlant() {
     if (plants.empty()) return nullptr;
-    Product* product = new Product(plants[0], greenhouse, true);
-    greenhouse->remove(plants[0]);
+    Plant* source = plants[0];
+    Product* product = new Product(source, greenhouse, true);
+    if (source) {
+        product->incPrice(source->getPrice());
+    }
+    greenhouse->remove(source);
+    plants[0] = nullptr;
     return product;
 }
 
@@ -106,23 +110,23 @@ void Product::setPlant(Plant* p) {
 void Product::setSoil(const std::string& s) {
     soil = s;
     
-     Inventory.useItem(InventoryCategory::SOIL, s, 1);
+     inventory.useItem(InventoryCategory::SOIL, s, 1);
 }
 
 void Product::setContainer(const std::string& c) {
     container = c;
   
-     Inventory.useItem(InventoryCategory::CONTAINER, c, 1);
+     inventory.useItem(InventoryCategory::CONTAINER, c, 1);
 }
 
 void Product::setCard(const std::string& c) {
     card = c;
-     Inventory.useItem(InventoryCategory::CARD, c, 1);
+     inventory.useItem(InventoryCategory::CARD, c, 1);
 }
 
 void Product::setWrapping(const std::string& w) {
     wrapping = w;
-     Inventory.useItem(InventoryCategory::WRAPPER, w, 1);
+     inventory.useItem(InventoryCategory::WRAPPER, w, 1);
 }
 
 
@@ -154,11 +158,6 @@ Decorator::Decorator(Product* component)
 }
 
 Bob::~Bob() {
-    // No dynamic memory to clean up in Bob itself
-    for (auto plant : plants) {
-        if(plant){
-            delete plant;
-            plant = nullptr;
-        }
-    }
+    // Ownership of plants is transferred to constructed Products/Bouquets.
+    plants.clear();
 }

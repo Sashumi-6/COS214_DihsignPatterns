@@ -2,7 +2,7 @@
 #define FRONTDESK_H
 
 #include <vector>
-#include "Customer.h"
+#include <string>
 #include "employee.h"
 #include "command.h"
 #include "order.h"
