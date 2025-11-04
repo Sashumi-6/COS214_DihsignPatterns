@@ -1,15 +1,15 @@
-#pragma once
-#include <vector>
-#include <string>
-#include "command.h"
+#ifndef PLANTDATABASE_H
+#define PLANTDATABASE_H
+
+#include "command.h"  // This will include the enum definitions
+// OR forward declare if you don't want the full include:
+// enum class SunlightPreference;
+// enum class WaterPreference;
 
 struct PlantInfo {
-    std::string name;
     SunlightPreference sunlight;
     WaterPreference water;
+    // ... other members
 };
 
-class PlantDatabase {
-public:
-    static const std::vector<PlantInfo>& getAllPlants();
-};
+#endif

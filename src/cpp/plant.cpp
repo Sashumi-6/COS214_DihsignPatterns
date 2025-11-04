@@ -83,9 +83,7 @@ void Plant::tryGrow() {
         this->grow();
     }
 }
-double LowWaterLoss::loseWater() {
-    return 0.15 ;
-}
+ 
 
 double Plant:: getPrice(){return price;}
 

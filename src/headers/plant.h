@@ -83,8 +83,8 @@ class Plant : public GardenComponent {
     void setState(PlantState* newState);
     void addWater(double amount);
         // //TODO explain this
-        // SunlightPreference getSunlightPreference() const;
-        // WaterPreference getWaterPreference() const;
+         SunlightPreference getSunlightPreference() const;
+         WaterPreference getWaterPreference() const;
         std::string getName() const { return name; }
         double getPrice();
     bool isLeaf() const override;
