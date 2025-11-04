@@ -2,8 +2,9 @@
 
 #include "../headers/plant.h"
 #include <stdexcept>
+//planstate->plant = null;
 Plant::Plant(std::string  name , const double price , WaterLossStrategy* waterLossStrategy , SunlightStrategy* sunlightStrategy , PlantState* state) : waterLossStrategy(waterLossStrategy) , sunlightStrategy(sunlightStrategy) , location(PlantLocation::INSIDE) , name(std::move(name)) , state(state) , price(price) , waterLevel(1), age(0)  {
-
+    state->setPlant(this); 
 }
 void Plant::waterPlant(){
     state->handleWaterPlant() ;
@@ -111,7 +112,12 @@ MatureState::MatureState(Plant* plant) : PlantState(plant) {}
 
 DeadState::DeadState(Plant* plant) : PlantState(plant) {}
 
-void PlantState::setPlant(Plant* newPlant) { this->plant = newPlant; }
+void PlantState::setPlant(Plant* newPlant) { 
+    if(this->plant){
+        return;
+    }
+    this->plant = newPlant; 
+}
 
 void SeedlingState::handleExposeToSunlight() {
     if (plant == nullptr) {
