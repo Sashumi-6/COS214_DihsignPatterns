@@ -6,6 +6,8 @@ Customer::Customer()
 
     int option;
     bool stay = true;
+    std::cout << "Good day! Please enter your name:\n";
+    std::cin >> name;
 
     while (stay)
     {
@@ -26,7 +28,7 @@ Customer::Customer()
 
             if (stay == 0)
             {
-                
+
                 std::cout << "Thank you for visiting, have a good day!\n";
             }
             else if (stay == 1)
@@ -37,7 +39,7 @@ Customer::Customer()
 
         else if (option == 2) // query assistance
         {
-            
+
             order = false;
 
             createCustomerQuery();
@@ -51,7 +53,7 @@ Customer::Customer()
 
             if (stay == 0)
             {
-                
+
                 std::cout << "Thank you for visiting, have a good day!\n";
             }
             else if (stay == 1)
@@ -84,8 +86,6 @@ Customer::Customer()
 
 void Customer::createCustomerQuery()
 {
-
-    std::cout << "check!\n";
 
     int waterStrategy;
     int sunStrategy;
@@ -222,32 +222,39 @@ void Customer::createCustomerQuery()
             exitLoop = false;
         }
         else
+        {
+
+            std::cout << "Not one of the number options, please choose again or cancel your request for assistance \n";
+            std::cout << "If you want to choose again, enter 1\n";
+            std::cout << "If you want to cancel your request, enter 0\n";
+
+            std::cin >> exitInWater;
+
+            if (exitInWater == 1)
             {
+                exitLoop = true;
+            }
 
-                std::cout << "Not one of the number options, please choose again or cancel your request for assistance \n";
-                std::cout << "If you want to choose again, enter 1\n";
-                std::cout << "If you want to cancel your request, enter 0\n";
-
-                std::cin >> exitInWater;
-
-                if (exitInWater == 1)
-                {
-                    exitLoop = true;
-                }
-
-                else
-                {
-                    return;
-                }
+            else
+            {
+                return;
+            }
         }
-        exitLoop = false;
-    }
-    while (exitLoop);
+        
+    } while (exitLoop);
 }
 
+Customer *Customer::createCustomerOrder(){
 
-Customer* Customer::createCustomerOrder(){
+    //Customer *Customer::createCustomerOrder(std::string message, bool wantsC, bool wantsW)
+    // ProductRequest customerOrder = ProductRequest();
+    // customerOrder.cardMessage = message;
+    // customerOrder.wantsCard = wantsC;
+    // customerOrder.wantsWrapping= wantsW;
 
-
+    // std::vector<Plant*> plts = std::vector<Plant*>();
     
+    // for(int i = 0; i < records.size(); i++){
+    //     Plant toAdd = new Plant(records.element(i).name, )
+    // }
 }

@@ -12,7 +12,7 @@ class Customer{
     private:
     bool order; // if true then customer wants order, if false, they want to ask a question
     std::string name;
-    //std::vector<ProductRequest>& requests;
+    std::vector<ProductRequest>& requests;
 
     public:
     Customer();
