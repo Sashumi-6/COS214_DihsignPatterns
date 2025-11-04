@@ -207,120 +207,17 @@ Customer *Customer::createCustomerOrder()
 
     std::cout << "Here's the plant catalogue with ach plant's water and sun needs:\n";
 
-    std::cout << "How much water does this plant need?\n";
-    std::cout << "Low water: Enter 0\n";
-    std::cout << "Medium water: Enter 1\n";
-    std::cout << "High water: Enter 2\n";
-
-    std::cin >> waterStrategy;
-
-    std::cout << "How much sun does this plant need?\n";
-    std::cout << "Low sun: Enter 0\n";
-    std::cout << "Medium sun: Enter 1\n";
-    std::cout << "High sun: Enter 2\n";
-
-    std::cin >> sunStrategy;
-
-    // water = 1 and low light is fern
-
-    if (waterStrategy == 0)
-    {
-        if (sunStrategy == 0)
-        {
-            std::cout << "Your recommended plant is a hosta!\n";
-            a.sunlight = SunlightPreference::LOW;
-            a.water = WaterPreference::LOW;
-        }
-        else if (sunStrategy == 1)
-        {
-            std::cout << "Your recommended plant is a poppy!\n";
-            a.sunlight = SunlightPreference::MEDIUM;
-            a.water = WaterPreference::LOW;
-        }
-        else if (sunStrategy == 2)
-        {
-            std::cout << "Your recommended plant is a cactus!\n";
-            a.sunlight = SunlightPreference::HIGH;
-            a.water = WaterPreference::LOW;
-        }
-        else
-        {
-
-            std::cout << "Not one of the number options, please choose again or cancel your request for assistance \n";
-                return;
-        }
-    }
-    else if (waterStrategy == 1)
-    {
-        if (sunStrategy == 0)
-        {
-            std::cout << "Your recommended plant is a fern!\n";
-            a.sunlight = SunlightPreference::LOW;
-            a.water = WaterPreference::MEDIUM;
-        }
-        else if (sunStrategy == 1)
-        {
-            std::cout << "Your recommended plant is a spider plant!\n";
-            a.sunlight = SunlightPreference::MEDIUM;
-            a.water = WaterPreference::MEDIUM;
-        }
-        else if (sunStrategy == 2)
-        {
-            std::cout << "Your recommended plant is a gardenia!\n";
-            a.sunlight = SunlightPreference::HIGH;
-            a.water = WaterPreference::MEDIUM;
-        }
-        else
-            {
-
-            std::cout << "Not one of the number options, please choose again or cancel your request for assistance \n";
-                return;
-        }
-    }
-
-    else if (waterStrategy == 2)
-    {
-        if (sunStrategy == 0)
-        {
-            std::cout << "Your recommended plant is a lily of the valley!\n";
-            a.sunlight = SunlightPreference::LOW;
-            a.water = WaterPreference::HIGH;
-        }
-        else if (sunStrategy == 1)
-        {
-            std::cout << "Your recommended plant is a pussy willow!\n";
-            a.sunlight = SunlightPreference::MEDIUM;
-            a.water = WaterPreference::HIGH;
-        }
-        else if (sunStrategy == 2)
-        {
-            std::cout << "Your recommended plant is a basil!\n";
-            a.sunlight = SunlightPreference::HIGH;
-            a.water = WaterPreference::HIGH;
-        }
-        else
-        {
-
-            std::cout << "Not one of the number options, please choose again or cancel your request for assistance \n";
-                return;
-        }
-    }
-    else
-    {
-
-        std::cout << "Not one of the number options, please choose again or cancel your request for assistance \n";
-        return;
-    }
+    
 
     // Customer *Customer::createCustomerOrder(std::string message, bool wantsC, bool wantsW)
-        ProductRequest customerOrder = ProductRequest();
-        customerOrder.cardMessage = message;
-        customerOrder.wantsCard = wantsC;
-        customerOrder.wantsWrapping= wantsW;
+        // ProductRequest customerOrder = ProductRequest();
+        // customerOrder.cardMessage = message;
+        // customerOrder.wantsCard = wantsC;
+        // customerOrder.wantsWrapping= wantsW;
 
     // std::vector<Plant*> plts = std::vector<Plant*>();
 
     // for(int i = 0; i < records.size(); i++){
     //     Plant toAdd = new Plant(records.element(i).name, )
-    // }
+    
 }
