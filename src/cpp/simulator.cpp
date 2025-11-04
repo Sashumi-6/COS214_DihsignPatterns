@@ -28,10 +28,10 @@ void Simulation::setWeather() {
     // what the dog doin
 }
 
-bool Simulation::initInventory() {
-    // init the inventory
-}
+// bool Simulation::initInventory() {
+//     // init the inventory
+// }
 
-void Simulation::addPlants(std::vector<Plant*> plants) {
+// void Simulation::addPlants(std::vector<Plant*> plants) {
 
-}
+// }
