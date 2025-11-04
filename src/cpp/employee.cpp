@@ -3,19 +3,32 @@
 
 // -------------------- Cashier --------------------
 bool Cashier::canHandle(Command* cmd) {
-    if(cmd->getType() != REQUEST_COMMAND) return false;
+    if(cmd->getType() != REQUEST_COMMAND || !isAvailable()) return false;
     RequestCommand* rCmd = dynamic_cast<RequestCommand*>(cmd);
     if(!rCmd) return false;
-    return rCmd->getRequestType() == COMPLAINT; // extend as needed
+    return rCmd->getRequestType() == COMPLAINT || rCmd->getRequestType() == ADVICE; // extend as needed
 }
 
 void Cashier::process(Command* cmd) {
     RequestCommand* rCmd = dynamic_cast<RequestCommand*>(cmd);
     if(rCmd) {
         std::cout << "Cashier handling request: " << rCmd->getMessage() << "\n";
+        if(rCmd->getRequestType() == COMPLAINT) {
+            std::cout << "Cashier responds to complaint: \"We understand your concerns, but have you considered taking your head out of your ass?\"";
+        }else if(rCmd->getRequestType() == ADVICE){
+            AdviceCriteria crit = rCmd->getCriteria();
+
+        std::cout << "Cashier providing plant advice:\n";
+
+            for (const auto& plant : PlantDatabase::getAllPlants()) {
+                if ((crit.sunlight == SunlightPreference::UNKNOWN || plant.sunlight == crit.sunlight) &&
+                    (crit.water == WaterPreference::UNKNOWN || plant.water == crit.water)) {
+                    std::cout << " - " << plant.name << "\n";
+                }
+            }
+        }
     }
 }
-//TODO DISCUSS THIS PROPERLY
 Product* Cashier::construct(const ProductRequest& req, GardenComponent* greenhouse) {//plants are added upon Builder construction
     Bob* builder = nullptr;
     if (req.plants.size() > 1) {
@@ -27,7 +40,7 @@ Product* Cashier::construct(const ProductRequest& req, GardenComponent* greenhou
     //error handling if not enough plants for bouquet
     // builder->addPlant();
     //builder->getProduct();
-    
+
     Product* product = builder->getProduct();
     
     if (req.wantsCard) {
@@ -47,6 +60,7 @@ void Cashier::removeItem(Product* product) { order->removeProduct(product); }
 
 // -------------------- Caretaker --------------------
 bool Caretaker::canHandle(Command* cmd) {
+    //Caretaker can't really handle complaints
     CommandType t = cmd->getType();
     return isAvailable() && (t == PLANT_COMMAND || t == MAINTENANCE_COMMAND);
 }
@@ -92,7 +106,7 @@ void Caretaker::plantNewPlant(Plant* plant) {
 bool Manager::canHandle(Command* cmd) {
     if(cmd->getType() != REQUEST_COMMAND) return false;
     RequestCommand* rCmd = dynamic_cast<RequestCommand*>(cmd);
-    return rCmd->getRequestType() == ESCALATION || rCmd->getRequestType() == COMPLAINT;
+    return isAvailable() && (rCmd->getRequestType() == ESCALATION || rCmd->getRequestType() == COMPLAINT);
 }
 
 void Manager::process(Command* cmd) {
@@ -103,7 +117,9 @@ void Manager::process(Command* cmd) {
     }
 }
 
-void Manager::handleEscalation() { numComplaints++; /* TODO do anything else? output what happened? */ }
+void Manager::handleEscalation() { numComplaints++; 
+    std::cout << "Manager responds to escalation: \"We understand you're concerns, but we lowkey don't gaf :). \"";
+}
 
 // -------------------- Employee Factories --------------------
 Employee* CashierFactory::createEmployee() { return new Cashier(); }
