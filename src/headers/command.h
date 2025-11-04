@@ -11,6 +11,7 @@ enum class MaintenanceType {
     WATER,
     MOVE
 };
+
 enum class SunlightPreference { UNKNOWN, LOW, MEDIUM, HIGH };
 enum class WaterPreference { UNKNOWN, LOW, MEDIUM, HIGH };
 
@@ -45,10 +46,10 @@ class PlantCommand : public Command {
 
 //Sender -> Front Desk, Receiver -> Caretaker
 
-enum class MaintenanceType {
-    WATER,
-    MOVE
-};
+// enum class MaintenanceType {
+//     WATER,
+//     MOVE
+// };
 class Maintenance : public Command {
     private:
     GardenComponent* target;

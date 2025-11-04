@@ -251,3 +251,7 @@ Customer* Customer::createCustomerOrder(){
 
     
 }
+
+std::string Customer::getName(){
+    return name;
+}
