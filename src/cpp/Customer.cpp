@@ -205,9 +205,7 @@ RequestCommand Customer::createCustomerQuery()
 Customer *Customer::createCustomerOrder()
 {
 
-    
-
-    std::cout << "Please Describe the Plant You are Looking For:\n";
+    std::cout << "Here's the plant catalogue with ach plant's water and sun needs:\n";
 
     std::cout << "How much water does this plant need?\n";
     std::cout << "Low water: Enter 0\n";
