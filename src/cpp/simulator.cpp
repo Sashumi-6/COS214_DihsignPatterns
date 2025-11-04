@@ -4,7 +4,7 @@ Simulation::Simulation(int numDays) : numDays(numDays) {
     // grab some vector of customers or something
     // then we will for each customer
     // addCustomer()
-    initInventory();
+    // initInventory();
 
     // grab vector of plants and then init the plants
     // addPlants()
