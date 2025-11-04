@@ -15,20 +15,20 @@ struct ProductRequest{
     std::string cardMessage = "";
 };
 
+
 class Customer;
 class FrontDesk {
     public:
         void query();
         void plant();
-        void maintain();    // bool or void?
-        bool addCommand(Command* cmd);
-        void addEmployee();
-        bool addPlant(Plant* plant, std::string section);
-        //void checkSpecials(Customer* customer);
-        bool executeAllCommands();
+        void maintain(); 
+        void addCommand(Command* cmd);
+        void addEmployee(Employee* emp);
+        void addPlant(Plant* plant, GardenSection* section);
+        void  executeAllCommands();
         template <typename T>
         T* getAvailableEmployee();
-        bool pay(float amountPaid);
+        void pay(Order* currentOrder, Customer* c);
         //TODO return type??
         bool placeOrder(std::vector<ProductRequest>& reqs, Customer* c);
 
