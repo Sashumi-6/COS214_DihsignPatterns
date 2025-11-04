@@ -6,6 +6,8 @@ Customer::Customer()
 
     int option;
     bool stay = true;
+    std::cout << "Good day! Please enter your name:\n";
+    std::cin >> name;
 
     while (stay)
     {
@@ -26,7 +28,7 @@ Customer::Customer()
 
             if (stay == 0)
             {
-                
+
                 std::cout << "Thank you for visiting, have a good day!\n";
             }
             else if (stay == 1)
@@ -37,7 +39,7 @@ Customer::Customer()
 
         else if (option == 2) // query assistance
         {
-            
+
             order = false;
 
             createCustomerQuery();
@@ -51,7 +53,7 @@ Customer::Customer()
 
             if (stay == 0)
             {
-                
+
                 std::cout << "Thank you for visiting, have a good day!\n";
             }
             else if (stay == 1)
@@ -84,8 +86,6 @@ Customer::Customer()
 
 RequestCommand Customer::createCustomerQuery()
 {
-
-    std::cout << "check!\n";
 
     int waterStrategy;
     int sunStrategy;

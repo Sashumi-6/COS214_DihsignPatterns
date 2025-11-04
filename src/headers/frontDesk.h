@@ -15,6 +15,7 @@ struct ProductRequest{
     std::string cardMessage = "";
 };
 
+
 class Customer;
 class FrontDesk {
     public:
