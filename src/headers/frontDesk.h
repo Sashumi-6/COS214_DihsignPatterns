@@ -9,7 +9,7 @@
 
 //This defines what exactly the customer wants in their specific product within an order
 struct ProductRequest{
-    std::vector<std::string> plantNames;
+    std::vector<Plant*> plants;
     bool wantsWrapping = false;
     bool wantsCard = false;
     std::string cardMessage = "";
@@ -34,7 +34,6 @@ class FrontDesk {
 
     private:
         std::vector<Employee*> employees;
-        Employee* activeEmployee; 
         std::vector<Command*> commands;
         Order* currentOrder;
         //pointer to Greenhouse object of the system
