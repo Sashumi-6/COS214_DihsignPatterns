@@ -9,7 +9,7 @@
 
 //This defines what exactly the customer wants in their specific product within an order
 struct ProductRequest{
-    std::vector<Plant*> plants;
+    std::vector<std::string> plantNames;
     bool wantsWrapping = false;
     bool wantsCard = false;
     std::string cardMessage = "";

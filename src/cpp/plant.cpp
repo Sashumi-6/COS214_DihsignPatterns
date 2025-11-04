@@ -62,19 +62,19 @@ void Plant::setState(PlantState* newState) {
     this->state = newState;
 }
 
-SunlightPreference Plant::getSunlightPreference() const {
-    if (dynamic_cast<LowSunlightStrategy*>(sunlightStrategy)) return SunlightPreference::LOW;
-    if (dynamic_cast<MedSunlightStrategy*>(sunlightStrategy)) return SunlightPreference::MEDIUM;
-    if (dynamic_cast<HighSunlightStrategy*>(sunlightStrategy)) return SunlightPreference::HIGH;
-    return SunlightPreference::UNKNOWN;
-}
+// SunlightPreference Plant::getSunlightPreference() const {
+//     if (dynamic_cast<LowSunlightStrategy*>(sunlightStrategy)) return SunlightPreference::LOW;
+//     if (dynamic_cast<MedSunlightStrategy*>(sunlightStrategy)) return SunlightPreference::MEDIUM;
+//     if (dynamic_cast<HighSunlightStrategy*>(sunlightStrategy)) return SunlightPreference::HIGH;
+//     return SunlightPreference::UNKNOWN;
+// }
 
-WaterPreference Plant::getWaterPreference() const {
-    if (dynamic_cast<LowWaterLoss*>(waterLossStrategy)) return WaterPreference::LOW;
-    if (dynamic_cast<MedWaterLoss*>(waterLossStrategy)) return WaterPreference::MEDIUM;
-    if (dynamic_cast<HighWaterLoss*>(waterLossStrategy)) return WaterPreference::HIGH;
-    return WaterPreference::UNKNOWN;
-}
+// WaterPreference Plant::getWaterPreference() const {
+//     if (dynamic_cast<LowWaterLoss*>(waterLossStrategy)) return WaterPreference::LOW;
+//     if (dynamic_cast<MedWaterLoss*>(waterLossStrategy)) return WaterPreference::MEDIUM;
+//     if (dynamic_cast<HighWaterLoss*>(waterLossStrategy)) return WaterPreference::HIGH;
+//     return WaterPreference::UNKNOWN;
+// }
 
 void Plant::tryGrow() {
     
