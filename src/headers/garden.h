@@ -27,7 +27,7 @@ class GardenComponent {
     virtual bool isLeaf() const = 0;
 };
 
-class GardenSection : public GardenComponent {
+class GardenSection : public GardenComponent { ///TODO THIS IS JUST HERE FOR TESTING PLEASE CHANGE!!!!!!!!!!! 
   public:
     void waterPlant() override;
     void exposeToSunlight() override;

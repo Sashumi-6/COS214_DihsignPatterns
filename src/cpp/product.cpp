@@ -1,33 +1,36 @@
 #include "../headers/productBuilder.h"
+#include <stdexcept>
+#include <cstdlib> // for rand
+#include <utility>
 
-/// ////////////BouquetBuilder
-BouquetBuilder::BouquetBuilder(std::vector<Plant*> plants,GardenComponent* greenhouse) : Bob(plants, greenhouse) {
-    for(int i = 0; i < plants.size(); i++) {
-        delete this->plants[i];
-        this->plants[i] = nullptr;
-    }
-    plants.clear();
 
-    for(int j = 0; j < plants.size(); j++) {
-        this->plants.push_back(plants[j]);
-    }
 
-}
+BouquetBuilder::BouquetBuilder(std::vector<Plant*> plants, GardenComponent* greenhouse)
+    : Bob(std::move(plants), greenhouse) {}
 
-Product* BouquetBuilder::addPlant(){
-    Bouquet* bouquet = new Bouquet(plants[0], greenhouse);
-    //TODO remove plant from greenhouse
-    greenhouse->remove(plants[0]);
+Product* BouquetBuilder::addPlant() {
+  
+    if (plants.empty()) return nullptr;
+
+    Plant* first = plants[0];
+    Bouquet* bouquet = new Bouquet(first, greenhouse, true);
+    bouquet->incPrice(first->getPrice());
+    greenhouse->remove(first);
+    plants[0] = nullptr;
+
     Bouquet* node = bouquet;
     int i = 1;
-    while(node != nullptr){
-        if(node->getNext() == nullptr && i < plants.size()){
-            node->setNext(new Bouquet(plants[i], greenhouse));
-            greenhouse->remove(plants[i]);
+
+    while (node != nullptr) {
+        if (node->getNext() == nullptr && i < static_cast<int>(plants.size())) {
+            Plant* current = plants[i];
+            node->setNext(new Bouquet(current, greenhouse, false));  
+            greenhouse->remove(current);
             node = node->getNext();
+            node->incPrice(current->getPrice());
+            plants[i] = nullptr;
             i++;
-        }
-        else{
+        } else {
             node = nullptr;
         }
     }
@@ -35,83 +38,126 @@ Product* BouquetBuilder::addPlant(){
     return bouquet;
 }
 
-Product* BouquetBuilder::setContainer(Product* product){
-    product->setContainer("Bouquet Container");
+Product* BouquetBuilder::setContainer(Product* product) {
+    if (!product) return nullptr;
+
+    if (product->getisMain()) {
+        product->incPrice(rand() % (12 - 5 + 1) + 5);
+        product->setContainer("Bouquet Container");
+    } else {
+        product->setContainer("");
+    }
+
     return product;
 }
 
-Product* BouquetBuilder::getProduct(){
-    return setContainer(addPlant());
+Product* BouquetBuilder::getProduct() {
+    Product* p = addPlant();
+    return setContainer(p);
 }
 
 
-//BasicBuilder
-BasicBuilder::BasicBuilder(std::vector<Plant*> plants, GardenComponent* greenhouse) : Bob(plants, greenhouse) {
-    if(plants.size() > 1){
-        std::logic_error("Basic Builder can only take 1 plant");
-    }
-    else{
-        this->plants.push_back(plants[0]);
-    }
 
+
+BasicBuilder::BasicBuilder(std::vector<Plant*> plants, GardenComponent* greenhouse)
+    : Bob(std::move(plants), greenhouse) {
+
+    if (plants.size() > 1) {
+        throw std::logic_error("Basic Builder can only take 1 plant");
+    }
 }
 
-Product* BasicBuilder::addPlant(){
-    Product* product = new Product(plants[0],greenhouse);
-    greenhouse->remove(plants[0]);
+Product* BasicBuilder::addPlant() {
+    if (plants.empty()) return nullptr;
+    Plant* source = plants[0];
+    Product* product = new Product(source, greenhouse, true);
+    if (source) {
+        product->incPrice(source->getPrice());
+    }
+    greenhouse->remove(source);
+    plants[0] = nullptr;
     return product;
 }
 
-Product* BasicBuilder::addSoil(Product* product){
+Product* Bob::addSoil(Product* product) {
+    if (!product) return nullptr;
+    product->incPrice(rand() % (15 - 5 + 1) + 5);
     product->setSoil("Basic Soil");
     return product;
 }
 
-
-Product* BasicBuilder::setContainer(Product* product){
+Product* BasicBuilder::setContainer(Product* product) {
+    if (!product) return nullptr;
+    product->incPrice(rand() % (20 - 5 + 1) + 5);
     product->setContainer("Basic Container");
     return product;
 }
 
-Product* BouquetBuilder::getProduct(){
+Product* BasicBuilder::getProduct() {
     return setContainer(addSoil(addPlant()));
 }
 
-/////////////////PRODUCT
-void Product::setPlant(Plant* p){ // TODO add to UML
-            if(plant){
-                delete plant;
-            }
-            plant = new Plant(*p);
-            //TODO add remove plant functionality 
-        }
 
 
-void Product::setSoil(const std::string& s){
-        soil = s;
-        Inventory.useItem(InventoryCategory::SOIL, s, 1);
-        }
 
-        void Product::setContainer(const std::string& c){
-            container = c;
-            Inventory.useItem(InventoryCategory::CONTAINER, c, 1);
-        }
+void Product::setPlant(Plant* p) { 
+    if (plant) {
+        delete plant;
+    }
+    plant = new Plant(*p);
+}
 
-        void Product::setCard(const std::string& c){
-            card = c;
-            Inventory.useItem(InventoryCategory::CARD, c, 1);
-        }
+void Product::setSoil(const std::string& s) {
+    soil = s;
+    
+     inventory.useItem(InventoryCategory::SOIL, s, 1);
+}
 
-        void Product::setWrapping(const std::string& w){
-            wrapping = w;
-            Inventory.useItem(InventoryCategory::WRAPPER, w, 1);
-        }
+void Product::setContainer(const std::string& c) {
+    container = c;
+  
+     inventory.useItem(InventoryCategory::CONTAINER, c, 1);
+}
 
-//Decorator
-Decorator::Decorator(Product* component) : Product(component ? component->getPlant() : nullptr, nullptr), component(component) {
+void Product::setCard(const std::string& c) {
+    card = c;
+     inventory.useItem(InventoryCategory::CARD, c, 1);
+}
+
+void Product::setWrapping(const std::string& w) {
+    wrapping = w;
+     inventory.useItem(InventoryCategory::WRAPPER, w, 1);
+}
+
+
+
+
+float Bouquet::getPrice() {
+    if (bouquet && bouquet->getNext() != nullptr) {
+        return price + bouquet->getNext()->getPrice();
+    } else {
+        return price;
+    }
+}
+
+
+
+
+Decorator::Decorator(Product* component)
+    : Product(component ? component->getPlant() : nullptr, nullptr,
+              component ? component->getisMain() : false), component(component) {
+
     if (component && component->getPlant()) {
-        this->plant = new Plant(*component->getPlant());
+        this->soil = component->getSoil();
+        this->container = component->getContainer();
+        this->card = component->getCard();
+        this->wrapping = component->getWrapping();
     } else {
         this->plant = nullptr;
     }
+}
+
+Bob::~Bob() {
+    // Ownership of plants is transferred to constructed Products/Bouquets.
+    plants.clear();
 }

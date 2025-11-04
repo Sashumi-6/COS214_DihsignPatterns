@@ -1,10 +1,12 @@
-#include "command.h"
-#include "employee.h"
+#include "../headers/command.h"
+#include "../headers/employee.h"
+
 
 void Maintenance::execute(Employee* emp) {
         Caretaker* c = dynamic_cast<Caretaker*>(emp);
-        if(c) c->performMaintenance(target);
+       if(c) c->performMaintenance(target, type);  //fixed
     }
+
 
 CommandType PlantCommand::getType() const {
         return PLANT_COMMAND;

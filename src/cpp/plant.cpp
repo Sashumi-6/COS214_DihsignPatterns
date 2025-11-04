@@ -2,9 +2,17 @@
 
 #include "../headers/plant.h"
 #include <stdexcept>
+//planstate->plant = null;
 Plant::Plant(std::string  name , const double price , WaterLossStrategy* waterLossStrategy , SunlightStrategy* sunlightStrategy , PlantState* state) : waterLossStrategy(waterLossStrategy) , sunlightStrategy(sunlightStrategy) , location(PlantLocation::INSIDE) , name(std::move(name)) , state(state) , price(price) , waterLevel(1), age(0)  {
-
+    state->setPlant(this);
 }
+
+Plant::~Plant() {
+    delete waterLossStrategy;
+    delete sunlightStrategy;
+    delete state;
+}
+
 void Plant::waterPlant(){
     state->handleWaterPlant() ;
     if (waterLevel > 1.0) {
@@ -20,26 +28,6 @@ void Plant::loseWater() {
         this->setState(new DeadState(this)) ;
     }
 };
-
-constexpr double LowWaterLoss::kLossAmount;
-constexpr double MedWaterLoss::kLossAmount;
-constexpr double HighWaterLoss::kLossAmount;
-constexpr double Plant::kInitialWaterLevel;
-constexpr double Plant::kWaterDose;
-
-Plant::Plant(std::string name, const double price, WaterLossStrategy* waterLossStrategy,
-             SunlightStrategy* sunlightStrategy, PlantState* state)
-    : waterLossStrategy(waterLossStrategy), sunlightStrategy(sunlightStrategy), location(PlantLocation::INSIDE),
-      name(std::move(name)), state(state), price(price), waterLevel(kInitialWaterLevel), age(0) {}
-
-void Plant::waterPlant() { 
-    state->handleWaterPlant(); 
-    if (waterLevel > 1.0) {
-        this->setState(new DeadState(this));
-    }
-}
-void Plant::exposeToSunlight() { state->handleExposeToSunlight(); }
-void Plant::loseWater() { state->handleLoseWater(); };
 
 bool Plant::canSell() { return state->canSell(); }
 
@@ -82,19 +70,27 @@ void Plant::setState(PlantState* newState) {
     this->state = newState;
 }
 
-SunlightPreference Plant::getSunlightPreference() const {
-    if (dynamic_cast<LowSunlightStrategy*>(sunlightStrategy)) return SunlightPreference::LOW;
-    if (dynamic_cast<MedSunlightStrategy*>(sunlightStrategy)) return SunlightPreference::MEDIUM;
-    if (dynamic_cast<HighSunlightStrategy*>(sunlightStrategy)) return SunlightPreference::HIGH;
-    return SunlightPreference::UNKNOWN;
-}
+// SunlightPreference Plant::getSunlightPreference() const {
+//     if (dynamic_cast<LowSunlightStrategy*>(sunlightStrategy)) return SunlightPreference::LOW;
+//     if (dynamic_cast<MedSunlightStrategy*>(sunlightStrategy)) return SunlightPreference::MEDIUM;
+//     if (dynamic_cast<HighSunlightStrategy*>(sunlightStrategy)) return SunlightPreference::HIGH;
+//     return SunlightPreference::UNKNOWN;
+// }
 
-WaterPreference Plant::getWaterPreference() const {
-    if (dynamic_cast<LowWaterLoss*>(waterLossStrategy)) return WaterPreference::LOW;
-    if (dynamic_cast<MedWaterLoss*>(waterLossStrategy)) return WaterPreference::MEDIUM;
-    if (dynamic_cast<HighWaterLoss*>(waterLossStrategy)) return WaterPreference::HIGH;
-    return WaterPreference::UNKNOWN;
+// WaterPreference Plant::getWaterPreference() const {
+//     if (dynamic_cast<LowWaterLoss*>(waterLossStrategy)) return WaterPreference::LOW;
+//     if (dynamic_cast<MedWaterLoss*>(waterLossStrategy)) return WaterPreference::MEDIUM;
+//     if (dynamic_cast<HighWaterLoss*>(waterLossStrategy)) return WaterPreference::HIGH;
+//     return WaterPreference::UNKNOWN;
+// }
+
+void Plant::tryGrow() {
+    
+    if (this->waterLevel >= 0.5 &&  this->age >= 0) {
+        this->grow();
+    }
 }
+ 
 
 double Plant:: getPrice(){return price;}
 
@@ -106,7 +102,11 @@ bool Plant::isDead() const { return dynamic_cast<DeadState*>(state) != nullptr; 
 
 double LowWaterLoss::loseWater() {
     return 0.1 ;
+bool Plant::isLeaf() const {
+    return true;
 }
+
+
 double LowWaterLoss::loseWater() { return kLossAmount; }
 
 double MedWaterLoss::loseWater() { return kLossAmount; }
@@ -129,7 +129,12 @@ MatureState::MatureState(Plant* plant) : PlantState(plant) {}
 
 DeadState::DeadState(Plant* plant) : PlantState(plant) {}
 
-void PlantState::setPlant(Plant* newPlant) { this->plant = newPlant; }
+void PlantState::setPlant(Plant* newPlant) { 
+    if(this->plant){
+        return;
+    }
+    this->plant = newPlant; 
+}
 
 void SeedlingState::handleExposeToSunlight() {
     if (plant == nullptr) {
@@ -145,7 +150,13 @@ void MatureState::handleExposeToSunlight() {
     plant->applyExposeToSunlight();
 }
 
-void DeadState::handleExposeToSunlight() {}
+void DeadState::handleExposeToSunlight() {
+    // std::cout << "Dead plants cannot be exposed to sunlight." << std::endl;
+    }
+
+void DeadState::handleGrow() {
+    // std::cout << "Dead plants cannot grow." << std::endl;
+}
 
 void SeedlingState::handleLoseWater() {
     if (plant == nullptr) {

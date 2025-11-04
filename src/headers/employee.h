@@ -6,6 +6,11 @@
 #include "productBuilder.h"
 #include "order.h"
 
+struct ProductRequest;
+class GardenComponent;
+class GardenSection;
+
+class Order;
 enum EmployeeState { AVAILABLE, BUSY, ON_BREAK };
 
 class Employee {
@@ -19,7 +24,7 @@ public:
         } else if (nextHandler) {
             nextHandler->handleRequest(cmd);
         } else {
-            // std::cout << "No employee could handle this command.\n";
+            std::cout << "No employee could handle this command.\n";
             //error handling
         }
     }
@@ -34,9 +39,11 @@ public:
 protected:
     std::string role;
     EmployeeState state = AVAILABLE;
+    GardenComponent* greenhouse;
 
 private:
     Employee* nextHandler = nullptr;
+    
 };
 
 // ================== Derived Employees ==================
@@ -46,13 +53,15 @@ public:
     bool canHandle(Command* cmd) override;
     void process(Command* cmd) override;
 
-    Product* construct(Bob* builder, std::vector<Plant*> plants);
+    Product* construct(const ProductRequest& req, GardenComponent* greenhouse);//called from Order
     void addItem(Product* product);
     void removeItem(Product* product);
+
 
 private:
     Bob* builder;
     Order* order;
+    std::vector<Plant*> buildPlantVector(const std::vector<std::string>& names);
 };
 
 class Caretaker : public Employee {
@@ -83,7 +92,7 @@ private:
 // ================== Employee Factories ==================
 
 class EmployeeFactory {
-protected:
+public:
     virtual Employee* createEmployee() = 0;
 };
 

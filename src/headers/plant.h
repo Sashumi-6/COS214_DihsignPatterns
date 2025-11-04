@@ -2,6 +2,7 @@
 #define PLANT_H
 
 #include "garden.h"
+#include <string>
 #include "command.h"
 #include <string>
 
@@ -61,14 +62,14 @@ class HighSunlightStrategy : public SunlightStrategy {
 };
 
 class Plant : public GardenComponent {
-    public:
+  public:
         
         static constexpr double kInitialWaterLevel = 1.0;
         static constexpr double kWaterDose = 0.35;
         Plant(std::string name , double price , WaterLossStrategy* waterLossStrategy , SunlightStrategy* sunlightStrategy , PlantState* state) ;
-        Plant(const Plant& other);//TODO add to UML
+        Plant(const Plant& other) = default;//TODO add to UML. changeeeeeee
         
-        ~Plant() override;
+        virtual ~Plant() override; // TODO change
         void waterPlant() override;
         void exposeToSunlight() override;
         void loseWater() override;
@@ -82,13 +83,16 @@ class Plant : public GardenComponent {
         void applyExposeToSunlight();
         void setState(PlantState* newState);
         void addWater(double amount);
-        
-        SunlightPreference getSunlightPreference() const;
-        WaterPreference getWaterPreference() const;
+        // //TODO explain this
+         SunlightPreference getSunlightPreference() const;
+         WaterPreference getWaterPreference() const;
+        std::string getName() const { return name; }
         double getPrice();
         const std::string& getName() const;
         bool isMature() const;
         bool isDead() const;
+        bool isLeaf() const override;
+        void tryGrow();
 
     private:
         WaterLossStrategy* waterLossStrategy;
@@ -98,6 +102,8 @@ class Plant : public GardenComponent {
         PlantState* state;
         double price;
         double waterLevel;
+        int age;
+        
 };
 
 class PlantState {
