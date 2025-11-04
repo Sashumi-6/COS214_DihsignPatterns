@@ -30,9 +30,7 @@ GardenComponent* PlantOnlyIterator::next() {
 
 bool PlantOnlyIterator::isDone() const { return stack.empty(); }
 
-SectionOnlyIterator::SectionOnlyIterator(GardenComponent* root) : root(root) {
-    first();
-}
+SectionOnlyIterator::SectionOnlyIterator(GardenComponent* root) : root(root) { first(); }
 
 GardenComponent* SectionOnlyIterator::first() {
     while (!stack.empty()) {
