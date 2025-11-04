@@ -20,7 +20,6 @@ class PlantOnlyIterator : public Iterator<GardenComponent> {
     GardenComponent* first() override;
     GardenComponent* next() override;
     bool isDone() const override;
-    // GardenComponent* currentItem() override;
 
   private:
     std::stack<GardenComponent*> stack;

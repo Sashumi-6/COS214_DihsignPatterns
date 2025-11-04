@@ -3,6 +3,7 @@
 
 #include "garden.h"
 #include "command.h"
+#include <string>
 
 class PlantState;
 
@@ -85,6 +86,9 @@ class Plant : public GardenComponent {
         SunlightPreference getSunlightPreference() const;
         WaterPreference getWaterPreference() const;
         double getPrice();
+        const std::string& getName() const;
+        bool isMature() const;
+        bool isDead() const;
 
     private:
         WaterLossStrategy* waterLossStrategy;
