@@ -2,12 +2,19 @@
 #include "../headers/employee.h"
 #include "../headers/Customer.h"
 
+FrontDesk::~FrontDesk() {
+    for (Command* cmd : commands) {
+        delete cmd;
+    }
+    commands.clear();
+}
+
 void FrontDesk::maintain() {
     for (Employee* e : employees) {
         if (Caretaker* caretaker = dynamic_cast<Caretaker*>(e)) {
             if (caretaker->isAvailable()) {
                 for (Command* cmd : commands) {
-                    if (cmd->getType() == MAINTENANCE_COMMAND) {
+                    if (cmd && cmd->getType() == MAINTENANCE_COMMAND) {
                         cmd->execute(caretaker);
                     }
                 }
@@ -52,7 +59,9 @@ void FrontDesk::addPlant(Plant* plant, GardenSection* section) {
 // }
 
 void FrontDesk::addCommand(Command* cmd) {
-    commands.push_back(cmd);
+    if (cmd) {
+        commands.push_back(cmd);
+    }
 }
 
 void FrontDesk::addEmployee(Employee* emp) {
@@ -61,7 +70,9 @@ void FrontDesk::addEmployee(Employee* emp) {
 
 void FrontDesk::executeAllCommands() {
     for (Command* cmd : commands) {
-        // Employee* emp = getAvailableEmployee<Employee>();
+        if (!cmd) {
+            continue;
+        }
         if (cmd->getType() == MAINTENANCE_COMMAND || cmd->getType() == PLANT_COMMAND) {
             Caretaker* caretaker = getAvailableEmployee<Caretaker>();
             if (caretaker) {
@@ -73,8 +84,17 @@ void FrontDesk::executeAllCommands() {
                 cmd->execute(emp);
             }
         }
+        delete cmd;
     }
     commands.clear();
+}
+
+void FrontDesk::setGreenhouse(GardenComponent* root) {
+    greenhouse = root;
+}
+
+GardenComponent* FrontDesk::getGreenhouse() const {
+    return greenhouse;
 }
 
 bool FrontDesk::placeOrder(std::vector<ProductRequest>& requests, Customer* c){
@@ -94,4 +114,5 @@ void FrontDesk::pay() {
     this->currentOrder->togglePaymentStatus();
     this->currentOrder->orderDetails();
     delete currentOrder;
+    currentOrder = nullptr;
 }

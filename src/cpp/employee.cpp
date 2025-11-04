@@ -3,8 +3,6 @@
 #include "../headers/plantDatabase.h"
 #include "../headers/iterator.h"
 #include "../headers/frontDesk.h"
-#include <memory>
-
 namespace {
 
 Plant* findAvailablePlant(GardenComponent* greenhouse, const std::string& name) {
@@ -12,7 +10,7 @@ Plant* findAvailablePlant(GardenComponent* greenhouse, const std::string& name) 
         return nullptr;
     }
 
-    std::unique_ptr<Iterator<GardenComponent>> iter(greenhouse->createIterator());
+    Iterator<GardenComponent>* iter = greenhouse->createIterator();
     if (!iter) {
         return nullptr;
     }
@@ -20,11 +18,13 @@ Plant* findAvailablePlant(GardenComponent* greenhouse, const std::string& name) 
     for (GardenComponent* node = iter->first(); node != nullptr; node = iter->next()) {
         if (auto* plant = dynamic_cast<Plant*>(node)) {
             if (plant->getName() == name && plant->canSell()) {
+                delete iter;
                 return plant;
             }
         }
     }
 
+    delete iter;
     return nullptr;
 }
 
@@ -149,6 +149,10 @@ void Caretaker::plantNewPlant(Plant* plant) {
     assignedSection->add(plant);
 }
 
+void Caretaker::setHomeSection(GardenSection* section) {
+    assignedSection = section;
+}
+
 // -------------------- Manager --------------------
 bool Manager::canHandle(Command* cmd) {
     if(cmd->getType() != REQUEST_COMMAND) return false;
@@ -172,3 +176,6 @@ void Manager::handleEscalation() { numComplaints++;
 Employee* CashierFactory::createEmployee() { return new Cashier(); }
 Employee* ManagerFactory::createEmployee() { return new Manager(); }
 Employee* CaretakerFactory::createEmployee() { return new Caretaker(); }
+void Employee::setGreenhouse(GardenComponent* greenhousePtr) {
+    greenhouse = greenhousePtr;
+}

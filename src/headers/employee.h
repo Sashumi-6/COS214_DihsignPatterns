@@ -35,6 +35,8 @@ public:
     void setNext(Employee* next) { nextHandler = next; }
     Employee* getNextHandler() const { return nextHandler; }
     bool isAvailable() const { return state == AVAILABLE; }
+    void setGreenhouse(GardenComponent* greenhousePtr);
+    GardenComponent* getGreenhouse() const { return greenhouse; }
 
 protected:
     std::string role;
@@ -73,6 +75,8 @@ public:
     void movePlants();
     void performMaintenance(GardenComponent* target, MaintenanceType type);
     void plantNewPlant(Plant* plant);
+    void setHomeSection(GardenSection* section);
+    GardenSection* getHomeSection() const { return assignedSection; }
 
 private:
     GardenSection* assignedSection;

@@ -11,6 +11,7 @@ template <typename T> class Iterator {
     virtual T* first() = 0;
     virtual T* next() = 0;
     virtual bool isDone() const = 0;
+    virtual ~Iterator() = default;
     // virtual T* currentItem() = 0;
 };
 

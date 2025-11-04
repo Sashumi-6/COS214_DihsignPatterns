@@ -39,7 +39,7 @@ private:
     Plant* plant;
 public:
     PlantCommand(Plant* p) : plant(p) {}
-    void execute(Employee* employee);
+    void execute(Employee* employee) override;
     CommandType getType() const override;
 };
 

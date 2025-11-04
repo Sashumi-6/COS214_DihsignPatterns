@@ -17,6 +17,7 @@ class Caretaker;
 
 class FrontDesk {
 public:
+    ~FrontDesk();
     void query();
     void plant();
     void maintain();
@@ -24,6 +25,8 @@ public:
     void addEmployee(Employee* emp);
     void addPlant(Plant* plant, GardenSection* section);
     void executeAllCommands();
+    void setGreenhouse(GardenComponent* root);
+    GardenComponent* getGreenhouse() const;
 
     template <typename T>
     T* getAvailableEmployee();

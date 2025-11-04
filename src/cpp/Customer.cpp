@@ -223,3 +223,13 @@ Customer *Customer::createCustomerOrder()
 std::string Customer::getName(){
     return name;
 }
+
+Customer::Customer(const std::string& customerName, bool wantsOrder)
+{
+    name = customerName;
+    order = wantsOrder;
+}
+
+bool Customer::wantsOrder() const {
+    return order;
+}

@@ -15,9 +15,11 @@ class Customer{
 
     public:
     Customer();
+    Customer(const std::string& name, bool wantsOrder = true);
     Customer* createCustomerOrder();
     RequestCommand createCustomerQuery();
     std::string getName();
+    bool wantsOrder() const;
 
     
 };

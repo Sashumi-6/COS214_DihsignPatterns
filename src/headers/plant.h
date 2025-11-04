@@ -86,7 +86,6 @@ class Plant : public GardenComponent {
         // //TODO explain this
          SunlightPreference getSunlightPreference() const;
          WaterPreference getWaterPreference() const;
-        std::string getName() const { return name; }
         double getPrice();
         const std::string& getName() const;
         bool isMature() const;
