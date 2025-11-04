@@ -1,5 +1,5 @@
-#include "command.h"
-#include "employee.h"
+#include "../headers/command.h"
+#include "../headers/employee.h"
 
 
 void Maintenance::execute(Employee* emp) {

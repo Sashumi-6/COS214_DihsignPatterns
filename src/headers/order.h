@@ -1,15 +1,13 @@
 #ifndef ORDER_H
 #define ORDER_H
 
-#include "plant.h"
-#include"employee.h"
-#include "productBuilder.h"
+#include <string>
 #include <vector>
-#include "frontDesk.h"
-class OrderState;
+#include "productRequest.h"
+
+class GardenComponent;
 class Product;
 class Cashier;
-struct ProductRequest;
 
 enum OrderStatus{
     PENDING,

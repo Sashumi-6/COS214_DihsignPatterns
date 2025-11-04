@@ -1,5 +1,6 @@
-#include "frontDesk.h"
-#include "Customer.h"
+#include "../headers/frontDesk.h"
+#include "../headers/employee.h"
+#include "../headers/Customer.h"
 
 void FrontDesk::maintain() {
     for (Employee* e : employees) {
@@ -94,16 +95,3 @@ void FrontDesk::pay() {
     this->currentOrder->orderDetails();
     delete currentOrder;
 }
-
-template <typename T>
-T* FrontDesk::getAvailableEmployee() {
-    for (Employee* e : employees) {
-        if (e->isAvailable()) {
-            if (T* casted = dynamic_cast<T*>(e)) {
-                return casted;
-            }
-        }
-    }
-    return nullptr;
-}
-

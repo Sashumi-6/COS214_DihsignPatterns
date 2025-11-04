@@ -1,7 +1,8 @@
-#include "employee.h"
-#include "command.h"
-#include "plantDatabase.h"
-#include "iterator.h"
+#include "../headers/employee.h"
+#include "../headers/command.h"
+#include "../headers/plantDatabase.h"
+#include "../headers/iterator.h"
+#include "../headers/frontDesk.h"
 #include <memory>
 
 namespace {
