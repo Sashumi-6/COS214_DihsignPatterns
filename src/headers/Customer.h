@@ -17,7 +17,7 @@ class Customer{
     public:
     Customer();
     Customer* createCustomerOrder();
-    void createCustomerQuery();
+    RequestCommand createCustomerQuery();
     std::string getName();
 
     
