@@ -111,3 +111,5 @@ See `LICENSE.txt` in the project root for licensing information.
 This project uses the following GitHub Actions:
 [actions/cpp-linter](https://github.com/cpp-linter)
 
+#### Contributors
+- Daniel Cohen, u24772756
