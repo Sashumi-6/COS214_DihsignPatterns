@@ -1,15 +1,23 @@
+/**
+ * @file order.cpp
+ * @brief Implements order management and product assembly operations.
+ */
 #include "../headers/order.h"
 #include "../headers/employee.h"
 #include "../headers/productBuilder.h"
 #include <sstream>
 #include <iostream>
-
-
+/**
+ * @brief Initializes an order with a cashier and customer name.
+ */
 Order::Order(Cashier* c, std::string name)
     : cashier(c), customerName(name), totalPrice(0.0), status(PENDING), paymentReveived(false) 
 {}
 
 
+/**
+ * @brief Adds a product to the order and updates totals.
+ */
 void Order::addProduct(Product* p) {
     if(p) {
         orderedProducts.push_back(p);
@@ -17,6 +25,9 @@ void Order::addProduct(Product* p) {
     }
 }
 
+/**
+ * @brief Removes a product from the order if present.
+ */
 void Order::removeProduct(Product* p) {
     for(auto it = orderedProducts.begin(); it != orderedProducts.end(); ++it) {
         if(*it == p) {
@@ -28,6 +39,9 @@ void Order::removeProduct(Product* p) {
 }
 
 // ================= Calculate Total =================
+/**
+ * @brief Recalculates the total cost of all products.
+ */
 double Order::calculateTotal() {
     totalPrice = 0.0;
     for(auto p : orderedProducts) {
@@ -36,10 +50,16 @@ double Order::calculateTotal() {
     return totalPrice;
 }
 
+/**
+ * @brief Updates the order's status state.
+ */
 void Order::updateStatus(OrderStatus s) {
     status = s;
 }
 
+/**
+ * @brief Builds requested products and adds them to the order.
+ */
 void Order::finaliseOrder(GardenComponent* greenhouse) {
     for(const auto& req : requests) {
         Product* product = cashier->construct(req, greenhouse);
@@ -52,19 +72,31 @@ void Order::finaliseOrder(GardenComponent* greenhouse) {
     updateStatus(PROCESSING);
 }
 
+/**
+ * @brief Stores a product request for later processing.
+ */
 void Order::addRequest(const ProductRequest& r) {
     requests.push_back(r);
 }
 // ================= Payment Status =================
+/**
+ * @brief Reports if the order has been paid.
+ */
 bool Order::isPaid() {
     return paymentReveived;
 }
 
+/**
+ * @brief Toggles payment status between paid and unpaid.
+ */
 void Order::togglePaymentStatus() {
     paymentReveived = !paymentReveived;
 }
 
 // ================= Order Details =================
+/**
+ * @brief Generates a multi-line summary of the order.
+ */
 std::string Order::orderDetails() {
     std::ostringstream oss;
     oss << "Order for " << customerName << ":\n";
@@ -84,10 +116,16 @@ std::string Order::orderDetails() {
 }
 
 // ================= Get Product Count / Access =================
+/**
+ * @brief Returns the number of products currently attached to the order.
+ */
 int Order::getProductCount() {
     return orderedProducts.size();
 }
 
+/**
+ * @brief Retrieves the most recently added product.
+ */
 Product* Order::getProduct() {
     if(!orderedProducts.empty()) {
         return orderedProducts.back(); // returns the last added product

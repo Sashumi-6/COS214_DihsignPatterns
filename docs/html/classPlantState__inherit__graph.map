@@ -1,0 +1,6 @@
+<map id="PlantState" name="PlantState">
+<area shape="rect" id="node1" title="Abstract base state used by the plant state machine." alt="" coords="127,5,217,32"/>
+<area shape="rect" id="node2" href="$classDeadState.html" title="Represents plants that have depleted resources and are dead." alt="" coords="5,80,96,107"/>
+<area shape="rect" id="node3" href="$classMatureState.html" title="Represents a fully grown plant ready for sale." alt="" coords="121,80,223,107"/>
+<area shape="rect" id="node4" href="$classSeedlingState.html" title="Represents a newly planted seedling that cannot be sold yet." alt="" coords="248,80,360,107"/>
+</map>

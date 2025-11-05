@@ -1,0 +1,15 @@
+<map id="Plant::setState" name="Plant::setState">
+<area shape="rect" id="node1" title="Changes the internal state object and updates its back&#45;reference." alt="" coords="523,274,640,301"/>
+<area shape="rect" id="node2" href="$classPlant.html#ac4ba3fadb67ec3d55a06bfaf86ccd9f6" title="Adds raw water to the plant&#39;s water level." alt="" coords="313,78,438,105"/>
+<area shape="rect" id="node5" href="$classPlant.html#a22df26a0032f1ac8f003ed4ef137b31d" title="Helper that applies configured water loss and updates state." alt="" coords="292,173,459,199"/>
+<area shape="rect" id="node8" href="$classPlant.html#a8f6021766a171a8746de619c46c0d4a1" title="Attempts to grow the plant, advancing its state when possible." alt="" coords="328,223,423,250"/>
+<area shape="rect" id="node10" href="$classSeedlingState.html#a31d4c1533ef0bb8a4c588290bd682e96" title="Executes growth logic for the state." alt="" coords="276,274,475,301"/>
+<area shape="rect" id="node11" href="$classMatureState.html#a7f6ff687099cd221279e017629f88727" title="Executes growth logic for the state." alt="" coords="281,325,469,351"/>
+<area shape="rect" id="node12" href="$classPlant.html#a441a470b027ccb875322e79a3ac99000" title="Applies the configured water loss strategy." alt="" coords="311,375,439,402"/>
+<area shape="rect" id="node13" href="$classPlant.html#a202655628c2abba6fd475ae48e8a0fa5" title="Water the plant using kWaterDose and delegate to strategy." alt="" coords="309,426,442,453"/>
+<area shape="rect" id="node3" href="$classSeedlingState.html#a59b5bed549617b1dab0ffdb6197a9797" title="Handles watering transition logic for the current state." alt="" coords="15,5,218,47"/>
+<area shape="rect" id="node4" href="$classMatureState.html#a8adc9bba04e9df56a33a556e72cbf4d1" title="Handles watering transition logic for the current state." alt="" coords="21,71,213,112"/>
+<area shape="rect" id="node6" href="$classSeedlingState.html#af724852769ea51579933d6acb39d9b45" title="Processes water loss behavior for the state." alt="" coords="19,136,214,177"/>
+<area shape="rect" id="node7" href="$classMatureState.html#a5f6c4b04b5d09fd87ee8d56fac37c2e9" title="Processes water loss behavior for the state." alt="" coords="5,202,228,229"/>
+<area shape="rect" id="node9" href="$classPlant.html#a26fbc5987b7f0da7169964f27d79d4a0" title="Attempts to advance growth based on current resources." alt="" coords="59,253,174,279"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="src/headers/plantDatabase.h" name="src/headers/plantDatabase.h">
+<area shape="rect" id="node1" title="Declares the static plant database used for lookup and seeding." alt="" coords="33,5,241,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,80,68,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="157,155,215,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="143,80,194,107"/>
+<area shape="rect" id="node5" href="$command_8h.html" title="Declares the command hierarchy used for greenhouse task delegation." alt="" coords="218,80,317,107"/>
+</map>

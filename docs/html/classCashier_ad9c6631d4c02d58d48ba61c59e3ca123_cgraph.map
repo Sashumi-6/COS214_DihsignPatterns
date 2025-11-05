@@ -1,0 +1,5 @@
+<map id="Cashier::removeItem" name="Cashier::removeItem">
+<area shape="rect" id="node1" title="Removes a product from the current order." alt="" coords="5,5,164,32"/>
+<area shape="rect" id="node2" href="$classOrder.html#a87ce54294e84787746e7cd44bfd94812" title="Removes a product from the order." alt="" coords="212,5,377,32"/>
+<area shape="rect" id="node3" href="$classProduct.html#a0aaea95b8d3241b3758246254b8575e2" title="Returns the total price of the product." alt="" coords="425,5,557,32"/>
+</map>

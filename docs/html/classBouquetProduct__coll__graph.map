@@ -1,0 +1,7 @@
+<map id="BouquetProduct" name="BouquetProduct">
+<area shape="rect" id="node1" title="Product used as a base for bouquet compositions." alt="" coords="73,247,199,273"/>
+<area shape="rect" id="node2" href="$classProduct.html" title="Base class representing a sellable plant product." alt="" coords="101,171,171,197"/>
+<area shape="rect" id="node3" href="$classPlant.html" title="Leaf node in the garden composite representing an individual plant." alt="" coords="50,81,105,108"/>
+<area shape="rect" id="node4" href="$classGardenComponent.html" title="Abstract component in the greenhouse composite structure." alt="" coords="5,5,149,32"/>
+<area shape="rect" id="node5" href="$classInventory.html" title="Central store managing counts of greenhouse supplies by category." alt="" coords="129,81,213,108"/>
+</map>

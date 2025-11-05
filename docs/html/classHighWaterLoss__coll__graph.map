@@ -1,0 +1,4 @@
+<map id="HighWaterLoss" name="HighWaterLoss">
+<area shape="rect" id="node1" title="Water loss strategy representing very thirsty plants." alt="" coords="18,80,137,107"/>
+<area shape="rect" id="node2" href="$classWaterLossStrategy.html" title="Strategy interface controlling how plants lose water over time." alt="" coords="5,5,149,32"/>
+</map>

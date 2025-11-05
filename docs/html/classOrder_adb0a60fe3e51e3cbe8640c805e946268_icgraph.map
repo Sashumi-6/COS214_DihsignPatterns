@@ -1,0 +1,4 @@
+<map id="Order::togglePaymentStatus" name="Order::togglePaymentStatus">
+<area shape="rect" id="node1" title="Toggles the payment state." alt="" coords="173,5,379,32"/>
+<area shape="rect" id="node2" href="$classFrontDesk.html#ac3319d87d4332a6e21712208030dd9f3" title="Processes payment for the active order." alt="" coords="5,5,125,32"/>
+</map>

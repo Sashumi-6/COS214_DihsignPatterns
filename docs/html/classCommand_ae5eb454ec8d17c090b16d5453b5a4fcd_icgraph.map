@@ -1,0 +1,7 @@
+<map id="Command::getType" name="Command::getType">
+<area shape="rect" id="node1" title="Reports the command category." alt="" coords="216,81,364,108"/>
+<area shape="rect" id="node2" href="$classCashier.html#a133168656469cf97811c0e850ad8cdbe" title="Determines if the cashier can handle the given request command." alt="" coords="13,5,161,32"/>
+<area shape="rect" id="node3" href="$classCaretaker.html#ad8bf29d1f47be8fa2a543a24a4862cba" title="Validates whether the caretaker should handle the command." alt="" coords="5,56,168,83"/>
+<area shape="rect" id="node4" href="$classManager.html#ad2fc28b14d45c3e515fd764d1dedcbcd" title="Checks if the manager should address the command." alt="" coords="9,107,165,133"/>
+<area shape="rect" id="node5" href="$classCaretaker.html#a21d2f52a6b46362209613bfddc794968" title="Executes caretaking operations for plants and sections." alt="" coords="15,157,158,184"/>
+</map>

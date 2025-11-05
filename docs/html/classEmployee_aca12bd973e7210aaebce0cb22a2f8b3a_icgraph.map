@@ -1,0 +1,4 @@
+<map id="Employee::handleRequest" name="Employee::handleRequest">
+<area shape="rect" id="node1" title="Handles a command or forwards it to the next employee." alt="" coords="255,29,447,56"/>
+<area shape="rect" id="node2" href="$classRequestCommand.html#ae2f54731d8c426af75cc6e6bddf3fc04" title="Executes the request by forwarding it through the chain." alt="" coords="5,29,207,56"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="FrontDesk::placeOrder" name="FrontDesk::placeOrder">
+<area shape="rect" id="node1" title="Places an order based on customer product requests." alt="" coords="5,56,172,83"/>
+<area shape="rect" id="node2" href="$classOrder.html#aca5fd0653e401c079275d4f9decce034" title="Adds a product request to be processed by the builder." alt="" coords="225,5,368,32"/>
+<area shape="rect" id="node3" href="$classOrder.html#afcfe2fb12caf619ca407af1266cdfbe2" title="Finalizes the order by building requested products." alt="" coords="222,56,371,83"/>
+<area shape="rect" id="node9" href="$classCustomer.html#a4564927e17d6cea720272b83e1108f90" title="Returns the customer&#39;s name." alt="" coords="220,107,373,133"/>
+<area shape="rect" id="node4" href="$classOrder.html#a9052c40c7633446cf24f4104b0262953" title="Adds a product to the order." alt="" coords="428,5,567,32"/>
+<area shape="rect" id="node6" href="$classCashier.html#ac7a3c2fd673d7daeafd7e77ab0cc76ee" title="Builds a product from a request using the builder." alt="" coords="428,56,567,83"/>
+<area shape="rect" id="node8" href="$classOrder.html#abba74d8442ee75e7c2e39474cffff52b" title="Updates the order status." alt="" coords="421,107,573,133"/>
+<area shape="rect" id="node5" href="$classProduct.html#a0aaea95b8d3241b3758246254b8575e2" title="Returns the total price of the product." alt="" coords="621,5,753,32"/>
+<area shape="rect" id="node7" href="$classBob.html#a7f2a0b79ada211d0b55c3bdafb2c1892" title="Retrieves the fully constructed product." alt="" coords="625,56,750,83"/>
+</map>

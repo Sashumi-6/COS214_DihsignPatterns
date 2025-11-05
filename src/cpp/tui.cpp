@@ -1,3 +1,7 @@
+/**
+ * @file tui.cpp
+ * @brief Implements the text-based user interface for the simulator.
+ */
 #include "../headers/tui.h"
 
 #include "../headers/plantDatabase.h"
@@ -12,6 +16,13 @@
 
 namespace {
 
+/**
+ * @brief Reads an integer within bounds from standard input.
+ * @param prompt Text to display before reading.
+ * @param minValue Minimum accepted value.
+ * @param maxValue Maximum accepted value.
+ * @return Validated integer inside the range.
+ */
 int readInt(const std::string& prompt, int minValue, int maxValue) {
     int value = 0;
     while (true) {
@@ -26,6 +37,11 @@ int readInt(const std::string& prompt, int minValue, int maxValue) {
     }
 }
 
+/**
+ * @brief Reads a yes/no response from the user.
+ * @param prompt Question presented to the user.
+ * @return True for yes, false for no.
+ */
 bool readYesNo(const std::string& prompt) {
     while (true) {
         std::cout << prompt << " (y/n): ";
@@ -47,6 +63,11 @@ bool readYesNo(const std::string& prompt) {
     }
 }
 
+/**
+ * @brief Prompts the user to select a business level for a given day.
+ * @param dayNumber Day index displayed in the prompt.
+ * @return Selected business level.
+ */
 BusinessLevel selectBusinessLevelForDay(int dayNumber) {
     std::cout << "\nChoose business level for day " << dayNumber << ":\n";
     std::cout << "  1) Low\n";
@@ -63,6 +84,11 @@ BusinessLevel selectBusinessLevelForDay(int dayNumber) {
     }
 }
 
+/**
+ * @brief Converts a business level enum into a human-readable string.
+ * @param level Business volume level.
+ * @return Descriptive string.
+ */
 std::string businessLevelToString(BusinessLevel level) {
     switch (level) {
         case BusinessLevel::LOW:
@@ -75,11 +101,18 @@ std::string businessLevelToString(BusinessLevel level) {
     return "Unknown";
 }
 
+/**
+ * @brief Waits for the user to press Enter before continuing.
+ */
 void waitForEnter() {
     std::cout << "\nPress Enter to continue...";
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
+/**
+ * @brief Guides the user through configuring plant quantities.
+ * @return Mapping of plant names to requested quantities.
+ */
 std::map<std::string, int> configurePlants() {
     const std::map<std::string, PlantInfo>& database = PlantDatabase::getAllPlants();
     std::vector<std::string> plantNames;
@@ -132,6 +165,10 @@ std::map<std::string, int> configurePlants() {
     return selection;
 }
 
+/**
+ * @brief Reads a random seed value from the user.
+ * @return Unsigned integer seed.
+ */
 unsigned int readSeed() {
     while (true) {
         std::cout << "Enter a non-negative seed value: ";
@@ -146,6 +183,11 @@ unsigned int readSeed() {
     }
 }
 
+/**
+ * @brief Displays a daily report summary alongside logged events.
+ * @param summary Summary for the day.
+ * @param eventLog Chronological event log.
+ */
 void displayDayReport(const DaySummary& summary, const std::vector<std::string>& eventLog) {
     std::cout << "\n========================================\n";
     std::cout << "Day " << summary.dayIndex << " Report ("
@@ -180,6 +222,9 @@ void displayDayReport(const DaySummary& summary, const std::vector<std::string>&
 
 } // namespace
 
+/**
+ * @brief Runs the interactive simulation console workflow.
+ */
 void TUI::consoleLog() {
     std::cout << "========================================\n";
     std::cout << " Welcome to the Nursery Simulation TUI\n";
@@ -231,6 +276,9 @@ void TUI::consoleLog() {
     std::cout << "\nSimulation complete. Thank you for using the TUI!\n";
 }
 
+/**
+ * @brief Placeholder implementation demonstrating option handling.
+ */
 int TUI::printOptions() {
     std::cout << "Options are handled interactively in consoleLog().\n";
     return 0;

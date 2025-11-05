@@ -1,0 +1,5 @@
+<map id="Bob" name="Bob">
+<area shape="rect" id="node1" title="Abstract builder responsible for constructing products." alt="" coords="101,5,148,32"/>
+<area shape="rect" id="node2" href="$classBasicBuilder.html" title="Concrete builder producing basic potted products." alt="" coords="5,80,108,107"/>
+<area shape="rect" id="node3" href="$classBouquetBuilder.html" title="Concrete builder producing bouquet products." alt="" coords="133,80,255,107"/>
+</map>

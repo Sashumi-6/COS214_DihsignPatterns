@@ -1,5 +1,10 @@
+/**
+ * @file plantDatabase.cpp
+ * @brief Defines the static plant database used for lookup.
+ */
 #include "../headers/plantDatabase.h"
 
+/** @brief Static map containing predefined plant metadata. */
 static std::map<std::string, PlantInfo> PLANTS = {
 
     // ----------------- SUCCULENTS -----------------
@@ -31,6 +36,9 @@ static std::map<std::string, PlantInfo> PLANTS = {
     { "hydrangea",        { "flowering", SunlightPreference::LOW,    WaterPreference::HIGH } }
 };
 
+/**
+ * @brief Provides read-only access to the plant metadata map.
+ */
 const std::map<std::string, PlantInfo>& PlantDatabase::getAllPlants() {
     return PLANTS;
 }

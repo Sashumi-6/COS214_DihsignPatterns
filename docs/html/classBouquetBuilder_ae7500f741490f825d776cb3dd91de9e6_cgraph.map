@@ -1,0 +1,7 @@
+<map id="BouquetBuilder::setContainer" name="BouquetBuilder::setContainer">
+<area shape="rect" id="node1" title="Applies bouquet&#45;specific container selection." alt="" coords="5,56,219,83"/>
+<area shape="rect" id="node2" href="$classProduct.html#a0a494440767ea315869530b7fcbfebb8" title="Indicates if the product is the main bouquet component." alt="" coords="277,5,419,32"/>
+<area shape="rect" id="node3" href="$classProduct.html#abacc41a4bf3e00f1bfd6962e3dca50a0" title="Increases the price by a given amount." alt="" coords="283,56,413,83"/>
+<area shape="rect" id="node4" href="$classProduct.html#a24c9b5d31e04ff9292e7256278252ea8" title="Sets the container description." alt="" coords="267,107,429,133"/>
+<area shape="rect" id="node5" href="$classInventory.html#aed45966a7fc38b1ebc48ce18d483b61f" title="Consumes stock items when fulfilling requests." alt="" coords="477,107,621,133"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="Order::addProduct" name="Order::addProduct">
+<area shape="rect" id="node1" title="Adds a product to the order." alt="" coords="417,31,556,57"/>
+<area shape="rect" id="node2" href="$classCashier.html#a9cc43ca71c0db45b9cc4f6634f8bfac6" title="Adds a product to the current order." alt="" coords="228,5,361,32"/>
+<area shape="rect" id="node3" href="$classOrder.html#afcfe2fb12caf619ca407af1266cdfbe2" title="Finalizes the order by building requested products." alt="" coords="220,56,369,83"/>
+<area shape="rect" id="node4" href="$classFrontDesk.html#a42e530ddeaa51fbcb097fb9c0170362b" title="Places an order based on customer product requests." alt="" coords="5,56,172,83"/>
+</map>

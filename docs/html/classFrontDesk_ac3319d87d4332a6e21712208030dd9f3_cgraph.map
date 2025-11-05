@@ -1,0 +1,6 @@
+<map id="FrontDesk::pay" name="FrontDesk::pay">
+<area shape="rect" id="node1" title="Processes payment for the active order." alt="" coords="5,31,125,57"/>
+<area shape="rect" id="node2" href="$classOrder.html#ad0b24aa54f2da4af072ebc21fadf00e0" title="Generates a human&#45;readable order summary." alt="" coords="203,5,349,32"/>
+<area shape="rect" id="node4" href="$classOrder.html#adb0a60fe3e51e3cbe8640c805e946268" title="Toggles the payment state." alt="" coords="173,56,379,83"/>
+<area shape="rect" id="node3" href="$classOrder.html#a2298564c3d0cd9923e354e0a18a62b4a" title="Calculates the total price for the order." alt="" coords="427,5,583,32"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="MedSunlightStrategy" name="MedSunlightStrategy">
+<area shape="rect" id="node1" title="Sunlight strategy assigning plants to medium&#45;light areas." alt="" coords="5,80,164,107"/>
+<area shape="rect" id="node2" href="$classSunlightStrategy.html" title="Strategy interface determining how plants are exposed to sunlight." alt="" coords="19,5,150,32"/>
+</map>

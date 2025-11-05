@@ -1,0 +1,6 @@
+<map id="WaterLossStrategy::loseWater" name="WaterLossStrategy::loseWater">
+<area shape="rect" id="node1" title="Calculates the amount of water lost for the current time step." alt="" coords="491,35,641,76"/>
+<area shape="rect" id="node2" href="$classPlant.html#a22df26a0032f1ac8f003ed4ef137b31d" title="Helper that applies configured water loss and updates state." alt="" coords="276,42,443,69"/>
+<area shape="rect" id="node3" href="$classSeedlingState.html#af724852769ea51579933d6acb39d9b45" title="Processes water loss behavior for the state." alt="" coords="19,5,214,47"/>
+<area shape="rect" id="node4" href="$classMatureState.html#a5f6c4b04b5d09fd87ee8d56fac37c2e9" title="Processes water loss behavior for the state." alt="" coords="5,71,228,98"/>
+</map>

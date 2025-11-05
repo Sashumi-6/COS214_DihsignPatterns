@@ -1,0 +1,7 @@
+<map id="Product::setContainer" name="Product::setContainer">
+<area shape="rect" id="node1" title="Sets the container description." alt="" coords="515,31,677,57"/>
+<area shape="rect" id="node2" href="$classBouquetBuilder.html#ae7500f741490f825d776cb3dd91de9e6" title="Applies bouquet&#45;specific container selection." alt="" coords="253,5,467,32"/>
+<area shape="rect" id="node4" href="$classBasicBuilder.html#a9bda4865e819084e4cd225101f289550" title="Chooses a basic container option." alt="" coords="263,56,457,83"/>
+<area shape="rect" id="node3" href="$classBouquetBuilder.html#aaeb225d897bfbf9979221167c42c973c" title="Returns the completed bouquet product." alt="" coords="5,5,205,32"/>
+<area shape="rect" id="node5" href="$classBasicBuilder.html#a0a89525578f87bdc3e1eb1def930185b" title="Returns the assembled basic product." alt="" coords="15,56,196,83"/>
+</map>

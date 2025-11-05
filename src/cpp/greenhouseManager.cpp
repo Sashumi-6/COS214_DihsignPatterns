@@ -1,3 +1,7 @@
+/**
+ * @file greenhouseManager.cpp
+ * @brief Implements the greenhouse manager section indexing utilities.
+ */
 #include "../headers/greenhouseManager.h"
 
 #include "../headers/garden.h"
@@ -15,6 +19,9 @@
 #define GREENHOUSE_HAS_PLANT_DATABASE 0
 #endif
 
+/**
+ * @brief Constructs the greenhouse manager with a designated root section.
+ */
 GreenHouseManager::GreenHouseManager(GardenSection* rootSection, std::string rootIdentifier)
     : root(rootSection), rootName(std::move(rootIdentifier)) {
     if (root == nullptr) {
@@ -23,12 +30,21 @@ GreenHouseManager::GreenHouseManager(GardenSection* rootSection, std::string roo
     indexSection(rootName, root);
 }
 
+/**
+ * @brief Retrieves the root section of the greenhouse.
+ */
 GardenSection* GreenHouseManager::getRoot() const { return root; }
 
+/**
+ * @brief Adds a new section attached to the root section.
+ */
 GardenSection* GreenHouseManager::addSection(const std::string& sectionName) {
     return addSection(sectionName, rootName);
 }
 
+/**
+ * @brief Adds a new section under the specified parent section.
+ */
 GardenSection* GreenHouseManager::addSection(const std::string& sectionName, const std::string& parentSection) {
     if (sectionName.empty()) {
         throw std::invalid_argument("Section name cannot be empty");
@@ -49,6 +65,9 @@ GardenSection* GreenHouseManager::addSection(const std::string& sectionName, con
     return section;
 }
 
+/**
+ * @brief Adds a plant to the appropriate section based on metadata.
+ */
 void GreenHouseManager::addPlant(Plant* plant) {
     if (plant == nullptr) {
         throw std::invalid_argument("Cannot add null plant to greenhouse");
@@ -59,6 +78,9 @@ void GreenHouseManager::addPlant(Plant* plant) {
     targetSection->add(plant);
 }
 
+/**
+ * @brief Finds a plant by name regardless of state.
+ */
 Plant* GreenHouseManager::find(const std::string& name) const {
     if (root == nullptr) {
         return nullptr;
@@ -74,6 +96,9 @@ Plant* GreenHouseManager::find(const std::string& name) const {
     return nullptr;
 }
 
+/**
+ * @brief Finds a plant by name that is currently mature.
+ */
 Plant* GreenHouseManager::findMature(const std::string& name) const {
     Plant* plant = find(name);
     if (plant != nullptr && plant->isMature()) {
@@ -82,6 +107,9 @@ Plant* GreenHouseManager::findMature(const std::string& name) const {
     return nullptr;
 }
 
+/**
+ * @brief Removes a plant from whichever section currently contains it.
+ */
 bool GreenHouseManager::removePlant(Plant* plant) {
     if (plant == nullptr) {
         return false;
@@ -89,6 +117,9 @@ bool GreenHouseManager::removePlant(Plant* plant) {
     return removePlantFromSection(root, plant);
 }
 
+/**
+ * @brief Removes a plant by searching for its name.
+ */
 bool GreenHouseManager::removePlant(const std::string& name) {
     if (name.empty()) {
         return false;
@@ -100,6 +131,9 @@ bool GreenHouseManager::removePlant(const std::string& name) {
     return removePlant(plant);
 }
 
+/**
+ * @brief Clears all dead plants throughout the greenhouse.
+ */
 void GreenHouseManager::clearAllDead() {
     if (root == nullptr) {
         return;
@@ -117,6 +151,9 @@ void GreenHouseManager::clearAllDead() {
     }
 }
 
+/**
+ * @brief Retrieves a section by name if present.
+ */
 GardenSection* GreenHouseManager::findSection(const std::string& sectionName) const {
     if (sectionName.empty()) {
         return root;
@@ -125,6 +162,9 @@ GardenSection* GreenHouseManager::findSection(const std::string& sectionName) co
     return it != sectionIndex.end() ? it->second : nullptr;
 }
 
+/**
+ * @brief Ensures a named section exists, creating it when absent.
+ */
 GardenSection* GreenHouseManager::ensureSection(const std::string& sectionName) {
     if (sectionName.empty()) {
         return root;
@@ -139,6 +179,9 @@ GardenSection* GreenHouseManager::ensureSection(const std::string& sectionName) 
     return newSection;
 }
 
+/**
+ * @brief Determines the preferred section name for a plant.
+ */
 std::string GreenHouseManager::resolveSectionForPlant(const Plant* plant) const {
     if (plant == nullptr) {
         return {};
@@ -153,12 +196,18 @@ std::string GreenHouseManager::resolveSectionForPlant(const Plant* plant) const 
     return {};
 }
 
+/**
+ * @brief Records a section within the internal index.
+ */
 void GreenHouseManager::indexSection(const std::string& sectionName, GardenSection* section) {
     if (section != nullptr && !sectionName.empty()) {
         sectionIndex[sectionName] = section;
     }
 }
 
+/**
+ * @brief Removes a plant from a section hierarchy recursively.
+ */
 bool GreenHouseManager::removePlantFromSection(GardenSection* section, Plant* plant) {
     if (section == nullptr || plant == nullptr) {
         return false;

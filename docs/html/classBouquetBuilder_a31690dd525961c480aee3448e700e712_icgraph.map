@@ -1,0 +1,4 @@
+<map id="BouquetBuilder::addPlant" name="BouquetBuilder::addPlant">
+<area shape="rect" id="node1" title="Constructs the bouquet chain from the supplied plants." alt="" coords="253,5,440,32"/>
+<area shape="rect" id="node2" href="$classBouquetBuilder.html#aaeb225d897bfbf9979221167c42c973c" title="Returns the completed bouquet product." alt="" coords="5,5,205,32"/>
+</map>

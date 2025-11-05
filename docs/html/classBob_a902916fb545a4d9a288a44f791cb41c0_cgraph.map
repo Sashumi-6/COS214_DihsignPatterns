@@ -1,0 +1,6 @@
+<map id="Bob::addSoil" name="Bob::addSoil">
+<area shape="rect" id="node1" title="Applies soil to a product instance." alt="" coords="5,31,108,57"/>
+<area shape="rect" id="node2" href="$classProduct.html#abacc41a4bf3e00f1bfd6962e3dca50a0" title="Increases the price by a given amount." alt="" coords="156,5,287,32"/>
+<area shape="rect" id="node3" href="$classProduct.html#a480660b5014c3c15ded9e0ac1a8732e1" title="Sets the soil description." alt="" coords="160,56,283,83"/>
+<area shape="rect" id="node4" href="$classInventory.html#aed45966a7fc38b1ebc48ce18d483b61f" title="Consumes stock items when fulfilling requests." alt="" coords="335,56,479,83"/>
+</map>

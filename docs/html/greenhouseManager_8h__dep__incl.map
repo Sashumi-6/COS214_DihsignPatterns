@@ -1,0 +1,7 @@
+<map id="src/headers/greenhouseManager.h" name="src/headers/greenhouseManager.h">
+<area shape="rect" id="node1" title="Declares the manager responsible for greenhouse section organization." alt="" coords="111,5,357,32"/>
+<area shape="rect" id="node2" href="$greenhouseManager_8cpp.html" title="Implements the greenhouse manager section indexing utilities." alt="" coords="5,80,236,107"/>
+<area shape="rect" id="node3" href="$simulator_8h.html" title="Declares the greenhouse simulation orchestrating daily operations." alt="" coords="260,80,435,107"/>
+<area shape="rect" id="node4" href="$simulator_8cpp.html" title="Implements the greenhouse business simulation workflow." alt="" coords="186,155,346,181"/>
+<area shape="rect" id="node5" href="$tui_8cpp.html" title="Implements the text&#45;based user interface for the simulator." alt="" coords="371,155,487,181"/>
+</map>

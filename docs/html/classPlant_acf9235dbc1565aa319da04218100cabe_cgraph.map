@@ -1,0 +1,4 @@
+<map id="Plant::canSell" name="Plant::canSell">
+<area shape="rect" id="node1" title="Determines if the plant meets the criteria for sale." alt="" coords="5,5,116,32"/>
+<area shape="rect" id="node2" href="$classPlantState.html#af14d5922ec1b2f4e2d5dab0bb532fd81" title="Verifies whether the plant can be sold in this state." alt="" coords="164,5,308,32"/>
+</map>

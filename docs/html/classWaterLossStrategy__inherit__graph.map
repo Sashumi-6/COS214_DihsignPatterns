@@ -1,0 +1,6 @@
+<map id="WaterLossStrategy" name="WaterLossStrategy">
+<area shape="rect" id="node1" title="Strategy interface controlling how plants lose water over time." alt="" coords="134,5,278,32"/>
+<area shape="rect" id="node2" href="$classHighWaterLoss.html" title="Water loss strategy representing very thirsty plants." alt="" coords="5,80,124,107"/>
+<area shape="rect" id="node3" href="$classLowWaterLoss.html" title="Water loss strategy representing resilient plants requiring little water." alt="" coords="149,80,263,107"/>
+<area shape="rect" id="node4" href="$classMedWaterLoss.html" title="Water loss strategy representing plants with moderate water needs." alt="" coords="287,80,405,107"/>
+</map>

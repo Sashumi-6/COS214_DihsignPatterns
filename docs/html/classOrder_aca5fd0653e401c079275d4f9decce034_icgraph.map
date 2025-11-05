@@ -1,0 +1,4 @@
+<map id="Order::addRequest" name="Order::addRequest">
+<area shape="rect" id="node1" title="Adds a product request to be processed by the builder." alt="" coords="220,5,363,32"/>
+<area shape="rect" id="node2" href="$classFrontDesk.html#a42e530ddeaa51fbcb097fb9c0170362b" title="Places an order based on customer product requests." alt="" coords="5,5,172,32"/>
+</map>

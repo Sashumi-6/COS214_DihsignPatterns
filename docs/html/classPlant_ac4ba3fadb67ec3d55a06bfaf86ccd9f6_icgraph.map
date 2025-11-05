@@ -1,0 +1,5 @@
+<map id="Plant::addWater" name="Plant::addWater">
+<area shape="rect" id="node1" title="Adds raw water to the plant&#39;s water level." alt="" coords="256,46,381,73"/>
+<area shape="rect" id="node2" href="$classSeedlingState.html#a59b5bed549617b1dab0ffdb6197a9797" title="Handles watering transition logic for the current state." alt="" coords="5,5,208,47"/>
+<area shape="rect" id="node3" href="$classMatureState.html#a8adc9bba04e9df56a33a556e72cbf4d1" title="Handles watering transition logic for the current state." alt="" coords="11,71,203,112"/>
+</map>

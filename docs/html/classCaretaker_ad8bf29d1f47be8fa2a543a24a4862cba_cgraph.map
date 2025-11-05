@@ -1,0 +1,5 @@
+<map id="Caretaker::canHandle" name="Caretaker::canHandle">
+<area shape="rect" id="node1" title="Validates whether the caretaker should handle the command." alt="" coords="5,31,168,57"/>
+<area shape="rect" id="node2" href="$classCommand.html#ae5eb454ec8d17c090b16d5453b5a4fcd" title="Reports the command category." alt="" coords="225,5,373,32"/>
+<area shape="rect" id="node3" href="$classEmployee.html#a749bc106b4a66e28b31ec3b10e8ef67f" title="Indicates whether the employee can take new assignments." alt="" coords="216,56,383,83"/>
+</map>

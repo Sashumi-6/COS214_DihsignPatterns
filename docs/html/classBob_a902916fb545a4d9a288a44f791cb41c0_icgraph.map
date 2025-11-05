@@ -1,0 +1,4 @@
+<map id="Bob::addSoil" name="Bob::addSoil">
+<area shape="rect" id="node1" title="Applies soil to a product instance." alt="" coords="235,5,337,32"/>
+<area shape="rect" id="node2" href="$classBasicBuilder.html#a0a89525578f87bdc3e1eb1def930185b" title="Returns the assembled basic product." alt="" coords="5,5,187,32"/>
+</map>

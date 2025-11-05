@@ -1,0 +1,9 @@
+<map id="GreenHouseManager::findMature" name="GreenHouseManager::findMature">
+<area shape="rect" id="node1" title="Finds a mature plant by name." alt="" coords="5,60,172,101"/>
+<area shape="rect" id="node2" href="$classGreenHouseManager.html#ae3ea5cf621b3a9d30e203e37a3f6ec47" title="Finds a plant by name across all sections." alt="" coords="220,42,411,69"/>
+<area shape="rect" id="node7" href="$classPlant.html#aa9bf37f747db6001749ecba4b11d8aad" title="Indicates if the plant has reached maturity." alt="" coords="255,93,375,119"/>
+<area shape="rect" id="node3" href="$classPlantOnlyIterator.html#a32ba5c983a815b11267578fd4f0c0aa1" title="Resets the iterator to the first plant leaf." alt="" coords="459,5,600,47"/>
+<area shape="rect" id="node4" href="$classPlantOnlyIterator.html#a70367d9197f11e43ea55a4bd1a338cc2" title="Advances to the next available plant leaf in depth&#45;first order." alt="" coords="648,42,819,69"/>
+<area shape="rect" id="node5" href="$classGardenComponent.html#ace06464cc140c7ccc1ba7ca1c303ec24" title="Returns any children for iteration." alt="" coords="867,17,1093,43"/>
+<area shape="rect" id="node6" href="$classGardenComponent.html#afff69d4e0e4192fb94609544875f0d5e" title="Identifies whether the component is a leaf node." alt="" coords="885,67,1075,94"/>
+</map>

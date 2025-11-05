@@ -1,7 +1,14 @@
+/**
+ * @file frontDesk.cpp
+ * @brief Implements front desk operations coordinating employees and orders.
+ */
 #include "../headers/frontDesk.h"
 #include "../headers/employee.h"
 #include "../headers/Customer.h"
 
+/**
+ * @brief Releases front desk resources, including queued commands.
+ */
 FrontDesk::~FrontDesk() {
     for (Command* cmd : commands) {
         delete cmd;
@@ -9,6 +16,9 @@ FrontDesk::~FrontDesk() {
     commands.clear();
 }
 
+/**
+ * @brief Executes maintenance commands using available caretakers.
+ */
 void FrontDesk::maintain() {
     for (Employee* e : employees) {
         if (Caretaker* caretaker = dynamic_cast<Caretaker*>(e)) {
@@ -58,16 +68,25 @@ void FrontDesk::addPlant(Plant* plant, GardenSection* section) {
 //     commands.clear();
 // }
 
+/**
+ * @brief Queues a command for later execution.
+ */
 void FrontDesk::addCommand(Command* cmd) {
     if (cmd) {
         commands.push_back(cmd);
     }
 }
 
+/**
+ * @brief Registers an employee with the front desk roster.
+ */
 void FrontDesk::addEmployee(Employee* emp) {
     employees.push_back(emp);
 }
 
+/**
+ * @brief Executes commands using available employees and clears the queue.
+ */
 void FrontDesk::executeAllCommands() {
     for (Command* cmd : commands) {
         if (!cmd) {
@@ -89,14 +108,23 @@ void FrontDesk::executeAllCommands() {
     commands.clear();
 }
 
+/**
+ * @brief Stores the greenhouse composite root.
+ */
 void FrontDesk::setGreenhouse(GardenComponent* root) {
     greenhouse = root;
 }
 
+/**
+ * @brief Retrieves the greenhouse associated with the front desk.
+ */
 GardenComponent* FrontDesk::getGreenhouse() const {
     return greenhouse;
 }
 
+/**
+ * @brief Places a customer order and initiates product construction.
+ */
 bool FrontDesk::placeOrder(std::vector<ProductRequest>& requests, Customer* c){
     if(requests.empty()) return false;
 
@@ -110,6 +138,9 @@ bool FrontDesk::placeOrder(std::vector<ProductRequest>& requests, Customer* c){
     return true;
 }
 
+/**
+ * @brief Processes payment for the current order and disposes it.
+ */
 void FrontDesk::pay() {
     this->currentOrder->togglePaymentStatus();
     this->currentOrder->orderDetails();

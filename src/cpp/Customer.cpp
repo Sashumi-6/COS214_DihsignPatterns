@@ -1,6 +1,13 @@
+/**
+ * @file Customer.cpp
+ * @brief Implements interactive customer behaviour for the simulator.
+ */
 #include "../headers/Customer.h"
 #include <iostream>
 
+/**
+ * @brief Constructs a customer via interactive console prompts.
+ */
 Customer::Customer()
 {
 
@@ -84,6 +91,10 @@ Customer::Customer()
     // if (customerType.equal("order"))
 }
 
+/**
+ * @brief Builds a request command based on customer preferences.
+ * @return Configured request command.
+ */
 RequestCommand Customer::createCustomerQuery()
 {
 
@@ -200,6 +211,10 @@ RequestCommand Customer::createCustomerQuery()
     return RequestCommand(a);
 }
 
+/**
+ * @brief Creates a placeholder order for the customer.
+ * @return Pointer to the customer for chaining.
+ */
 Customer *Customer::createCustomerOrder()
 {
 
@@ -220,16 +235,28 @@ Customer *Customer::createCustomerOrder()
     
 }
 
+/**
+ * @brief Retrieves stored customer name.
+ */
 std::string Customer::getName(){
     return name;
 }
 
+/**
+ * @brief Constructs a customer with pre-defined attributes.
+ * @param customerName Name supplied for the customer.
+ * @param wantsOrder Indicates whether the customer wants to place an order.
+ */
 Customer::Customer(const std::string& customerName, bool wantsOrder)
 {
     name = customerName;
     order = wantsOrder;
 }
 
+/**
+ * @brief Indicates whether the customer intends to place an order.
+ * @return True when an order is desired.
+ */
 bool Customer::wantsOrder() const {
     return order;
 }

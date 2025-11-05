@@ -1,0 +1,4 @@
+<map id="CaretakerFactory" name="CaretakerFactory">
+<area shape="rect" id="node1" title="Factory creating caretaker employees." alt="" coords="7,80,139,107"/>
+<area shape="rect" id="node2" href="$classEmployeeFactory.html" title="Abstract factory interface for creating employees." alt="" coords="5,5,140,32"/>
+</map>

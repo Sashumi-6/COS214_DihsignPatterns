@@ -1,0 +1,6 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classCommand.html" title="Base command interface executed by employees." alt="" coords="5,56,95,83"/>
+<area shape="rect" id="node2" href="$classMaintenance.html" title="Command describing a maintenance action for a garden component." alt="" coords="161,5,267,32"/>
+<area shape="rect" id="node3" href="$classPlantCommand.html" title="Command instructing an employee to tend to a specific plant." alt="" coords="153,56,275,83"/>
+<area shape="rect" id="node4" href="$classRequestCommand.html" title="Command containing a customer request routed through employees." alt="" coords="143,107,285,133"/>
+</map>

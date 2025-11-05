@@ -1,0 +1,8 @@
+<map id="Order::finaliseOrder" name="Order::finaliseOrder">
+<area shape="rect" id="node1" title="Finalizes the order by building requested products." alt="" coords="5,56,155,83"/>
+<area shape="rect" id="node2" href="$classOrder.html#a9052c40c7633446cf24f4104b0262953" title="Adds a product to the order." alt="" coords="209,5,348,32"/>
+<area shape="rect" id="node4" href="$classCashier.html#ac7a3c2fd673d7daeafd7e77ab0cc76ee" title="Builds a product from a request using the builder." alt="" coords="209,56,348,83"/>
+<area shape="rect" id="node6" href="$classOrder.html#abba74d8442ee75e7c2e39474cffff52b" title="Updates the order status." alt="" coords="203,107,355,133"/>
+<area shape="rect" id="node3" href="$classProduct.html#a0aaea95b8d3241b3758246254b8575e2" title="Returns the total price of the product." alt="" coords="403,5,535,32"/>
+<area shape="rect" id="node5" href="$classBob.html#a7f2a0b79ada211d0b55c3bdafb2c1892" title="Retrieves the fully constructed product." alt="" coords="406,56,531,83"/>
+</map>

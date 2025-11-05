@@ -1,0 +1,4 @@
+<map id="Product::setSoil" name="Product::setSoil">
+<area shape="rect" id="node1" title="Sets the soil description." alt="" coords="5,5,128,32"/>
+<area shape="rect" id="node2" href="$classInventory.html#aed45966a7fc38b1ebc48ce18d483b61f" title="Consumes stock items when fulfilling requests." alt="" coords="176,5,320,32"/>
+</map>

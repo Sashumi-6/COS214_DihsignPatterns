@@ -1,0 +1,4 @@
+<map id="Plant::addWater" name="Plant::addWater">
+<area shape="rect" id="node1" title="Adds raw water to the plant&#39;s water level." alt="" coords="5,5,131,32"/>
+<area shape="rect" id="node2" href="$classPlant.html#a8a2563e6b6c1da65d9af725cf97f2719" title="Changes the internal state object and updates its back&#45;reference." alt="" coords="179,5,296,32"/>
+</map>

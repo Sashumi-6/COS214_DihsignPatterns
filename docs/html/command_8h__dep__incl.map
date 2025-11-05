@@ -1,0 +1,22 @@
+<map id="src/headers/command.h" name="src/headers/command.h">
+<area shape="rect" id="node1" title="Declares the command hierarchy used for greenhouse task delegation." alt="" coords="528,5,707,32"/>
+<area shape="rect" id="node2" href="$command_8cpp.html" title="Implements command execution logic for greenhouse employees." alt="" coords="339,304,503,331"/>
+<area shape="rect" id="node3" href="$employee_8cpp.html" title="Implements employee chain logic and role&#45;specific behaviors." alt="" coords="374,379,538,405"/>
+<area shape="rect" id="node4" href="$simulator_8cpp.html" title="Implements the greenhouse business simulation workflow." alt="" coords="1280,453,1440,480"/>
+<area shape="rect" id="node5" href="$Customer_8h.html" title="Declares the Customer entity used for greenhouse interactions." alt="" coords="1039,304,1214,331"/>
+<area shape="rect" id="node8" href="$simulator_8h.html" title="Declares the greenhouse simulation orchestrating daily operations." alt="" coords="563,379,738,405"/>
+<area shape="rect" id="node10" href="$employee_8h.html" title="Declares the employee hierarchy and chain&#45;of&#45;responsibility behavior." alt="" coords="705,229,884,256"/>
+<area shape="rect" id="node12" href="$frontDesk_8h.html" title="Declares the front desk facade orchestrating customer interactions." alt="" coords="579,304,757,331"/>
+<area shape="rect" id="node14" href="$plant_8h.html" title="Declares plant components, strategies, and state machine for garden simulation." alt="" coords="1255,80,1401,107"/>
+<area shape="rect" id="node19" href="$plantDatabase_8h.html" title="Declares the static plant database used for lookup and seeding." alt="" coords="5,304,213,331"/>
+<area shape="rect" id="node6" href="$Customer_8cpp.html" title="Implements interactive customer behaviour for the simulator." alt="" coords="950,379,1111,405"/>
+<area shape="rect" id="node7" href="$frontDesk_8cpp.html" title="Implements front desk operations coordinating employees and orders." alt="" coords="763,379,925,405"/>
+<area shape="rect" id="node9" href="$tui_8cpp.html" title="Implements the text&#45;based user interface for the simulator." alt="" coords="323,453,439,480"/>
+<area shape="rect" id="node11" href="$order_8cpp.html" title="Implements order management and product assembly operations." alt="" coords="883,304,1015,331"/>
+<area shape="rect" id="node13" href="$testingmain_8cpp.html" title="Contains doctest&#45;based unit tests for products and plant behavior." alt="" coords="1136,379,1323,405"/>
+<area shape="rect" id="node15" href="$greenhouseManager_8cpp.html" title="Implements the greenhouse manager section indexing utilities." alt="" coords="1391,155,1622,181"/>
+<area shape="rect" id="node16" href="$plant_8cpp.html" title="Implements plant behaviors, strategies, and state transitions." alt="" coords="1646,155,1778,181"/>
+<area shape="rect" id="node17" href="$productBuilder_8h.html" title="Declares product construction classes leveraging the builder pattern." alt="" coords="1029,155,1235,181"/>
+<area shape="rect" id="node18" href="$product_8cpp.html" title="Implements product builders, decorator extensions, and helpers." alt="" coords="1058,229,1206,256"/>
+<area shape="rect" id="node20" href="$plantDatabase_8cpp.html" title="Defines the static plant database used for lookup." alt="" coords="147,379,341,405"/>
+</map>

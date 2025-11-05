@@ -1,0 +1,5 @@
+<map id="src/headers/tui.h" name="src/headers/tui.h">
+<area shape="rect" id="node1" title="Declares the text user interface helper used for console I/O." alt="" coords="79,5,210,32"/>
+<area shape="rect" id="node2" href="$main_8cpp.html" title="Entry point launching the text user interface." alt="" coords="5,80,137,107"/>
+<area shape="rect" id="node3" href="$tui_8cpp.html" title="Implements the text&#45;based user interface for the simulator." alt="" coords="161,80,277,107"/>
+</map>

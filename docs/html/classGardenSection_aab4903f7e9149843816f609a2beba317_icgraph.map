@@ -1,0 +1,4 @@
+<map id="GardenSection::exposeToSunlight" name="GardenSection::exposeToSunlight">
+<area shape="rect" id="node1" title="Exposes all child components to sunlight." alt="" coords="224,5,463,32"/>
+<area shape="rect" id="node2" href="$classCaretaker.html#af0541797009371cfade0c9e6ccacea74" title="Moves plants according to maintenance requests." alt="" coords="5,5,176,32"/>
+</map>

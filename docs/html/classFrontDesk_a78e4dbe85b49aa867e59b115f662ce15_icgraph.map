@@ -1,0 +1,6 @@
+<map id="FrontDesk::executeAllCommands" name="FrontDesk::executeAllCommands">
+<area shape="rect" id="node1" title="Executes all queued commands using available employees." alt="" coords="529,5,768,32"/>
+<area shape="rect" id="node2" href="$classSimulation.html#a066c57a805d892e7f2942b1fd3977381" title="Starts the simulation, iterating over scheduled days." alt="" coords="281,5,481,32"/>
+<area shape="rect" id="node3" href="$classTUI.html#affe22b6d2a7db8e09ba69a16d144bea3" title="Writes queued log information to the console." alt="" coords="108,5,233,32"/>
+<area shape="rect" id="node4" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="Program entry that initializes and runs the console interface." alt="" coords="5,5,60,32"/>
+</map>

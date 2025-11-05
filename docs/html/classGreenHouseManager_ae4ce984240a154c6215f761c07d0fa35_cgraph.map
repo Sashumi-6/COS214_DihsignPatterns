@@ -1,0 +1,4 @@
+<map id="GreenHouseManager::addPlant" name="GreenHouseManager::addPlant">
+<area shape="rect" id="node1" title="Inserts a plant into an appropriate section." alt="" coords="5,5,172,47"/>
+<area shape="rect" id="node2" href="$classGardenSection.html#ae8b3216060e58aa4fa545c0f3d857671" title="Adds a child component to the section." alt="" coords="220,13,369,39"/>
+</map>

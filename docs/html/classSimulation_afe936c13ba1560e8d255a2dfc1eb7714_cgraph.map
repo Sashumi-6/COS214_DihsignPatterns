@@ -1,0 +1,4 @@
+<map id="Simulation::Simulation" name="Simulation::Simulation">
+<area shape="rect" id="node1" title="Constructs a simulation for the specified number of days." alt="" coords="5,5,176,32"/>
+<area shape="rect" id="node2" href="$classSimulation.html#a7809d995befcc7dcacf8170f63d47246" title="Adjusts the number of days in the simulation run." alt="" coords="224,5,408,32"/>
+</map>

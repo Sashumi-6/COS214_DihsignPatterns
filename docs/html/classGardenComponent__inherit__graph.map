@@ -1,0 +1,5 @@
+<map id="GardenComponent" name="GardenComponent">
+<area shape="rect" id="node1" title="Abstract component in the greenhouse composite structure." alt="" coords="47,5,191,32"/>
+<area shape="rect" id="node2" href="$classGardenSection.html" title="Composite node representing a section in the greenhouse." alt="" coords="5,80,123,107"/>
+<area shape="rect" id="node3" href="$classPlant.html" title="Leaf node in the garden composite representing an individual plant." alt="" coords="147,80,202,107"/>
+</map>

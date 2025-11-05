@@ -1,0 +1,8 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classProduct.html" title="Base class representing a sellable plant product." alt="" coords="5,31,76,57"/>
+<area shape="rect" id="node2" href="$classBouquetProduct.html" title="Product used as a base for bouquet compositions." alt="" coords="124,5,249,32"/>
+<area shape="rect" id="node4" href="$classDecorator.html" title="Decorator base for augmenting products with optional features." alt="" coords="143,56,230,83"/>
+<area shape="rect" id="node3" href="$classBouquet.html" title="Represents a node in a bouquet chain, aggregating multiple plants." alt="" coords="351,5,427,32"/>
+<area shape="rect" id="node5" href="$classCardDecorator.html" title="Decorator adding card customizations to products." alt="" coords="331,56,447,83"/>
+<area shape="rect" id="node6" href="$classWrappingPaperDecorator.html" title="Decorator adding wrapping paper to products." alt="" coords="297,107,481,133"/>
+</map>

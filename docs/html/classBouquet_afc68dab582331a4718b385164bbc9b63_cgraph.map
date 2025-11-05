@@ -1,0 +1,4 @@
+<map id="Bouquet::getPrice" name="Bouquet::getPrice">
+<area shape="rect" id="node1" title="Calculates the cumulative price for the bouquet chain." alt="" coords="5,29,143,56"/>
+<area shape="rect" id="node2" href="$classBouquet.html#a8fa1ee12c64c3b8451fedea77d1cfa13" title="Returns the next bouquet element in the chain." alt="" coords="191,29,327,56"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="MatureState::handleLoseWater" name="MatureState::handleLoseWater">
+<area shape="rect" id="node1" title="Processes water loss behavior for the state." alt="" coords="5,42,228,69"/>
+<area shape="rect" id="node2" href="$classPlant.html#a22df26a0032f1ac8f003ed4ef137b31d" title="Helper that applies configured water loss and updates state." alt="" coords="276,42,443,69"/>
+<area shape="rect" id="node3" href="$classWaterLossStrategy.html#a230d724cc2b3a7a81e0405a754a1948a" title="Calculates the amount of water lost for the current time step." alt="" coords="491,5,641,47"/>
+<area shape="rect" id="node4" href="$classPlant.html#a8a2563e6b6c1da65d9af725cf97f2719" title="Changes the internal state object and updates its back&#45;reference." alt="" coords="507,71,625,98"/>
+</map>

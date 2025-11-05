@@ -1,0 +1,19 @@
+<map id="TUI::consoleLog" name="TUI::consoleLog">
+<area shape="rect" id="node1" title="Writes queued log information to the console." alt="" coords="5,225,131,251"/>
+<area shape="rect" id="node2" href="$classSimulation.html#a936cabe0289a3fe59944aea3ee73438c" title="Enables or disables auto&#45;generation of business levels." alt="" coords="200,5,389,47"/>
+<area shape="rect" id="node3" href="$classSimulation.html#aeedc59aab1bffb55c582f013f0dd7513" title="Supplies a pre&#45;defined business level sequence." alt="" coords="185,71,404,112"/>
+<area shape="rect" id="node4" href="$classSimulation.html#a22dd59b7f84f7cd2d1cc1537c873909a" title="Configures the total number of employees to schedule." alt="" coords="179,137,411,163"/>
+<area shape="rect" id="node5" href="$classSimulation.html#aed332c85f6450bdb2ff1e3f1751fa4c6" title="Configures plants to stock for the simulation." alt="" coords="198,188,391,229"/>
+<area shape="rect" id="node7" href="$classSimulation.html#a32add05b7f39ec3c3c8f5584e7ee94c9" title="Retrieves daily summary results after running the simulation." alt="" coords="180,254,409,281"/>
+<area shape="rect" id="node8" href="$classSimulation.html#a7acc400366e094def25f1577394c2669" title="Returns chronological event log entries." alt="" coords="204,305,385,331"/>
+<area shape="rect" id="node9" href="$classSimulation.html#a829c7904a97f971e7957186847576b59" title="Seeds the random number generator." alt="" coords="191,355,398,382"/>
+<area shape="rect" id="node10" href="$classSimulation.html#a066c57a805d892e7f2942b1fd3977381" title="Starts the simulation, iterating over scheduled days." alt="" coords="195,406,395,433"/>
+<area shape="rect" id="node6" href="$classPlantDatabase.html#a81bc029cfc894ffaa8027e6aa54b2bb4" title="Provides access to all registered plant metadata." alt="" coords="477,195,679,222"/>
+<area shape="rect" id="node11" href="$classGreenHouseManager.html#acbe170c04adc1f6edc0088eb63563dd4" title="Removes all dead plants from the greenhouse." alt="" coords="495,369,661,411"/>
+<area shape="rect" id="node17" href="$classFrontDesk.html#a78e4dbe85b49aa867e59b115f662ce15" title="Executes all queued commands using available employees." alt="" coords="459,435,697,462"/>
+<area shape="rect" id="node12" href="$classPlantOnlyIterator.html#a32ba5c983a815b11267578fd4f0c0aa1" title="Resets the iterator to the first plant leaf." alt="" coords="758,311,899,352"/>
+<area shape="rect" id="node13" href="$classPlantOnlyIterator.html#a70367d9197f11e43ea55a4bd1a338cc2" title="Advances to the next available plant leaf in depth&#45;first order." alt="" coords="960,347,1131,374"/>
+<area shape="rect" id="node16" href="$classGreenHouseManager.html#a3080e573835bd1fd0737bf64b49fccd5" title="Removes a plant from its section." alt="" coords="745,428,912,469"/>
+<area shape="rect" id="node14" href="$classGardenComponent.html#ace06464cc140c7ccc1ba7ca1c303ec24" title="Returns any children for iteration." alt="" coords="1179,322,1405,349"/>
+<area shape="rect" id="node15" href="$classGardenComponent.html#afff69d4e0e4192fb94609544875f0d5e" title="Identifies whether the component is a leaf node." alt="" coords="1197,373,1387,399"/>
+</map>
