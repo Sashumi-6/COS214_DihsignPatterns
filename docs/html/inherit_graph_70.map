@@ -1,0 +1,6 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classWaterLossStrategy.html" title="Strategy interface controlling how plants lose water over time." alt="" coords="5,56,149,83"/>
+<area shape="rect" id="node2" href="$classHighWaterLoss.html" title="Water loss strategy representing very thirsty plants." alt="" coords="197,5,316,32"/>
+<area shape="rect" id="node3" href="$classLowWaterLoss.html" title="Water loss strategy representing resilient plants requiring little water." alt="" coords="199,56,314,83"/>
+<area shape="rect" id="node4" href="$classMedWaterLoss.html" title="Water loss strategy representing plants with moderate water needs." alt="" coords="198,107,315,133"/>
+</map>

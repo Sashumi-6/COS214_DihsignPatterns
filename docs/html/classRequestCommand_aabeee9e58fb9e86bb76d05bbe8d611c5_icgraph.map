@@ -1,0 +1,5 @@
+<map id="RequestCommand::getMessage" name="RequestCommand::getMessage">
+<area shape="rect" id="node1" title="Provides the customer message associated with the request." alt="" coords="191,31,420,57"/>
+<area shape="rect" id="node2" href="$classCashier.html#aa95f795fa4aac17c6430f1d0478570ef" title="Processes customer&#45;facing request commands." alt="" coords="9,5,139,32"/>
+<area shape="rect" id="node3" href="$classManager.html#ab61a0cf8829cbf33b0f7c9038e5c2051" title="Handles escalated customer situations." alt="" coords="5,56,143,83"/>
+</map>

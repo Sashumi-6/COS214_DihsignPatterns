@@ -1,0 +1,5 @@
+<map id="GreenHouseManager::find" name="GreenHouseManager::find">
+<area shape="rect" id="node1" title="Finds a plant by name across all sections." alt="" coords="220,46,411,73"/>
+<area shape="rect" id="node2" href="$classGreenHouseManager.html#a04b292d6f9c2a68b93111e05e8b95c8f" title="Finds a mature plant by name." alt="" coords="5,5,172,47"/>
+<area shape="rect" id="node3" href="$classGreenHouseManager.html#acd01d4bac22adf648c2514df071ab6ab" title="Removes a plant by name." alt="" coords="5,71,172,112"/>
+</map>

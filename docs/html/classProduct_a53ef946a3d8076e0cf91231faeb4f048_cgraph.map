@@ -1,0 +1,4 @@
+<map id="Product::setCard" name="Product::setCard">
+<area shape="rect" id="node1" title="Sets the card message." alt="" coords="5,5,135,32"/>
+<area shape="rect" id="node2" href="$classInventory.html#aed45966a7fc38b1ebc48ce18d483b61f" title="Consumes stock items when fulfilling requests." alt="" coords="183,5,327,32"/>
+</map>

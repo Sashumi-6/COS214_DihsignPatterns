@@ -1,0 +1,6 @@
+<map id="Decorator" name="Decorator">
+<area shape="rect" id="node1" title="Decorator base for augmenting products with optional features." alt="" coords="107,80,193,107"/>
+<area shape="rect" id="node3" href="$classCardDecorator.html" title="Decorator adding card customizations to products." alt="" coords="5,155,121,181"/>
+<area shape="rect" id="node4" href="$classWrappingPaperDecorator.html" title="Decorator adding wrapping paper to products." alt="" coords="146,155,330,181"/>
+<area shape="rect" id="node2" href="$classProduct.html" title="Base class representing a sellable plant product." alt="" coords="115,5,185,32"/>
+</map>

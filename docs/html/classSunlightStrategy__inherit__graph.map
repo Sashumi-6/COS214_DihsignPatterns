@@ -1,0 +1,6 @@
+<map id="SunlightStrategy" name="SunlightStrategy">
+<area shape="rect" id="node1" title="Strategy interface determining how plants are exposed to sunlight." alt="" coords="203,5,333,32"/>
+<area shape="rect" id="node2" href="$classHighSunlightStrategy.html" title="Sunlight strategy assigning plants to high&#45;light environments." alt="" coords="5,80,165,107"/>
+<area shape="rect" id="node3" href="$classLowSunlightStrategy.html" title="Sunlight strategy assigning plants to low&#45;light areas." alt="" coords="190,80,346,107"/>
+<area shape="rect" id="node4" href="$classMedSunlightStrategy.html" title="Sunlight strategy assigning plants to medium&#45;light areas." alt="" coords="370,80,529,107"/>
+</map>

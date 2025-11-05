@@ -1,0 +1,6 @@
+<map id="PlantDatabase::getAllPlants" name="PlantDatabase::getAllPlants">
+<area shape="rect" id="node1" title="Provides access to all registered plant metadata." alt="" coords="523,13,725,39"/>
+<area shape="rect" id="node2" href="$classSimulation.html#aed332c85f6450bdb2ff1e3f1751fa4c6" title="Configures plants to stock for the simulation." alt="" coords="281,5,475,47"/>
+<area shape="rect" id="node3" href="$classTUI.html#affe22b6d2a7db8e09ba69a16d144bea3" title="Writes queued log information to the console." alt="" coords="108,13,233,39"/>
+<area shape="rect" id="node4" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="Program entry that initializes and runs the console interface." alt="" coords="5,13,60,39"/>
+</map>

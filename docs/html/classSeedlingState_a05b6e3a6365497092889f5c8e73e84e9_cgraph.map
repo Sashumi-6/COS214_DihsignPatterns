@@ -1,0 +1,5 @@
+<map id="SeedlingState::handleExposeToSunlight" name="SeedlingState::handleExposeToSunlight">
+<area shape="rect" id="node1" title="Handles sunlight exposure transition logic for the current state." alt="" coords="5,5,216,47"/>
+<area shape="rect" id="node2" href="$classPlant.html#a0a018798fdc289ce3978e50caa53aa3c" title="Helper exposing the plant to sunlight via strategy decision." alt="" coords="264,13,477,39"/>
+<area shape="rect" id="node3" href="$classSunlightStrategy.html#aa88851befea12f8d41d4094247886cec" title="Decides where the plant should be placed for sunlight." alt="" coords="525,5,709,47"/>
+</map>

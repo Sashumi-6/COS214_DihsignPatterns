@@ -1,0 +1,13 @@
+<map id="BouquetBuilder::getProduct" name="BouquetBuilder::getProduct">
+<area shape="rect" id="node1" title="Returns the completed bouquet product." alt="" coords="5,196,205,223"/>
+<area shape="rect" id="node2" href="$classBouquetBuilder.html#a31690dd525961c480aee3448e700e712" title="Constructs the bouquet chain from the supplied plants." alt="" coords="267,145,453,172"/>
+<area shape="rect" id="node8" href="$classBouquetBuilder.html#ae7500f741490f825d776cb3dd91de9e6" title="Applies bouquet&#45;specific container selection." alt="" coords="253,221,467,248"/>
+<area shape="rect" id="node3" href="$classBouquet.html#a8fa1ee12c64c3b8451fedea77d1cfa13" title="Returns the next bouquet element in the chain." alt="" coords="548,5,684,32"/>
+<area shape="rect" id="node4" href="$classPlant.html#af46a0b4c2ba70d1ad0fe04adb4d86c99" title="Accessor for plant price." alt="" coords="558,56,674,83"/>
+<area shape="rect" id="node5" href="$classProduct.html#abacc41a4bf3e00f1bfd6962e3dca50a0" title="Increases the price by a given amount." alt="" coords="551,208,681,235"/>
+<area shape="rect" id="node6" href="$classGardenComponent.html#a10a4470ebe33fbb7f0b6e96a2785e38a" title="Removes a child component." alt="" coords="515,107,717,133"/>
+<area shape="rect" id="node7" href="$classBouquet.html#a27e1ac4fb990911cf0eee659ffad9ff8" title="Sets the next bouquet element." alt="" coords="549,157,683,184"/>
+<area shape="rect" id="node9" href="$classProduct.html#a0a494440767ea315869530b7fcbfebb8" title="Indicates if the product is the main bouquet component." alt="" coords="545,259,687,285"/>
+<area shape="rect" id="node10" href="$classProduct.html#a24c9b5d31e04ff9292e7256278252ea8" title="Sets the container description." alt="" coords="535,309,697,336"/>
+<area shape="rect" id="node11" href="$classInventory.html#aed45966a7fc38b1ebc48ce18d483b61f" title="Consumes stock items when fulfilling requests." alt="" coords="765,309,909,336"/>
+</map>

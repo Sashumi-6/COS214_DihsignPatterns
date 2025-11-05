@@ -1,0 +1,8 @@
+<map id="Product" name="Product">
+<area shape="rect" id="node1" title="Base class representing a sellable plant product." alt="" coords="98,5,169,32"/>
+<area shape="rect" id="node2" href="$classBouquetProduct.html" title="Product used as a base for bouquet compositions." alt="" coords="5,80,131,107"/>
+<area shape="rect" id="node4" href="$classDecorator.html" title="Decorator base for augmenting products with optional features." alt="" coords="155,80,242,107"/>
+<area shape="rect" id="node3" href="$classBouquet.html" title="Represents a node in a bouquet chain, aggregating multiple plants." alt="" coords="30,155,106,181"/>
+<area shape="rect" id="node5" href="$classCardDecorator.html" title="Decorator adding card customizations to products." alt="" coords="135,155,251,181"/>
+<area shape="rect" id="node6" href="$classWrappingPaperDecorator.html" title="Decorator adding wrapping paper to products." alt="" coords="276,155,460,181"/>
+</map>

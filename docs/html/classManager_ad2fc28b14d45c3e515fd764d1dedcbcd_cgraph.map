@@ -1,0 +1,4 @@
+<map id="Manager::canHandle" name="Manager::canHandle">
+<area shape="rect" id="node1" title="Checks if the manager should address the command." alt="" coords="5,5,161,32"/>
+<area shape="rect" id="node2" href="$classCommand.html#ae5eb454ec8d17c090b16d5453b5a4fcd" title="Reports the command category." alt="" coords="209,5,357,32"/>
+</map>

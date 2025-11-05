@@ -1,0 +1,4 @@
+<map id="PlantState::setPlant" name="PlantState::setPlant">
+<area shape="rect" id="node1" title="Updates the plant the state manipulates." alt="" coords="149,5,300,32"/>
+<area shape="rect" id="node2" href="$classPlant.html#a08dbfe554f12a43af95307cf4c209a59" title="Constructs a plant with its strategies and initial state." alt="" coords="5,5,101,32"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="Customer::createCustomerQuery" name="Customer::createCustomerQuery">
+<area shape="rect" id="node1" title="Generates a query command reflecting customer questions." alt="" coords="209,5,407,47"/>
+<area shape="rect" id="node2" href="$classCustomer.html#abcc8fae9701e5ba9d7d6fe44498b34e3" title="Constructs a customer with no name and default order intent." alt="" coords="5,13,161,39"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="BouquetBuilder::addPlant" name="BouquetBuilder::addPlant">
+<area shape="rect" id="node1" title="Constructs the bouquet chain from the supplied plants." alt="" coords="5,107,192,133"/>
+<area shape="rect" id="node2" href="$classBouquet.html#a8fa1ee12c64c3b8451fedea77d1cfa13" title="Returns the next bouquet element in the chain." alt="" coords="273,5,409,32"/>
+<area shape="rect" id="node3" href="$classPlant.html#af46a0b4c2ba70d1ad0fe04adb4d86c99" title="Accessor for plant price." alt="" coords="283,56,399,83"/>
+<area shape="rect" id="node4" href="$classProduct.html#abacc41a4bf3e00f1bfd6962e3dca50a0" title="Increases the price by a given amount." alt="" coords="276,107,407,133"/>
+<area shape="rect" id="node5" href="$classGardenComponent.html#a10a4470ebe33fbb7f0b6e96a2785e38a" title="Removes a child component." alt="" coords="240,157,443,184"/>
+<area shape="rect" id="node6" href="$classBouquet.html#a27e1ac4fb990911cf0eee659ffad9ff8" title="Sets the next bouquet element." alt="" coords="274,208,409,235"/>
+</map>

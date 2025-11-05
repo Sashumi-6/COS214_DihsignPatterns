@@ -1,0 +1,7 @@
+<map id="src/headers/plant.h" name="src/headers/plant.h">
+<area shape="rect" id="node1" title="Declares plant components, strategies, and state machine for garden simulation." alt="" coords="49,5,195,32"/>
+<area shape="rect" id="node2" href="$garden_8h.html" title="Declares the composite structure representing greenhouse sections." alt="" coords="5,80,84,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="139,155,198,181"/>
+<area shape="rect" id="node5" href="$command_8h.html" title="Declares the command hierarchy used for greenhouse task delegation." alt="" coords="159,80,258,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="13,155,76,181"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="BasicBuilder::addPlant" name="BasicBuilder::addPlant">
+<area shape="rect" id="node1" title="Builds the base product using a single plant." alt="" coords="5,56,173,83"/>
+<area shape="rect" id="node2" href="$classPlant.html#af46a0b4c2ba70d1ad0fe04adb4d86c99" title="Accessor for plant price." alt="" coords="265,5,381,32"/>
+<area shape="rect" id="node3" href="$classProduct.html#abacc41a4bf3e00f1bfd6962e3dca50a0" title="Increases the price by a given amount." alt="" coords="257,56,388,83"/>
+<area shape="rect" id="node4" href="$classGardenComponent.html#a10a4470ebe33fbb7f0b6e96a2785e38a" title="Removes a child component." alt="" coords="221,107,424,133"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="SeedlingState" name="SeedlingState">
+<area shape="rect" id="node1" title="Represents a newly planted seedling that cannot be sold yet." alt="" coords="21,247,133,273"/>
+<area shape="rect" id="node2" href="$classPlantState.html" title="Abstract base state used by the plant state machine." alt="" coords="33,171,122,197"/>
+<area shape="rect" id="node3" href="$classPlant.html" title="Leaf node in the garden composite representing an individual plant." alt="" coords="50,81,105,108"/>
+<area shape="rect" id="node4" href="$classGardenComponent.html" title="Abstract component in the greenhouse composite structure." alt="" coords="5,5,149,32"/>
+</map>

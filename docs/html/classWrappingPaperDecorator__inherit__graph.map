@@ -1,0 +1,5 @@
+<map id="WrappingPaperDecorator" name="WrappingPaperDecorator">
+<area shape="rect" id="node1" title="Decorator adding wrapping paper to products." alt="" coords="5,155,189,181"/>
+<area shape="rect" id="node2" href="$classDecorator.html" title="Decorator base for augmenting products with optional features." alt="" coords="54,80,141,107"/>
+<area shape="rect" id="node3" href="$classProduct.html" title="Base class representing a sellable plant product." alt="" coords="62,5,133,32"/>
+</map>

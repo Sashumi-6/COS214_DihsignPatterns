@@ -1,0 +1,6 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classSunlightStrategy.html" title="Strategy interface determining how plants are exposed to sunlight." alt="" coords="5,56,136,83"/>
+<area shape="rect" id="node2" href="$classHighSunlightStrategy.html" title="Sunlight strategy assigning plants to high&#45;light environments." alt="" coords="184,5,344,32"/>
+<area shape="rect" id="node3" href="$classLowSunlightStrategy.html" title="Sunlight strategy assigning plants to low&#45;light areas." alt="" coords="186,56,342,83"/>
+<area shape="rect" id="node4" href="$classMedSunlightStrategy.html" title="Sunlight strategy assigning plants to medium&#45;light areas." alt="" coords="185,107,343,133"/>
+</map>

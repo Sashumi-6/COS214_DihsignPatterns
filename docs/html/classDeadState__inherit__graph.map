@@ -1,0 +1,4 @@
+<map id="DeadState" name="DeadState">
+<area shape="rect" id="node1" title="Represents plants that have depleted resources and are dead." alt="" coords="5,80,96,107"/>
+<area shape="rect" id="node2" href="$classPlantState.html" title="Abstract base state used by the plant state machine." alt="" coords="6,5,95,32"/>
+</map>

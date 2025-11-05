@@ -1,0 +1,15 @@
+<map id="src/headers/employee.h" name="src/headers/employee.h">
+<area shape="rect" id="node1" title="Declares the employee hierarchy and chain&#45;of&#45;responsibility behavior." alt="" coords="361,5,540,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="367,304,425,331"/>
+<area shape="rect" id="node3" title=" " alt="" coords="781,304,843,331"/>
+<area shape="rect" id="node4" title=" " alt="" coords="347,80,427,107"/>
+<area shape="rect" id="node5" href="$command_8h.html" title="Declares the command hierarchy used for greenhouse task delegation." alt="" coords="260,229,359,256"/>
+<area shape="rect" id="node6" href="$productBuilder_8h.html" title="Declares product construction classes leveraging the builder pattern." alt="" coords="451,80,579,107"/>
+<area shape="rect" id="node12" href="$order_8h.html" title="Declares the Order aggregate responsible for customer purchases." alt="" coords="651,155,717,181"/>
+<area shape="rect" id="node7" href="$plant_8h.html" title="Declares plant components, strategies, and state machine for garden simulation." alt="" coords="433,155,500,181"/>
+<area shape="rect" id="node8" href="$garden_8h.html" title="Declares the composite structure representing greenhouse sections." alt="" coords="485,229,563,256"/>
+<area shape="rect" id="node9" href="$inventory_8h.html" title="Declares the inventory subsystem tracking greenhouse supplies." alt="" coords="145,155,239,181"/>
+<area shape="rect" id="node10" title=" " alt="" coords="135,229,185,256"/>
+<area shape="rect" id="node11" title=" " alt="" coords="23,229,110,256"/>
+<area shape="rect" id="node13" href="$productRequest_8h.html" title="Declares the data structure describing customer product requests." alt="" coords="639,229,775,256"/>
+</map>

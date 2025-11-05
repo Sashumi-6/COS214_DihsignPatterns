@@ -1,0 +1,5 @@
+<map id="Manager::process" name="Manager::process">
+<area shape="rect" id="node1" title="Handles escalated customer situations." alt="" coords="5,31,143,57"/>
+<area shape="rect" id="node2" href="$classRequestCommand.html#aabeee9e58fb9e86bb76d05bbe8d611c5" title="Provides the customer message associated with the request." alt="" coords="191,5,420,32"/>
+<area shape="rect" id="node3" href="$classManager.html#ac443a8c76757cbb3b6304d16417ed47a" title="Deals with escalated customer requests." alt="" coords="206,56,405,83"/>
+</map>

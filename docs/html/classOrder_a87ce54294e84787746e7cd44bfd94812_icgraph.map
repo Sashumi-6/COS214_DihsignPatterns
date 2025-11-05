@@ -1,0 +1,4 @@
+<map id="Order::removeProduct" name="Order::removeProduct">
+<area shape="rect" id="node1" title="Removes a product from the order." alt="" coords="212,5,377,32"/>
+<area shape="rect" id="node2" href="$classCashier.html#ad9c6631d4c02d58d48ba61c59e3ca123" title="Removes a product from the current order." alt="" coords="5,5,164,32"/>
+</map>

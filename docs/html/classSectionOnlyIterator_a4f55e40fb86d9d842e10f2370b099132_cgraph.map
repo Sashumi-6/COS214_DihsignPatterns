@@ -1,0 +1,7 @@
+<map id="SectionOnlyIterator::SectionOnlyIterator" name="SectionOnlyIterator::SectionOnlyIterator">
+<area shape="rect" id="node1" title="Constructs the iterator rooted at the provided component." alt="" coords="5,23,161,65"/>
+<area shape="rect" id="node2" href="$classSectionOnlyIterator.html#a47512c426e3a986acdf5b8967f2c5516" title="Resets the iterator to the first section node." alt="" coords="209,23,357,65"/>
+<area shape="rect" id="node3" href="$classSectionOnlyIterator.html#ac57d8ccf3c8fd53be423cf281a8d2817" title="Advances to the next section in the traversal." alt="" coords="405,23,553,65"/>
+<area shape="rect" id="node4" href="$classGardenComponent.html#ace06464cc140c7ccc1ba7ca1c303ec24" title="Returns any children for iteration." alt="" coords="601,5,828,32"/>
+<area shape="rect" id="node5" href="$classGardenComponent.html#afff69d4e0e4192fb94609544875f0d5e" title="Identifies whether the component is a leaf node." alt="" coords="619,56,810,83"/>
+</map>

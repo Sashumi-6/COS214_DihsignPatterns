@@ -1,0 +1,6 @@
+<map id="BasicBuilder::setContainer" name="BasicBuilder::setContainer">
+<area shape="rect" id="node1" title="Chooses a basic container option." alt="" coords="5,31,200,57"/>
+<area shape="rect" id="node2" href="$classProduct.html#abacc41a4bf3e00f1bfd6962e3dca50a0" title="Increases the price by a given amount." alt="" coords="264,5,395,32"/>
+<area shape="rect" id="node3" href="$classProduct.html#a24c9b5d31e04ff9292e7256278252ea8" title="Sets the container description." alt="" coords="248,56,411,83"/>
+<area shape="rect" id="node4" href="$classInventory.html#aed45966a7fc38b1ebc48ce18d483b61f" title="Consumes stock items when fulfilling requests." alt="" coords="459,56,603,83"/>
+</map>

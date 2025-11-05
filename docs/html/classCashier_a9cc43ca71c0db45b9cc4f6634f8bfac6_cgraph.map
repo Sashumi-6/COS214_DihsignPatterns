@@ -1,0 +1,5 @@
+<map id="Cashier::addItem" name="Cashier::addItem">
+<area shape="rect" id="node1" title="Adds a product to the current order." alt="" coords="5,5,139,32"/>
+<area shape="rect" id="node2" href="$classOrder.html#a9052c40c7633446cf24f4104b0262953" title="Adds a product to the order." alt="" coords="187,5,325,32"/>
+<area shape="rect" id="node3" href="$classProduct.html#a0aaea95b8d3241b3758246254b8575e2" title="Returns the total price of the product." alt="" coords="373,5,505,32"/>
+</map>

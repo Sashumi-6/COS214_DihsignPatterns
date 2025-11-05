@@ -1,0 +1,6 @@
+<map id="GreenHouseManager::clearAllDead" name="GreenHouseManager::clearAllDead">
+<area shape="rect" id="node1" title="Removes all dead plants from the greenhouse." alt="" coords="529,5,696,47"/>
+<area shape="rect" id="node2" href="$classSimulation.html#a066c57a805d892e7f2942b1fd3977381" title="Starts the simulation, iterating over scheduled days." alt="" coords="281,13,481,39"/>
+<area shape="rect" id="node3" href="$classTUI.html#affe22b6d2a7db8e09ba69a16d144bea3" title="Writes queued log information to the console." alt="" coords="108,13,233,39"/>
+<area shape="rect" id="node4" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="Program entry that initializes and runs the console interface." alt="" coords="5,13,60,39"/>
+</map>

@@ -1,0 +1,14 @@
+<map id="src/headers/productRequest.h" name="src/headers/productRequest.h">
+<area shape="rect" id="node1" title="Declares the data structure describing customer product requests." alt="" coords="433,5,648,32"/>
+<area shape="rect" id="node2" href="$frontDesk_8h.html" title="Declares the front desk facade orchestrating customer interactions." alt="" coords="452,229,629,256"/>
+<area shape="rect" id="node5" href="$simulator_8h.html" title="Declares the greenhouse simulation orchestrating daily operations." alt="" coords="655,304,829,331"/>
+<area shape="rect" id="node9" href="$order_8h.html" title="Declares the Order aggregate responsible for customer purchases." alt="" coords="235,80,382,107"/>
+<area shape="rect" id="node3" href="$employee_8cpp.html" title="Implements employee chain logic and role&#45;specific behaviors." alt="" coords="68,304,232,331"/>
+<area shape="rect" id="node4" href="$frontDesk_8cpp.html" title="Implements front desk operations coordinating employees and orders." alt="" coords="257,304,419,331"/>
+<area shape="rect" id="node8" href="$testingmain_8cpp.html" title="Contains doctest&#45;based unit tests for products and plant behavior." alt="" coords="443,304,630,331"/>
+<area shape="rect" id="node6" href="$simulator_8cpp.html" title="Implements the greenhouse business simulation workflow." alt="" coords="581,379,741,405"/>
+<area shape="rect" id="node7" href="$tui_8cpp.html" title="Implements the text&#45;based user interface for the simulator." alt="" coords="765,379,881,405"/>
+<area shape="rect" id="node10" href="$order_8cpp.html" title="Implements order management and product assembly operations." alt="" coords="5,229,137,256"/>
+<area shape="rect" id="node11" href="$employee_8h.html" title="Declares the employee hierarchy and chain&#45;of&#45;responsibility behavior." alt="" coords="219,155,398,181"/>
+<area shape="rect" id="node12" href="$command_8cpp.html" title="Implements command execution logic for greenhouse employees." alt="" coords="264,229,428,256"/>
+</map>

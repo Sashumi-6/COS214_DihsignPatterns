@@ -1,0 +1,5 @@
+<map id="Cashier::process" name="Cashier::process">
+<area shape="rect" id="node1" title="Processes customer&#45;facing request commands." alt="" coords="5,31,135,57"/>
+<area shape="rect" id="node2" href="$classRequestCommand.html#aabeee9e58fb9e86bb76d05bbe8d611c5" title="Provides the customer message associated with the request." alt="" coords="195,5,425,32"/>
+<area shape="rect" id="node3" href="$classRequestCommand.html#a30bb666b5cbf185b8850f757c6178178" title="Retrieves the request category." alt="" coords="183,56,437,83"/>
+</map>

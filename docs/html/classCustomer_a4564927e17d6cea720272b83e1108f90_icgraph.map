@@ -1,0 +1,4 @@
+<map id="Customer::getName" name="Customer::getName">
+<area shape="rect" id="node1" title="Returns the customer&#39;s name." alt="" coords="220,5,373,32"/>
+<area shape="rect" id="node2" href="$classFrontDesk.html#a42e530ddeaa51fbcb097fb9c0170362b" title="Places an order based on customer product requests." alt="" coords="5,5,172,32"/>
+</map>

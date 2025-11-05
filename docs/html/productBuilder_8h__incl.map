@@ -1,0 +1,11 @@
+<map id="src/headers/productBuilder.h" name="src/headers/productBuilder.h">
+<area shape="rect" id="node1" title="Declares product construction classes leveraging the builder pattern." alt="" coords="49,5,256,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,229,68,256"/>
+<area shape="rect" id="node3" title=" " alt="" coords="217,229,275,256"/>
+<area shape="rect" id="node4" href="$plant_8h.html" title="Declares plant components, strategies, and state machine for garden simulation." alt="" coords="190,80,257,107"/>
+<area shape="rect" id="node5" href="$garden_8h.html" title="Declares the composite structure representing greenhouse sections." alt="" coords="36,155,115,181"/>
+<area shape="rect" id="node7" href="$inventory_8h.html" title="Declares the inventory subsystem tracking greenhouse supplies." alt="" coords="360,80,455,107"/>
+<area shape="rect" id="node6" href="$command_8h.html" title="Declares the command hierarchy used for greenhouse task delegation." alt="" coords="241,155,339,181"/>
+<area shape="rect" id="node8" title=" " alt="" coords="414,155,465,181"/>
+<area shape="rect" id="node9" title=" " alt="" coords="489,155,576,181"/>
+</map>

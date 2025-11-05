@@ -1,0 +1,6 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classIterator.html" title=" " alt="" coords="5,56,228,83"/>
+<area shape="rect" id="node2" href="$classFullIterator.html" title="Breadth&#45;first iterator that visits every greenhouse component." alt="" coords="303,5,397,32"/>
+<area shape="rect" id="node3" href="$classPlantOnlyIterator.html" title="Depth&#45;first iterator that yields only plant leaf nodes." alt="" coords="283,56,417,83"/>
+<area shape="rect" id="node4" href="$classSectionOnlyIterator.html" title="Depth&#45;first iterator that returns only section composite nodes." alt="" coords="276,107,424,133"/>
+</map>

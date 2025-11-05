@@ -1,0 +1,6 @@
+<map id="Employee" name="Employee">
+<area shape="rect" id="node1" title="Abstract employee participating in the command handling chain." alt="" coords="107,5,194,32"/>
+<area shape="rect" id="node2" href="$classCaretaker.html" title="Employee responsible for plant maintenance and care." alt="" coords="5,80,91,107"/>
+<area shape="rect" id="node3" href="$classCashier.html" title="Employee responsible for order processing and product assembly." alt="" coords="115,80,186,107"/>
+<area shape="rect" id="node4" href="$classManager.html" title="Employee handling escalations and managerial actions." alt="" coords="210,80,289,107"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classBob.html" title="Abstract builder responsible for constructing products." alt="" coords="5,31,52,57"/>
+<area shape="rect" id="node2" href="$classBasicBuilder.html" title="Concrete builder producing basic potted products." alt="" coords="110,5,213,32"/>
+<area shape="rect" id="node3" href="$classBouquetBuilder.html" title="Concrete builder producing bouquet products." alt="" coords="100,56,223,83"/>
+</map>

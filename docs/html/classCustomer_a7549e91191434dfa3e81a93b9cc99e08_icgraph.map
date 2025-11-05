@@ -1,0 +1,4 @@
+<map id="Customer::wantsOrder" name="Customer::wantsOrder">
+<area shape="rect" id="node1" title="Indicates whether the customer wants to place an order." alt="" coords="209,5,377,32"/>
+<area shape="rect" id="node2" href="$classCustomer.html#af26c729513957dbd857d30f2ae044772" title="Constructs a named customer with optional order intent." alt="" coords="5,5,161,32"/>
+</map>

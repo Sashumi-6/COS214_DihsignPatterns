@@ -1,0 +1,5 @@
+<map id="PlantCommand::execute" name="PlantCommand::execute">
+<area shape="rect" id="node1" title="Instructs the caretaker to service the plant." alt="" coords="5,5,187,32"/>
+<area shape="rect" id="node2" href="$classCaretaker.html#ae56a7d8c4f8c7800e4065cc078988d21" title="Plants a new plant into the greenhouse." alt="" coords="235,5,423,32"/>
+<area shape="rect" id="node3" href="$classGardenSection.html#ae8b3216060e58aa4fa545c0f3d857671" title="Adds a child component to the section." alt="" coords="471,5,620,32"/>
+</map>

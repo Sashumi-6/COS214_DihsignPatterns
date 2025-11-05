@@ -1,0 +1,4 @@
+<map id="Caretaker::plantNewPlant" name="Caretaker::plantNewPlant">
+<area shape="rect" id="node1" title="Plants a new plant into the greenhouse." alt="" coords="235,5,423,32"/>
+<area shape="rect" id="node2" href="$classPlantCommand.html#a13647cd230c38b2e25359f690f174f50" title="Instructs the caretaker to service the plant." alt="" coords="5,5,187,32"/>
+</map>

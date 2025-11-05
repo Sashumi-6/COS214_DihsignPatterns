@@ -1,0 +1,4 @@
+<map id="Order::orderDetails" name="Order::orderDetails">
+<area shape="rect" id="node1" title="Generates a human&#45;readable order summary." alt="" coords="5,5,152,32"/>
+<area shape="rect" id="node2" href="$classOrder.html#a2298564c3d0cd9923e354e0a18a62b4a" title="Calculates the total price for the order." alt="" coords="200,5,356,32"/>
+</map>

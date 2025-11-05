@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classGardenComponent.html" title="Abstract component in the greenhouse composite structure." alt="" coords="5,31,149,57"/>
+<area shape="rect" id="node2" href="$classGardenSection.html" title="Composite node representing a section in the greenhouse." alt="" coords="197,5,315,32"/>
+<area shape="rect" id="node3" href="$classPlant.html" title="Leaf node in the garden composite representing an individual plant." alt="" coords="229,56,283,83"/>
+</map>

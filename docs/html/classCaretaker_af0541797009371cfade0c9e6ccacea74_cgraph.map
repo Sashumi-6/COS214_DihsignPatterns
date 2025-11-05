@@ -1,0 +1,4 @@
+<map id="Caretaker::movePlants" name="Caretaker::movePlants">
+<area shape="rect" id="node1" title="Moves plants according to maintenance requests." alt="" coords="5,5,176,32"/>
+<area shape="rect" id="node2" href="$classGardenSection.html#aab4903f7e9149843816f609a2beba317" title="Exposes all child components to sunlight." alt="" coords="224,5,463,32"/>
+</map>

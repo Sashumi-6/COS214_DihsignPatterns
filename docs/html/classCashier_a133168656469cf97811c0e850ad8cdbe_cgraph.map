@@ -1,0 +1,4 @@
+<map id="Cashier::canHandle" name="Cashier::canHandle">
+<area shape="rect" id="node1" title="Determines if the cashier can handle the given request command." alt="" coords="5,5,153,32"/>
+<area shape="rect" id="node2" href="$classCommand.html#ae5eb454ec8d17c090b16d5453b5a4fcd" title="Reports the command category." alt="" coords="201,5,349,32"/>
+</map>

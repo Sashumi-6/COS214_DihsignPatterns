@@ -1,0 +1,5 @@
+<map id="Employee::handleRequest" name="Employee::handleRequest">
+<area shape="rect" id="node1" title="Handles a command or forwards it to the next employee." alt="" coords="5,31,197,57"/>
+<area shape="rect" id="node2" href="$classEmployee.html#a8b83a78ef935cc114b8005508c0828ff" title="Determines if the employee can process the supplied command." alt="" coords="245,5,409,32"/>
+<area shape="rect" id="node3" href="$classEmployee.html#a28c6608f46f4b80a078f3b8ee4b9a2bf" title="Performs the command&#45;specific work." alt="" coords="255,56,400,83"/>
+</map>

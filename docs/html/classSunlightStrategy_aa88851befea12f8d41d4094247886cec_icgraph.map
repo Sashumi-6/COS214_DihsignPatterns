@@ -1,0 +1,6 @@
+<map id="SunlightStrategy::exposeToSun" name="SunlightStrategy::exposeToSun">
+<area shape="rect" id="node1" title="Decides where the plant should be placed for sunlight." alt="" coords="525,39,709,80"/>
+<area shape="rect" id="node2" href="$classPlant.html#a0a018798fdc289ce3978e50caa53aa3c" title="Helper exposing the plant to sunlight via strategy decision." alt="" coords="264,46,477,73"/>
+<area shape="rect" id="node3" href="$classSeedlingState.html#a05b6e3a6365497092889f5c8e73e84e9" title="Handles sunlight exposure transition logic for the current state." alt="" coords="5,5,216,47"/>
+<area shape="rect" id="node4" href="$classMatureState.html#afd2800cd912effa4f1c621eb423a24d4" title="Handles sunlight exposure transition logic for the current state." alt="" coords="10,71,211,112"/>
+</map>

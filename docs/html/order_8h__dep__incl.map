@@ -1,0 +1,13 @@
+<map id="src/headers/order.h" name="src/headers/order.h">
+<area shape="rect" id="node1" title="Declares the Order aggregate responsible for customer purchases." alt="" coords="183,5,329,32"/>
+<area shape="rect" id="node2" href="$order_8cpp.html" title="Implements order management and product assembly operations." alt="" coords="75,155,207,181"/>
+<area shape="rect" id="node3" href="$employee_8h.html" title="Declares the employee hierarchy and chain&#45;of&#45;responsibility behavior." alt="" coords="283,80,461,107"/>
+<area shape="rect" id="node4" href="$command_8cpp.html" title="Implements command execution logic for greenhouse employees." alt="" coords="485,155,649,181"/>
+<area shape="rect" id="node5" href="$employee_8cpp.html" title="Implements employee chain logic and role&#45;specific behaviors." alt="" coords="490,229,654,256"/>
+<area shape="rect" id="node6" href="$frontDesk_8cpp.html" title="Implements front desk operations coordinating employees and orders." alt="" coords="679,229,841,256"/>
+<area shape="rect" id="node7" href="$frontDesk_8h.html" title="Declares the front desk facade orchestrating customer interactions." alt="" coords="283,155,461,181"/>
+<area shape="rect" id="node8" href="$simulator_8h.html" title="Declares the greenhouse simulation orchestrating daily operations." alt="" coords="79,229,254,256"/>
+<area shape="rect" id="node11" href="$testingmain_8cpp.html" title="Contains doctest&#45;based unit tests for products and plant behavior." alt="" coords="279,229,465,256"/>
+<area shape="rect" id="node9" href="$simulator_8cpp.html" title="Implements the greenhouse business simulation workflow." alt="" coords="5,304,165,331"/>
+<area shape="rect" id="node10" href="$tui_8cpp.html" title="Implements the text&#45;based user interface for the simulator." alt="" coords="190,304,306,331"/>
+</map>

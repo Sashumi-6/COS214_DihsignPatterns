@@ -1,0 +1,8 @@
+<map id="Decorator::Decorator" name="Decorator::Decorator">
+<area shape="rect" id="node1" title="Binds the decorator to an existing product." alt="" coords="5,107,164,133"/>
+<area shape="rect" id="node2" href="$classProduct.html#ae5f57c33e8e005bcd796df0b342fcdf5" title="Returns the card message, if any." alt="" coords="228,5,359,32"/>
+<area shape="rect" id="node3" href="$classProduct.html#af8ec8a2d4561da9e7a095eeed6814eff" title="Retrieves the container option assigned to the product." alt="" coords="212,56,375,83"/>
+<area shape="rect" id="node4" href="$classProduct.html#a94084df68c24914383466486d822a709" title="Provides read&#45;only access to the plant." alt="" coords="227,107,360,133"/>
+<area shape="rect" id="node5" href="$classProduct.html#a1ab0691aac07c6e9554901e5d61acba1" title="Retrieves the soil option assigned to the product." alt="" coords="231,157,355,184"/>
+<area shape="rect" id="node6" href="$classProduct.html#a7b6279cc98f8cd37b40ed374bf7af565" title="Returns the wrapping option, if any." alt="" coords="212,208,375,235"/>
+</map>

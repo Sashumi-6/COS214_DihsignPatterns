@@ -1,0 +1,6 @@
+<map id="Command" name="Command">
+<area shape="rect" id="node1" title="Base command interface executed by employees." alt="" coords="153,5,242,32"/>
+<area shape="rect" id="node2" href="$classMaintenance.html" title="Command describing a maintenance action for a garden component." alt="" coords="5,80,112,107"/>
+<area shape="rect" id="node3" href="$classPlantCommand.html" title="Command instructing an employee to tend to a specific plant." alt="" coords="136,80,259,107"/>
+<area shape="rect" id="node4" href="$classRequestCommand.html" title="Command containing a customer request routed through employees." alt="" coords="283,80,426,107"/>
+</map>

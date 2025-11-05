@@ -1,0 +1,4 @@
+<map id="PlantCommand" name="PlantCommand">
+<area shape="rect" id="node1" title="Command instructing an employee to tend to a specific plant." alt="" coords="5,80,128,107"/>
+<area shape="rect" id="node2" href="$classCommand.html" title="Base command interface executed by employees." alt="" coords="22,5,111,32"/>
+</map>

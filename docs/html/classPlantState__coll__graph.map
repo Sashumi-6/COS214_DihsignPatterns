@@ -1,0 +1,5 @@
+<map id="PlantState" name="PlantState">
+<area shape="rect" id="node1" title="Abstract base state used by the plant state machine." alt="" coords="33,171,122,197"/>
+<area shape="rect" id="node2" href="$classPlant.html" title="Leaf node in the garden composite representing an individual plant." alt="" coords="50,81,105,108"/>
+<area shape="rect" id="node3" href="$classGardenComponent.html" title="Abstract component in the greenhouse composite structure." alt="" coords="5,5,149,32"/>
+</map>

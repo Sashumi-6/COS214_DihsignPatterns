@@ -1,0 +1,4 @@
+<map id="Cashier::construct" name="Cashier::construct">
+<area shape="rect" id="node1" title="Builds a product from a request using the builder." alt="" coords="5,5,144,32"/>
+<area shape="rect" id="node2" href="$classBob.html#a7f2a0b79ada211d0b55c3bdafb2c1892" title="Retrieves the fully constructed product." alt="" coords="192,5,317,32"/>
+</map>
