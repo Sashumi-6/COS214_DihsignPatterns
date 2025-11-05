@@ -113,3 +113,4 @@ This project uses the following GitHub Actions:
 
 #### Contributors
 - Daniel Cohen, u24772756
+- Nosandiso Mzoneli, u24676111
